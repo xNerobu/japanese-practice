@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { KanaChar } from '../data/kana';
-import { ProgressData, updateCharProgress, getWeakChars } from '../utils/progress';
+import { useState } from 'react';
+import type { KanaChar } from '../data/kana';
+import { updateCharProgress, getWeakChars } from '../utils/progress';
+import type { ProgressData } from '../utils/progress';
 import { speakKana, isSpeechSupported } from '../utils/speech';
 import { Volume2, Check, X } from 'lucide-react';
 

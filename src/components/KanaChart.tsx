@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { KanaChar } from '../data/kana';
+import { useState } from 'react';
+import type { KanaChar } from '../data/kana';
 import { speakKana, isSpeechSupported } from '../utils/speech';
 import { Volume2 } from 'lucide-react';
 

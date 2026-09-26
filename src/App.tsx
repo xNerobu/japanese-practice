@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { KanaChart } from './components/KanaChart';
 import { Quiz } from './components/Quiz';
 import { hiraganaData, katakanaData } from './data/kana';
-import { loadProgress, saveProgress, ProgressData, getAccuracy } from './utils/progress';
+import { loadProgress, saveProgress, getAccuracy } from './utils/progress';
+import type { ProgressData } from './utils/progress';
 import { initSpeech } from './utils/speech';
 import { BookOpen, Brain, BarChart3 } from 'lucide-react';
 
