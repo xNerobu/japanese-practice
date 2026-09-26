@@ -255,6 +255,12 @@ function App() {
             </div>
           )}
         </main>
+
+        <footer className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 text-center text-xs text-gray-500 dark:text-gray-400">
+          <p>
+            筆順資料來自 <a href="https://github.com/KanjiVG/kanjivg" target="_blank" rel="noopener noreferrer" className="underline hover:text-purple-600 dark:hover:text-purple-400">KanjiVG</a> (CC BY-SA 3.0)
+          </p>
+        </footer>
       </div>
     </div>
   );

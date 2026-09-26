@@ -2,7 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import type { KanaChar } from '../data/kana';
 import type { ProgressData } from '../utils/progress';
 import { initializeSRS, updateSRS } from '../utils/spacedRepetition';
-import { Eraser, Undo, SkipForward, Eye, EyeOff } from 'lucide-react';
+import { StrokeOrderAnimation } from './StrokeOrderAnimation';
+import { hasStrokeData } from '../data/strokeOrder';
+import { Eraser, Undo, SkipForward, Eye, EyeOff, X } from 'lucide-react';
 
 interface HandwritingPracticeProps {
   data: KanaChar[];
@@ -35,6 +37,7 @@ export function HandwritingPractice({
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
   const [isConfiguring, setIsConfiguring] = useState(true);
   const [stats, setStats] = useState({ practiced: 0, correct: 0 });
+  const [showStrokeOrder, setShowStrokeOrder] = useState(false);
 
   const allRows = [...new Set(data.map(k => k.row))];
 
@@ -347,6 +350,14 @@ export function HandwritingPractice({
           <div className="text-sm text-gray-600 dark:text-gray-400 mt-2">
             請在下方畫布書寫
           </div>
+          {hasStrokeData(currentChar.char) && (
+            <button
+              onClick={() => setShowStrokeOrder(true)}
+              className="mt-3 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors text-sm font-semibold"
+            >
+              📝 筆順
+            </button>
+          )}
         </div>
 
         <div className="flex justify-center mb-4">
@@ -418,6 +429,33 @@ export function HandwritingPractice({
           💡 <strong>提示：</strong>寫完後根據自己的表現評分。正確的字符會延長複習間隔，需要更多練習的會更頻繁出現。
         </p>
       </div>
+
+      {/* Stroke Order Modal */}
+      {showStrokeOrder && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-sm w-full shadow-2xl relative">
+            <button
+              onClick={() => setShowStrokeOrder(false)}
+              className="absolute top-4 right-4 p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors"
+            >
+              <X size={20} />
+            </button>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4 text-center">
+              {currentChar.char} 的筆順
+            </h3>
+            <StrokeOrderAnimation
+              char={currentChar.char}
+              size={280}
+              showNumbers={true}
+              autoPlay={false}
+              className="mx-auto"
+            />
+            <div className="mt-4 text-sm text-gray-600 dark:text-gray-400 text-center">
+              {currentChar.romaji}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
