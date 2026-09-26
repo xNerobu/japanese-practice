@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { KanaChar } from '../data/kana';
 import type { ProgressData } from '../utils/progress';
+import { recordDailyActivity } from '../utils/progress';
 import { getDueCards, getReviewStats, initializeSRS, updateSRS } from '../utils/spacedRepetition';
 import { speakKana, isSpeechSupported } from '../utils/speech';
 import { Volume2, Check, X, RotateCcw } from 'lucide-react';
@@ -87,7 +88,7 @@ export function Review({ data, kanaType, progress, onProgressUpdate }: ReviewPro
 
     const updatedSRS = updateSRS(currentProgress.srs || initializeSRS(currentChar.char), quality);
 
-    const updatedProgress: ProgressData = {
+    let updatedProgress: ProgressData = {
       ...progress,
       [kanaType]: {
         ...progress[kanaType],
@@ -100,6 +101,9 @@ export function Review({ data, kanaType, progress, onProgressUpdate }: ReviewPro
         },
       },
     };
+    
+    // Record daily activity
+    updatedProgress = recordDailyActivity(updatedProgress, correct);
 
     onProgressUpdate(updatedProgress);
 

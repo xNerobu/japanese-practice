@@ -9,14 +9,22 @@ export interface CharProgress {
   srs?: SRSData; // Optional for backward compatibility
 }
 
+export interface DailyActivity {
+  date: string; // YYYY-MM-DD format
+  correct: number;
+  incorrect: number;
+  practiced: number;
+}
+
 export interface ProgressData {
   hiragana: Record<string, CharProgress>;
   katakana: Record<string, CharProgress>;
+  dailyHistory?: DailyActivity[];
   version?: number; // Track data version for migrations
 }
 
 const STORAGE_KEY = 'japanese-learning-progress';
-const CURRENT_VERSION = 2;
+const CURRENT_VERSION = 3;
 
 export function loadProgress(): ProgressData {
   try {
@@ -29,21 +37,27 @@ export function loadProgress(): ProgressData {
         return migrateProgressData(data);
       }
       
+      // Ensure dailyHistory exists
+      if (!data.dailyHistory) {
+        data.dailyHistory = [];
+      }
+      
       return data;
     }
   } catch (error) {
     console.error('載入進度失敗:', error);
   }
-  return { hiragana: {}, katakana: {}, version: CURRENT_VERSION };
+  return { hiragana: {}, katakana: {}, dailyHistory: [], version: CURRENT_VERSION };
 }
 
 /**
- * Migrate progress data to include SRS fields
+ * Migrate progress data to include SRS fields and daily history
  */
 function migrateProgressData(oldData: ProgressData): ProgressData {
   const migratedData: ProgressData = {
     hiragana: {},
     katakana: {},
+    dailyHistory: oldData.dailyHistory || [],
     version: CURRENT_VERSION,
   };
 
@@ -113,13 +127,18 @@ export function updateCharProgress(
     updated.srs = updateSRSFunc(current.srs, quality);
   }
 
-  return {
+  let updatedProgress: ProgressData = {
     ...progress,
     [kanaType]: {
       ...progress[kanaType],
       [char]: updated,
     },
   };
+  
+  // Record daily activity
+  updatedProgress = recordDailyActivity(updatedProgress, correct);
+
+  return updatedProgress;
 }
 
 export function getAccuracy(charProgress: CharProgress | undefined): number {
@@ -142,4 +161,105 @@ export function getWeakChars(
   chars: string[]
 ): string[] {
   return chars.filter(char => isWeakChar(progress[kanaType][char]));
+}
+
+/**
+ * Record daily activity
+ */
+export function recordDailyActivity(
+  progress: ProgressData,
+  correct: boolean
+): ProgressData {
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  const dailyHistory = progress.dailyHistory || [];
+  
+  // Find or create today's entry
+  const todayIndex = dailyHistory.findIndex(d => d.date === today);
+  
+  if (todayIndex >= 0) {
+    // Update existing entry
+    const updatedEntry = {
+      ...dailyHistory[todayIndex],
+      correct: dailyHistory[todayIndex].correct + (correct ? 1 : 0),
+      incorrect: dailyHistory[todayIndex].incorrect + (correct ? 0 : 1),
+      practiced: dailyHistory[todayIndex].practiced + 1,
+    };
+    
+    const newHistory = [...dailyHistory];
+    newHistory[todayIndex] = updatedEntry;
+    
+    return {
+      ...progress,
+      dailyHistory: newHistory,
+    };
+  } else {
+    // Create new entry
+    const newEntry: DailyActivity = {
+      date: today,
+      correct: correct ? 1 : 0,
+      incorrect: correct ? 0 : 1,
+      practiced: 1,
+    };
+    
+    return {
+      ...progress,
+      dailyHistory: [...dailyHistory, newEntry],
+    };
+  }
+}
+
+/**
+ * Get practice streak (consecutive days)
+ */
+export function getPracticeStreak(dailyHistory: DailyActivity[]): { current: number; longest: number } {
+  if (dailyHistory.length === 0) return { current: 0, longest: 0 };
+  
+  // Sort by date descending
+  const sorted = [...dailyHistory].sort((a, b) => b.date.localeCompare(a.date));
+  
+  const today = new Date().toISOString().split('T')[0];
+  const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+  
+  let currentStreak = 0;
+  let longestStreak = 0;
+  let tempStreak = 0;
+  
+  // Check if practiced today or yesterday
+  if (sorted[0].date === today || sorted[0].date === yesterday) {
+    currentStreak = 1;
+    tempStreak = 1;
+    
+    // Count consecutive days
+    for (let i = 1; i < sorted.length; i++) {
+      const prevDate = new Date(sorted[i - 1].date);
+      const currDate = new Date(sorted[i].date);
+      const diffDays = Math.floor((prevDate.getTime() - currDate.getTime()) / (24 * 60 * 60 * 1000));
+      
+      if (diffDays === 1) {
+        currentStreak++;
+        tempStreak++;
+      } else {
+        break;
+      }
+    }
+    
+    longestStreak = Math.max(longestStreak, currentStreak);
+  }
+  
+  // Calculate longest streak
+  tempStreak = 1;
+  for (let i = 1; i < sorted.length; i++) {
+    const prevDate = new Date(sorted[i - 1].date);
+    const currDate = new Date(sorted[i].date);
+    const diffDays = Math.floor((prevDate.getTime() - currDate.getTime()) / (24 * 60 * 60 * 1000));
+    
+    if (diffDays === 1) {
+      tempStreak++;
+      longestStreak = Math.max(longestStreak, tempStreak);
+    } else {
+      tempStreak = 1;
+    }
+  }
+  
+  return { current: currentStreak, longest: Math.max(longestStreak, 1) };
 }

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import type { KanaChar } from '../data/kana';
 import type { ProgressData } from '../utils/progress';
+import { recordDailyActivity } from '../utils/progress';
 import { initializeSRS, updateSRS } from '../utils/spacedRepetition';
 import { StrokeOrderAnimation } from './StrokeOrderAnimation';
 import { hasStrokeData } from '../data/strokeOrder';
@@ -204,7 +205,7 @@ export function HandwritingPractice({
     const quality = correct ? 4 : 1;
     const updatedSRS = updateSRS(currentProgress.srs || initializeSRS(currentChar.char), quality);
 
-    const updatedProgress: ProgressData = {
+    let updatedProgress: ProgressData = {
       ...progress,
       [kanaType]: {
         ...progress[kanaType],
@@ -217,6 +218,9 @@ export function HandwritingPractice({
         },
       },
     };
+    
+    // Record daily activity
+    updatedProgress = recordDailyActivity(updatedProgress, correct);
 
     onProgressUpdate(updatedProgress);
 

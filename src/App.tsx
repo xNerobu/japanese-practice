@@ -3,8 +3,9 @@ import { KanaChart } from './components/KanaChart';
 import { Quiz } from './components/Quiz';
 import { Review } from './components/Review';
 import { HandwritingPractice } from './components/HandwritingPractice';
+import { Progress } from './components/Progress';
 import { hiraganaData, katakanaData } from './data/kana';
-import { loadProgress, saveProgress, getAccuracy } from './utils/progress';
+import { loadProgress, saveProgress } from './utils/progress';
 import type { ProgressData } from './utils/progress';
 import { initSpeech } from './utils/speech';
 import { getReviewStats } from './utils/spacedRepetition';
@@ -28,12 +29,6 @@ function App() {
 
   const currentData = kanaType === 'hiragana' ? hiraganaData : katakanaData;
   const currentTitle = kanaType === 'hiragana' ? '平假名' : '片假名';
-
-  const progressStats = Object.values(progress[kanaType]);
-  const totalPracticed = progressStats.length;
-  const avgAccuracy = totalPracticed > 0
-    ? progressStats.reduce((sum, p) => sum + getAccuracy(p), 0) / totalPracticed
-    : 0;
 
   // Get review stats for due count badge
   const allChars = currentData.map(k => k.char);
@@ -167,92 +162,12 @@ function App() {
             />
           )}
           {view === 'progress' && (
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
-                  <div className="text-gray-600 dark:text-gray-400 mb-2">已練習字符</div>
-                  <div className="text-4xl font-bold text-purple-600 dark:text-purple-400">
-                    {totalPracticed}
-                  </div>
-                </div>
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
-                  <div className="text-gray-600 dark:text-gray-400 mb-2">平均正確率</div>
-                  <div className="text-4xl font-bold text-purple-600 dark:text-purple-400">
-                    {Math.round(avgAccuracy)}%
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
-                <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">
-                  各字符表現
-                </h3>
-                {totalPracticed === 0 ? (
-                  <div className="text-center text-gray-600 dark:text-gray-400 py-8">
-                    還沒有練習記錄。開始測驗來追蹤你的進度！
-                  </div>
-                ) : (
-                  <div className="space-y-2 max-h-96 overflow-y-auto">
-                    {Object.values(progress[kanaType])
-                      .sort((a, b) => getAccuracy(a) - getAccuracy(b))
-                      .map(charProgress => {
-                        const accuracy = getAccuracy(charProgress);
-                        const total = charProgress.correct + charProgress.incorrect;
-                        const kana = currentData.find(k => k.char === charProgress.char);
-
-                        return (
-                          <div
-                            key={charProgress.char}
-                            className="flex items-center gap-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
-                          >
-                            <div className="text-2xl font-bold w-12 text-center">
-                              {charProgress.char}
-                            </div>
-                            <div className="text-gray-600 dark:text-gray-400 w-16">
-                              {kana?.romaji}
-                            </div>
-                            <div className="flex-1">
-                              <div className="flex items-center gap-2">
-                                <div className="flex-1 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
-                                  <div
-                                    className={`h-2 rounded-full transition-all ${
-                                      accuracy >= 70
-                                        ? 'bg-green-500'
-                                        : accuracy >= 40
-                                        ? 'bg-yellow-500'
-                                        : 'bg-red-500'
-                                    }`}
-                                    style={{ width: `${accuracy}%` }}
-                                  />
-                                </div>
-                                <div className="text-sm font-semibold w-12 text-right">
-                                  {Math.round(accuracy)}%
-                                </div>
-                              </div>
-                            </div>
-                            <div className="text-sm text-gray-600 dark:text-gray-400">
-                              {charProgress.correct}/{total}
-                            </div>
-                          </div>
-                        );
-                      })}
-                  </div>
-                )}
-              </div>
-
-              {totalPracticed > 0 && (
-                <button
-                  onClick={() => {
-                    if (confirm('確定要清除所有進度記錄嗎？')) {
-                      setProgress({ hiragana: {}, katakana: {} });
-                    }
-                  }}
-                  className="w-full py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-colors"
-                >
-                  清除所有進度
-                </button>
-              )}
-            </div>
+            <Progress
+              data={currentData}
+              kanaType={kanaType}
+              progress={progress}
+              onProgressUpdate={setProgress}
+            />
           )}
         </main>
 
