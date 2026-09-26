@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import { KanaChart } from './components/KanaChart';
 import { Quiz } from './components/Quiz';
+import { Review } from './components/Review';
+import { HandwritingPractice } from './components/HandwritingPractice';
 import { hiraganaData, katakanaData } from './data/kana';
 import { loadProgress, saveProgress, getAccuracy } from './utils/progress';
 import type { ProgressData } from './utils/progress';
 import { initSpeech } from './utils/speech';
-import { BookOpen, Brain, BarChart3 } from 'lucide-react';
+import { getReviewStats } from './utils/spacedRepetition';
+import { BookOpen, Brain, BarChart3, Calendar, PenTool } from 'lucide-react';
 
-type View = 'chart' | 'quiz' | 'progress';
+type View = 'chart' | 'quiz' | 'review' | 'handwriting' | 'progress';
 type KanaType = 'hiragana' | 'katakana';
 
 function App() {
@@ -31,6 +34,11 @@ function App() {
   const avgAccuracy = totalPracticed > 0
     ? progressStats.reduce((sum, p) => sum + getAccuracy(p), 0) / totalPracticed
     : 0;
+
+  // Get review stats for due count badge
+  const allChars = currentData.map(k => k.char);
+  const reviewStats = getReviewStats(progress[kanaType], allChars);
+  const dueCount = reviewStats.due;
 
   return (
     <div className="min-h-screen pb-20">
@@ -67,39 +75,66 @@ function App() {
           </button>
         </div>
 
-        <nav className="flex gap-2 mb-6 bg-white dark:bg-gray-800 rounded-lg p-2 shadow-md">
+        <nav className="grid grid-cols-3 sm:grid-cols-5 gap-2 mb-6 bg-white dark:bg-gray-800 rounded-lg p-2 shadow-md">
           <button
             onClick={() => setView('chart')}
-            className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-semibold transition-colors ${
+            className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
               view === 'chart'
                 ? 'bg-purple-500 text-white'
                 : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
           >
             <BookOpen size={20} />
-            <span>字母表</span>
+            <span className="text-xs sm:text-base">字母表</span>
           </button>
           <button
             onClick={() => setView('quiz')}
-            className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-semibold transition-colors ${
+            className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
               view === 'quiz'
                 ? 'bg-purple-500 text-white'
                 : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
           >
             <Brain size={20} />
-            <span>測驗</span>
+            <span className="text-xs sm:text-base">測驗</span>
+          </button>
+          <button
+            onClick={() => setView('review')}
+            className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors relative ${
+              view === 'review'
+                ? 'bg-purple-500 text-white'
+                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+            }`}
+          >
+            <Calendar size={20} />
+            <span className="text-xs sm:text-base">複習</span>
+            {dueCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                {dueCount > 99 ? '99+' : dueCount}
+              </span>
+            )}
+          </button>
+          <button
+            onClick={() => setView('handwriting')}
+            className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
+              view === 'handwriting'
+                ? 'bg-purple-500 text-white'
+                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+            }`}
+          >
+            <PenTool size={20} />
+            <span className="text-xs sm:text-base">手寫</span>
           </button>
           <button
             onClick={() => setView('progress')}
-            className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-semibold transition-colors ${
+            className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
               view === 'progress'
                 ? 'bg-purple-500 text-white'
                 : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
             }`}
           >
             <BarChart3 size={20} />
-            <span>進度</span>
+            <span className="text-xs sm:text-base">進度</span>
           </button>
         </nav>
 
@@ -109,6 +144,22 @@ function App() {
           )}
           {view === 'quiz' && (
             <Quiz
+              data={currentData}
+              kanaType={kanaType}
+              progress={progress}
+              onProgressUpdate={setProgress}
+            />
+          )}
+          {view === 'review' && (
+            <Review
+              data={currentData}
+              kanaType={kanaType}
+              progress={progress}
+              onProgressUpdate={setProgress}
+            />
+          )}
+          {view === 'handwriting' && (
+            <HandwritingPractice
               data={currentData}
               kanaType={kanaType}
               progress={progress}
@@ -204,6 +255,12 @@ function App() {
             </div>
           )}
         </main>
+
+        <footer className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 text-center text-xs text-gray-500 dark:text-gray-400">
+          <p>
+            筆順資料來自 <a href="https://github.com/KanjiVG/kanjivg" target="_blank" rel="noopener noreferrer" className="underline hover:text-purple-600 dark:hover:text-purple-400">KanjiVG</a> (CC BY-SA 3.0)
+          </p>
+        </footer>
       </div>
     </div>
   );

@@ -1,27 +1,80 @@
+import type { SRSData } from './spacedRepetition';
+import { migrateProgressToSRS, updateSRS as updateSRSFunc } from './spacedRepetition';
+
 export interface CharProgress {
   char: string;
   correct: number;
   incorrect: number;
   lastPracticed: number;
+  srs?: SRSData; // Optional for backward compatibility
 }
 
 export interface ProgressData {
   hiragana: Record<string, CharProgress>;
   katakana: Record<string, CharProgress>;
+  version?: number; // Track data version for migrations
 }
 
 const STORAGE_KEY = 'japanese-learning-progress';
+const CURRENT_VERSION = 2;
 
 export function loadProgress(): ProgressData {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
-      return JSON.parse(stored);
+      const data: ProgressData = JSON.parse(stored);
+      
+      // Migrate old data if needed
+      if (!data.version || data.version < CURRENT_VERSION) {
+        return migrateProgressData(data);
+      }
+      
+      return data;
     }
   } catch (error) {
     console.error('載入進度失敗:', error);
   }
-  return { hiragana: {}, katakana: {} };
+  return { hiragana: {}, katakana: {}, version: CURRENT_VERSION };
+}
+
+/**
+ * Migrate progress data to include SRS fields
+ */
+function migrateProgressData(oldData: ProgressData): ProgressData {
+  const migratedData: ProgressData = {
+    hiragana: {},
+    katakana: {},
+    version: CURRENT_VERSION,
+  };
+
+  // Migrate hiragana
+  for (const char in oldData.hiragana) {
+    const oldProgress = oldData.hiragana[char];
+    if (!oldProgress.srs) {
+      migratedData.hiragana[char] = {
+        ...oldProgress,
+        srs: migrateProgressToSRS(oldProgress, char),
+      };
+    } else {
+      migratedData.hiragana[char] = oldProgress;
+    }
+  }
+
+  // Migrate katakana
+  for (const char in oldData.katakana) {
+    const oldProgress = oldData.katakana[char];
+    if (!oldProgress.srs) {
+      migratedData.katakana[char] = {
+        ...oldProgress,
+        srs: migrateProgressToSRS(oldProgress, char),
+      };
+    } else {
+      migratedData.katakana[char] = oldProgress;
+    }
+  }
+
+  console.log('進度資料已遷移至版本', CURRENT_VERSION);
+  return migratedData;
 }
 
 export function saveProgress(progress: ProgressData): void {
@@ -36,7 +89,8 @@ export function updateCharProgress(
   progress: ProgressData,
   kanaType: 'hiragana' | 'katakana',
   char: string,
-  correct: boolean
+  correct: boolean,
+  updateSRS: boolean = false
 ): ProgressData {
   const current = progress[kanaType][char] || {
     char,
@@ -45,12 +99,19 @@ export function updateCharProgress(
     lastPracticed: 0,
   };
 
-  const updated = {
+  const updated: CharProgress = {
     ...current,
     correct: correct ? current.correct + 1 : current.correct,
     incorrect: correct ? current.incorrect : current.incorrect + 1,
     lastPracticed: Date.now(),
   };
+
+  // Don't update SRS in regular quiz mode unless explicitly requested
+  if (updateSRS && current.srs) {
+    // Quality mapping: correct = 4 (good), incorrect = 1 (again)
+    const quality = correct ? 4 : 1;
+    updated.srs = updateSRSFunc(current.srs, quality);
+  }
 
   return {
     ...progress,
