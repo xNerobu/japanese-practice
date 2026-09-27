@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { KanaChart } from './components/KanaChart';
 import { Quiz } from './components/Quiz';
+import { ListeningQuiz } from './components/ListeningQuiz';
 import { Review } from './components/Review';
 import { HandwritingPractice } from './components/HandwritingPractice';
 import { VoicePicker } from './components/VoicePicker';
@@ -12,9 +13,9 @@ import type { ProgressData } from './utils/progress';
 import { initSpeech } from './utils/speech';
 import { getReviewStats } from './utils/spacedRepetition';
 import { VOICE_CHARACTERS } from './data/voiceConfig';
-import { BookOpen, Brain, BarChart3, Calendar, PenTool, Settings } from 'lucide-react';
+import { BookOpen, Brain, BarChart3, Calendar, PenTool, Settings, Headphones } from 'lucide-react';
 
-type View = 'chart' | 'quiz' | 'review' | 'handwriting' | 'progress';
+type View = 'chart' | 'quiz' | 'listening' | 'review' | 'handwriting' | 'progress';
 type KanaType = 'hiragana' | 'katakana';
 
 function App() {
@@ -104,7 +105,7 @@ function App() {
           </button>
         </div>
 
-        <nav className="grid grid-cols-3 sm:grid-cols-5 gap-2 mb-6 bg-white dark:bg-gray-800 rounded-lg p-2 shadow-md">
+        <nav className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-6 bg-white dark:bg-gray-800 rounded-lg p-2 shadow-md">
           <button
             onClick={() => setView('chart')}
             className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
@@ -126,6 +127,17 @@ function App() {
           >
             <Brain size={20} />
             <span className="text-xs sm:text-base">測驗</span>
+          </button>
+          <button
+            onClick={() => setView('listening')}
+            className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
+              view === 'listening'
+                ? 'bg-purple-500 text-white'
+                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+            }`}
+          >
+            <Headphones size={20} />
+            <span className="text-xs sm:text-base">聽音選字</span>
           </button>
           <button
             onClick={() => setView('review')}
@@ -173,6 +185,15 @@ function App() {
           )}
           {view === 'quiz' && (
             <Quiz
+              data={currentData}
+              kanaType={kanaType}
+              progress={progress}
+              onProgressUpdate={setProgress}
+              onExpGain={handleExpGain}
+            />
+          )}
+          {view === 'listening' && (
+            <ListeningQuiz
               data={currentData}
               kanaType={kanaType}
               progress={progress}
