@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { KanaChar } from '../data/kana';
+import { rowNames } from '../data/kana';
 import { updateCharProgress, getWeakChars, addExp } from '../utils/progress';
 import type { ProgressData } from '../utils/progress';
 import { speakKana, isSpeechSupported } from '../utils/speech';
@@ -19,33 +20,56 @@ type QuizFilter = 'all' | 'weak';
 export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: QuizProps) {
   const [mode, setMode] = useState<QuizMode>('kana-to-romaji');
   const [filter, setFilter] = useState<QuizFilter>('all');
-  const [selectedRows, setSelectedRows] = useState<string[]>([]);
+  const allRows = [...new Set(data.map(k => k.row))];
+  const [selectedRows, setSelectedRows] = useState<string[]>(() => allRows);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>(['basic']);
   const [isConfiguring, setIsConfiguring] = useState(true);
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const [currentQuestion, setCurrentQuestion] = useState<KanaChar | null>(null);
   const [options, setOptions] = useState<string[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [score, setScore] = useState({ correct: 0, total: 0 });
-  const [questionsRemaining, setQuestionsRemaining] = useState(10);
+  const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
+  const [totalQuestions] = useState(10);
   const [showResults, setShowResults] = useState(false);
   const [isFirstQuestion, setIsFirstQuestion] = useState(true);
 
-  const allRows = [...new Set(data.map(k => k.row))];
+  const allTypes = [
+    { key: 'basic', label: '清音' },
+    { key: 'dakuten', label: '濁音' },
+    { key: 'handakuten', label: '半濁音' },
+    { key: 'yoon', label: '拗音' },
+  ];
 
   const startQuiz = () => {
     if (selectedRows.length === 0) {
-      alert('請至少選擇一個行');
+      setErrorMessage('請至少選擇一個行');
       return;
     }
+    if (selectedTypes.length === 0) {
+      setErrorMessage('請至少選擇一個類型');
+      return;
+    }
+    
+    // Check if selected rows ∩ types has any characters
+    const availableChars = data.filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type));
+    if (availableChars.length === 0) {
+      setErrorMessage('所選的行段和類型沒有任何假名，請重新選擇');
+      return;
+    }
+    
+    setErrorMessage('');
     setIsConfiguring(false);
     setScore({ correct: 0, total: 0 });
+    setCurrentQuestionNumber(1);
     setShowResults(false);
     setIsFirstQuestion(true);
     generateQuestion();
   };
 
   const generateQuestion = () => {
-    let availableChars = data.filter(k => selectedRows.includes(k.row));
+    let availableChars = data.filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type));
     
     if (filter === 'weak') {
       const weakChars = getWeakChars(progress, kanaType, availableChars.map(k => k.char));
@@ -55,7 +79,7 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
     }
 
     if (availableChars.length === 0) {
-      availableChars = data.filter(k => selectedRows.includes(k.row));
+      availableChars = data.filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type));
     }
 
     const question = availableChars[Math.floor(Math.random() * availableChars.length)];
@@ -69,7 +93,7 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
       .map(k => mode === 'kana-to-romaji' ? k.romaji : k.char)
       .filter((value, index, self) => self.indexOf(value) === index)
       .sort(() => Math.random() - 0.5)
-      .slice(0, 3);
+      .slice(0, Math.min(3, availableChars.length - 1));
 
     const allOptions = [correctAnswer, ...wrongOptions].sort(() => Math.random() - 0.5);
     setOptions(allOptions);
@@ -103,12 +127,10 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
     }
 
     setTimeout(() => {
-      const remaining = questionsRemaining - 1;
-      setQuestionsRemaining(remaining);
-      
-      if (remaining <= 0) {
+      if (currentQuestionNumber >= totalQuestions) {
         setShowResults(true);
       } else {
+        setCurrentQuestionNumber(prev => prev + 1);
         generateQuestion();
       }
     }, 1500);
@@ -116,13 +138,19 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
 
   const resetQuiz = () => {
     setIsConfiguring(true);
-    setQuestionsRemaining(10);
+    setCurrentQuestionNumber(1);
     setCurrentQuestion(null);
   };
 
   const toggleRow = (row: string) => {
     setSelectedRows(prev =>
       prev.includes(row) ? prev.filter(r => r !== row) : [...prev, row]
+    );
+  };
+
+  const toggleType = (type: string) => {
+    setSelectedTypes(prev =>
+      prev.includes(type) ? prev.filter(t => t !== type) : [...prev, type]
     );
   };
 
@@ -134,9 +162,22 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
     setSelectedRows([]);
   };
 
+  const selectAllTypes = () => {
+    setSelectedTypes(allTypes.map(t => t.key));
+  };
+
+  const clearAllTypes = () => {
+    setSelectedTypes([]);
+  };
+
   if (isConfiguring) {
     return (
       <div className="space-y-6">
+        {errorMessage && (
+          <div className="bg-red-100 dark:bg-red-900 border-2 border-red-500 text-red-800 dark:text-red-200 px-4 py-3 rounded-lg">
+            {errorMessage}
+          </div>
+        )}
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
           <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">測驗模式</h3>
           <div className="space-y-3">
@@ -216,7 +257,40 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
                   onChange={() => toggleRow(row)}
                   className="w-4 h-4"
                 />
-                <span className="text-gray-700 dark:text-gray-300">{row}行</span>
+                <span className="text-gray-700 dark:text-gray-300">{rowNames[row as keyof typeof rowNames] || `${row}行`}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">選擇類型</h3>
+            <div className="flex gap-2">
+              <button
+                onClick={selectAllTypes}
+                className="px-3 py-1 text-sm bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300 rounded hover:bg-purple-200 dark:hover:bg-purple-800"
+              >
+                全選
+              </button>
+              <button
+                onClick={clearAllTypes}
+                className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-200 dark:hover:bg-gray-600"
+              >
+                清空
+              </button>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            {allTypes.map(type => (
+              <label key={type.key} className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={selectedTypes.includes(type.key)}
+                  onChange={() => toggleType(type.key)}
+                  className="w-4 h-4"
+                />
+                <span className="text-gray-700 dark:text-gray-300">{type.label}</span>
               </label>
             ))}
           </div>
@@ -262,7 +336,7 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
     <div className="space-y-6">
       <div className="flex justify-between items-center text-gray-700 dark:text-gray-300">
         <div className="text-lg font-semibold">
-          題目 {score.total + 1} / {score.total + questionsRemaining}
+          題目 {currentQuestionNumber} / {totalQuestions}
         </div>
         <div className="text-lg font-semibold">
           得分：{score.correct} / {score.total}
