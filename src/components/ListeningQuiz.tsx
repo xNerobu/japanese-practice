@@ -395,13 +395,22 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
                       <div className="text-red-600 dark:text-red-400">你選了：{missed.userAnswer}</div>
                     </div>
                   </div>
-                  <button
-                    onClick={() => speakKana(missed.char)}
-                    className="p-3 rounded-full bg-purple-500 hover:bg-purple-600 text-white transition-colors"
-                    aria-label={`播放 ${missed.char}`}
-                  >
-                    <Volume2 size={24} />
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => speakKana(missed.char)}
+                      className="p-3 rounded-full bg-green-500 hover:bg-green-600 text-white transition-colors"
+                      aria-label={`播放正確答案 ${missed.char}`}
+                    >
+                      <Volume2 size={20} />
+                    </button>
+                    <button
+                      onClick={() => speakKana(missed.userAnswer)}
+                      className="p-3 rounded-full bg-red-500 hover:bg-red-600 text-white transition-colors"
+                      aria-label={`播放你的選擇 ${missed.userAnswer}`}
+                    >
+                      <Volume2 size={20} />
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
