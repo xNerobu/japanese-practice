@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { KanaChar } from '../data/kana';
-import { updateCharProgress, getWeakChars } from '../utils/progress';
+import { updateCharProgress, getWeakChars, addExp } from '../utils/progress';
 import type { ProgressData } from '../utils/progress';
 import { speakKana, isSpeechSupported } from '../utils/speech';
 import { Volume2, Check, X } from 'lucide-react';
@@ -10,12 +10,13 @@ interface QuizProps {
   kanaType: 'hiragana' | 'katakana';
   progress: ProgressData;
   onProgressUpdate: (progress: ProgressData) => void;
+  onExpGain?: (amount: number, leveledUp: boolean, oldLevel?: number, newLevel?: number) => void;
 }
 
 type QuizMode = 'kana-to-romaji' | 'romaji-to-kana';
 type QuizFilter = 'all' | 'weak';
 
-export function Quiz({ data, kanaType, progress, onProgressUpdate }: QuizProps) {
+export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: QuizProps) {
   const [mode, setMode] = useState<QuizMode>('kana-to-romaji');
   const [filter, setFilter] = useState<QuizFilter>('all');
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
@@ -27,6 +28,7 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate }: QuizProps) 
   const [score, setScore] = useState({ correct: 0, total: 0 });
   const [questionsRemaining, setQuestionsRemaining] = useState(10);
   const [showResults, setShowResults] = useState(false);
+  const [isFirstQuestion, setIsFirstQuestion] = useState(true);
 
   const allRows = [...new Set(data.map(k => k.row))];
 
@@ -38,6 +40,7 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate }: QuizProps) 
     setIsConfiguring(false);
     setScore({ correct: 0, total: 0 });
     setShowResults(false);
+    setIsFirstQuestion(true);
     generateQuestion();
   };
 
@@ -82,8 +85,22 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate }: QuizProps) 
     setIsCorrect(correct);
     setScore(prev => ({ correct: prev.correct + (correct ? 1 : 0), total: prev.total + 1 }));
 
-    const updatedProgress = updateCharProgress(progress, kanaType, currentQuestion!.char, correct);
+    let updatedProgress = updateCharProgress(progress, kanaType, currentQuestion!.char, correct);
+    
+    // Award EXP: +10 for correct, +2 for incorrect, check daily bonus on first question
+    const expResult = addExp(updatedProgress, correct ? 10 : 2, isFirstQuestion);
+    updatedProgress = expResult.progress;
+    
+    if (isFirstQuestion) {
+      setIsFirstQuestion(false);
+    }
+    
     onProgressUpdate(updatedProgress);
+    
+    // Trigger EXP animation
+    if (onExpGain) {
+      onExpGain(expResult.expGained, expResult.leveledUp, expResult.oldLevel, expResult.newLevel);
+    }
 
     setTimeout(() => {
       const remaining = questionsRemaining - 1;

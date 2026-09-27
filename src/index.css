@@ -10,3 +10,70 @@ body {
     background: linear-gradient(to bottom right, rgb(17 24 39), rgb(31 41 55));
   }
 }
+
+/* EXP System Animations */
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -80px);
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(400px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-up {
+  animation: float-up 1.5s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-up {
+    animation: float-up 0.8s ease-out forwards;
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scale-in {
+    animation: none;
+  }
+}
+
+.animate-confetti-fall {
+  animation: confetti-fall 2s ease-in forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-confetti-fall {
+    display: none;
+  }
+}

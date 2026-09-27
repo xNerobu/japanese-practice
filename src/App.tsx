@@ -4,6 +4,7 @@ import { Quiz } from './components/Quiz';
 import { Review } from './components/Review';
 import { HandwritingPractice } from './components/HandwritingPractice';
 import { Progress } from './components/Progress';
+import { LevelBadge, ExpAnimation, LevelUpModal } from './components/ExpSystem';
 import { hiraganaData, katakanaData } from './data/kana';
 import { loadProgress, saveProgress } from './utils/progress';
 import type { ProgressData } from './utils/progress';
@@ -18,6 +19,8 @@ function App() {
   const [view, setView] = useState<View>('chart');
   const [kanaType, setKanaType] = useState<KanaType>('hiragana');
   const [progress, setProgress] = useState<ProgressData>(loadProgress());
+  const [expAnimation, setExpAnimation] = useState<number | null>(null);
+  const [levelUpData, setLevelUpData] = useState<{ oldLevel: number; newLevel: number } | null>(null);
 
   useEffect(() => {
     initSpeech();
@@ -27,6 +30,17 @@ function App() {
     saveProgress(progress);
   }, [progress]);
 
+  // Handle EXP gain
+  const handleExpGain = (amount: number, leveledUp: boolean, oldLevel?: number, newLevel?: number) => {
+    setExpAnimation(amount);
+    if (leveledUp && oldLevel && newLevel) {
+      // Show level-up modal after animation
+      setTimeout(() => {
+        setLevelUpData({ oldLevel, newLevel });
+      }, 1600);
+    }
+  };
+
   const currentData = kanaType === 'hiragana' ? hiraganaData : katakanaData;
   const currentTitle = kanaType === 'hiragana' ? '平假名' : '片假名';
 
@@ -35,16 +49,23 @@ function App() {
   const reviewStats = getReviewStats(progress[kanaType], allChars);
   const dueCount = reviewStats.due;
 
+  const exp = progress.exp || { totalExp: 0, level: 1 };
+
   return (
     <div className="min-h-screen pb-20">
       <div className="max-w-4xl mx-auto px-4 py-6">
-        <header className="text-center mb-8">
+        <header className="text-center mb-6">
           <h1 className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">
             日語假名學習
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
             學習平假名和片假名的互動工具
           </p>
+          
+          {/* Level Badge and EXP Bar */}
+          <div className="max-w-md mx-auto">
+            <LevelBadge exp={exp} compact />
+          </div>
         </header>
 
         <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
@@ -143,6 +164,7 @@ function App() {
               kanaType={kanaType}
               progress={progress}
               onProgressUpdate={setProgress}
+              onExpGain={handleExpGain}
             />
           )}
           {view === 'review' && (
@@ -151,6 +173,7 @@ function App() {
               kanaType={kanaType}
               progress={progress}
               onProgressUpdate={setProgress}
+              onExpGain={handleExpGain}
             />
           )}
           {view === 'handwriting' && (
@@ -159,6 +182,7 @@ function App() {
               kanaType={kanaType}
               progress={progress}
               onProgressUpdate={setProgress}
+              onExpGain={handleExpGain}
             />
           )}
           {view === 'progress' && (
@@ -177,6 +201,23 @@ function App() {
           </p>
         </footer>
       </div>
+
+      {/* EXP Animation */}
+      {expAnimation !== null && (
+        <ExpAnimation
+          amount={expAnimation}
+          onComplete={() => setExpAnimation(null)}
+        />
+      )}
+
+      {/* Level Up Modal */}
+      {levelUpData && (
+        <LevelUpModal
+          oldLevel={levelUpData.oldLevel}
+          newLevel={levelUpData.newLevel}
+          onClose={() => setLevelUpData(null)}
+        />
+      )}
     </div>
   );
 }

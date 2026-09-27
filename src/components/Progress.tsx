@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import type { KanaChar } from '../data/kana';
 import type { ProgressData } from '../utils/progress';
-import { getAccuracy, getPracticeStreak, isWeakChar } from '../utils/progress';
+import { getAccuracy, getPracticeStreak, isWeakChar, getLevelTitle, getExpProgress } from '../utils/progress';
 import { isDue } from '../utils/spacedRepetition';
-import { TrendingUp, Flame, Target, Calendar, X } from 'lucide-react';
+import { TrendingUp, Flame, Target, Calendar, X, Sparkles } from 'lucide-react';
 
 interface ProgressProps {
   data: KanaChar[];
@@ -47,6 +47,11 @@ export function Progress({ data, kanaType, progress, onProgressUpdate }: Progres
   }).length;
 
   const streaks = getPracticeStreak(dailyHistory);
+  
+  // EXP data
+  const exp = progress.exp || { totalExp: 0, level: 1 };
+  const levelTitle = getLevelTitle(exp.level);
+  const expProgress = getExpProgress(exp.totalExp, exp.level);
 
   // SRS stage breakdown
   const srsStats = {
@@ -220,7 +225,13 @@ export function Progress({ data, kanaType, progress, onProgressUpdate }: Progres
   // Clear all progress
   const handleClearProgress = () => {
     if (confirm('確定要清除所有進度記錄嗎？')) {
-      onProgressUpdate({ hiragana: {}, katakana: {}, dailyHistory: [], version: 3 });
+      onProgressUpdate({ 
+        hiragana: {}, 
+        katakana: {}, 
+        dailyHistory: [], 
+        exp: { totalExp: 0, level: 1 },
+        version: 4 
+      });
     }
   };
 
@@ -265,6 +276,45 @@ export function Progress({ data, kanaType, progress, onProgressUpdate }: Progres
           </div>
           <div className="text-2xl sm:text-4xl font-bold">{srsStats.dueToday}</div>
           <div className="text-xs opacity-75 mt-1">{srsStats.new} 個新字</div>
+        </div>
+      </div>
+
+      {/* EXP Card */}
+      <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg p-4 sm:p-6 shadow-lg text-white">
+        <div className="flex items-center gap-2 mb-3">
+          <Sparkles size={24} />
+          <div>
+            <div className="text-2xl font-bold">等級 {exp.level}</div>
+            <div className="text-sm opacity-90">{levelTitle}</div>
+          </div>
+        </div>
+        
+        <div className="space-y-2">
+          <div className="w-full bg-white/20 rounded-full h-3 overflow-hidden">
+            <div
+              className="bg-white h-3 rounded-full transition-all duration-300"
+              style={{ width: `${Math.min(expProgress.progress * 100, 100)}%` }}
+            />
+          </div>
+          <div className="flex justify-between text-sm opacity-90">
+            <span>{expProgress.current} EXP</span>
+            <span>{expProgress.needed} EXP 升級</span>
+          </div>
+        </div>
+        
+        <div className="mt-3 pt-3 border-t border-white/20 grid grid-cols-2 gap-3 text-sm">
+          <div>
+            <div className="opacity-75">總經驗值</div>
+            <div className="font-bold">{exp.totalExp.toLocaleString()} EXP</div>
+          </div>
+          <div>
+            <div className="opacity-75">今日獲得</div>
+            <div className="font-bold">
+              {dailyHistory.length > 0 && dailyHistory[dailyHistory.length - 1]?.date === new Date().toISOString().split('T')[0]
+                ? `${dailyHistory[dailyHistory.length - 1]?.exp || 0} EXP`
+                : '0 EXP'}
+            </div>
+          </div>
         </div>
       </div>
 

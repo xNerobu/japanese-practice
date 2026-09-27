@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import type { KanaChar } from '../data/kana';
 import type { ProgressData } from '../utils/progress';
-import { recordDailyActivity } from '../utils/progress';
+import { recordDailyActivity, addExp } from '../utils/progress';
 import { initializeSRS, updateSRS } from '../utils/spacedRepetition';
 import { StrokeOrderAnimation } from './StrokeOrderAnimation';
 import { hasStrokeData } from '../data/strokeOrder';
@@ -12,6 +12,7 @@ interface HandwritingPracticeProps {
   kanaType: 'hiragana' | 'katakana';
   progress: ProgressData;
   onProgressUpdate: (progress: ProgressData) => void;
+  onExpGain?: (amount: number, leveledUp: boolean, oldLevel?: number, newLevel?: number) => void;
 }
 
 interface Point {
@@ -28,6 +29,7 @@ export function HandwritingPractice({
   kanaType,
   progress,
   onProgressUpdate,
+  onExpGain,
 }: HandwritingPracticeProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -39,6 +41,7 @@ export function HandwritingPractice({
   const [isConfiguring, setIsConfiguring] = useState(true);
   const [stats, setStats] = useState({ practiced: 0, correct: 0 });
   const [showStrokeOrder, setShowStrokeOrder] = useState(false);
+  const [isFirstPractice, setIsFirstPractice] = useState(true);
 
   const allRows = [...new Set(data.map(k => k.row))];
 
@@ -221,8 +224,21 @@ export function HandwritingPractice({
     
     // Record daily activity
     updatedProgress = recordDailyActivity(updatedProgress, correct);
+    
+    // Award EXP: +15 for handwriting practice
+    const expResult = addExp(updatedProgress, 15, isFirstPractice);
+    updatedProgress = expResult.progress;
+    
+    if (isFirstPractice) {
+      setIsFirstPractice(false);
+    }
 
     onProgressUpdate(updatedProgress);
+    
+    // Trigger EXP animation
+    if (onExpGain) {
+      onExpGain(expResult.expGained, expResult.leveledUp, expResult.oldLevel, expResult.newLevel);
+    }
 
     // Move to next character
     handleNext();
@@ -248,6 +264,7 @@ export function HandwritingPractice({
     }
     setIsConfiguring(false);
     setStats({ practiced: 0, correct: 0 });
+    setIsFirstPractice(true);
     generateNextChar();
   };
 
