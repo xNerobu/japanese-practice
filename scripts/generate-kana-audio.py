@@ -1,43 +1,39 @@
 #!/usr/bin/env python3
 """
-Generate anime-style voice audio files for Japanese kana using VOICEVOX.
+Consolidated script to generate high-quality VOICEVOX kana audio files.
 
-VOICEVOX Character Licensing Research:
-Based on official VOICEVOX documentation (https://voicevox.hiroshiba.jp/):
+Generates audio at 24kHz, mono, MP3 96kbps (libmp3lame high quality) 
+with pre/post phoneme padding for all three voice characters:
+- 四国めたん (Metan) - Speaker ID: 2
+- 春日部つむぎ (Tsumugi) - Speaker ID: 8  
+- 九州そら (Sora) - Speaker ID: 16
 
-Characters allowed for FREE USE in web applications:
-1. 四国めたん (Shikoku Metan) - Speaker ID: 2
-   - Terms: Free for non-commercial and commercial use
-   - Credit required: "VOICEVOX:四国めたん"
-   
-2. ずんだもん (Zundamon) - Speaker ID: 3
-   - Terms: Free for non-commercial and commercial use
-   - Credit required: "VOICEVOX:ずんだもん"
-   
-3. 春日部つむぎ (Kasukabe Tsumugi) - Speaker ID: 8
-   - Terms: Free for non-commercial and commercial use
-   - Credit required: "VOICEVOX:春日部つむぎ"
-   
-4. 雨晴はう (Amehare Hau) - Speaker ID: 10
-   - Terms: Free for non-commercial and commercial use
-   - Credit required: "VOICEVOX:雨晴はう"
-
-We'll use 3 cute female-style characters:
-- 四国めたん (Shikoku Metan)
-- 春日部つむぎ (Kasukabe Tsumugi) 
-- 雨晴はう (Amehare Hau)
+Audio Quality Settings:
+- Sample Rate: 24000 Hz
+- Channels: Mono
+- Bitrate: 96 kbps
+- Codec: libmp3lame (high quality)
+- Format: MP3
+- Phoneme Padding: Pre/post silence for smooth playback
 """
 
 import requests
 import json
 import time
 import os
+import subprocess
 from pathlib import Path
 
-# VOICEVOX API endpoint (when running locally)
+# VOICEVOX API endpoint
 VOICEVOX_URL = "http://127.0.0.1:50021"
 
-# Character configurations
+# Audio quality settings
+SAMPLE_RATE = 24000  # 24kHz
+MP3_BITRATE = "96k"  # 96 kbps
+PHONEME_PRE_PADDING = 0.15  # 150ms pre-padding
+PHONEME_POST_PADDING = 0.15  # 150ms post-padding
+
+# Voice character configurations
 VOICES = {
     "metan": {
         "id": "metan",
@@ -53,12 +49,12 @@ VOICES = {
         "description": "溫柔甜美的少女聲音",
         "credit": "VOICEVOX:春日部つむぎ"
     },
-    "hau": {
-        "id": "hau",
-        "speaker_id": 10,
-        "name": "雨晴はう",
-        "description": "活潑開朗的少女聲音",
-        "credit": "VOICEVOX:雨晴はう"
+    "sora": {
+        "id": "sora",
+        "speaker_id": 16,
+        "name": "九州そら",
+        "description": "開朗活潑的少女聲音",
+        "credit": "VOICEVOX:九州そら"
     }
 }
 
@@ -70,7 +66,6 @@ HIRAGANA = [
     'さ', 'し', 'す', 'せ', 'そ',
     'た', 'ち', 'つ', 'て', 'と',
     'な', 'に', 'ぬ', 'ね', 'の',
-    'は', 'ひ', 'ふ', 'へ', 'ほ',
     'ま', 'み', 'む', 'め', 'も',
     'や', 'ゆ', 'よ',
     'ら', 'り', 'る', 'れ', 'ろ',
@@ -137,10 +132,18 @@ def check_voicevox_server():
     except:
         return False
 
-def generate_audio(text, speaker_id, output_path):
-    """Generate audio file using VOICEVOX API."""
+def check_ffmpeg():
+    """Check if ffmpeg is available."""
     try:
-        # Step 1: Create query
+        subprocess.run(['ffmpeg', '-version'], capture_output=True, check=True)
+        return True
+    except:
+        return False
+
+def generate_audio(text, speaker_id, output_path):
+    """Generate audio file using VOICEVOX API with enhanced quality settings."""
+    try:
+        # Step 1: Create audio query with phoneme padding
         query_response = requests.post(
             f"{VOICEVOX_URL}/audio_query",
             params={"text": text, "speaker": speaker_id},
@@ -148,6 +151,13 @@ def generate_audio(text, speaker_id, output_path):
         )
         query_response.raise_for_status()
         query = query_response.json()
+        
+        # Add pre/post phoneme padding for smoother playback
+        query["prePhonemeLength"] = PHONEME_PRE_PADDING
+        query["postPhonemeLength"] = PHONEME_POST_PADDING
+        
+        # Set output sample rate to 24kHz
+        query["outputSamplingRate"] = SAMPLE_RATE
         
         # Step 2: Synthesize speech
         synthesis_response = requests.post(
@@ -158,13 +168,33 @@ def generate_audio(text, speaker_id, output_path):
         )
         synthesis_response.raise_for_status()
         
-        # Step 3: Save audio file
-        with open(output_path, 'wb') as f:
+        # Step 3: Save as temporary WAV file
+        temp_wav = output_path.with_suffix('.wav.tmp')
+        with open(temp_wav, 'wb') as f:
             f.write(synthesis_response.content)
+        
+        # Step 4: Convert to MP3 with ffmpeg (high quality, 96kbps, mono)
+        subprocess.run([
+            'ffmpeg',
+            '-i', str(temp_wav),
+            '-codec:a', 'libmp3lame',
+            '-b:a', MP3_BITRATE,
+            '-ac', '1',  # mono
+            '-ar', str(SAMPLE_RATE),  # 24kHz
+            '-q:a', '2',  # high quality (0-9, 2 is high quality)
+            '-y',  # overwrite
+            str(output_path)
+        ], capture_output=True, check=True)
+        
+        # Clean up temporary WAV file
+        temp_wav.unlink()
         
         return True
     except Exception as e:
         print(f"Error generating audio for '{text}': {e}")
+        # Clean up temp file if it exists
+        if temp_wav.exists():
+            temp_wav.unlink()
         return False
 
 def main():
@@ -173,10 +203,18 @@ def main():
         print("ERROR: VOICEVOX server is not running!")
         print("Please start VOICEVOX server first:")
         print("  docker run --rm -p 50021:50021 voicevox/voicevox_engine:cpu-ubuntu20.04-latest")
-        return
+        return 1
+    
+    if not check_ffmpeg():
+        print("ERROR: ffmpeg is not installed!")
+        print("Please install ffmpeg first:")
+        print("  sudo apt-get install ffmpeg")
+        return 1
     
     print("VOICEVOX server detected!")
-    print(f"Generating audio for {len(HIRAGANA) + len(KATAKANA)} kana characters...")
+    print(f"Generating high-quality audio for {len(HIRAGANA) + len(KATAKANA)} kana characters...")
+    print(f"Audio settings: {SAMPLE_RATE}Hz, mono, MP3 {MP3_BITRATE}, libmp3lame high quality")
+    print(f"Phoneme padding: {PHONEME_PRE_PADDING}s pre, {PHONEME_POST_PADDING}s post")
     print(f"Using {len(VOICES)} voice characters")
     
     # Create output directories
@@ -190,47 +228,29 @@ def main():
         voice_path = base_path / voice_id
         voice_path.mkdir(exist_ok=True)
         
-        print(f"\nGenerating audio for {voice_config['name']}...")
+        print(f"\nGenerating audio for {voice_config['name']} (Speaker ID {voice_config['speaker_id']})...")
         
         all_kana = HIRAGANA + KATAKANA
         for i, char in enumerate(all_kana):
-            output_file = voice_path / f"{char}.wav"
+            output_file = voice_path / f"{char}.mp3"
             
             if generate_audio(char, voice_config["speaker_id"], output_file):
                 file_size = output_file.stat().st_size
                 total_size += file_size
                 total_files += 1
                 print(f"  [{i+1}/{len(all_kana)}] Generated: {char} ({file_size} bytes)")
+            else:
+                print(f"  [{i+1}/{len(all_kana)}] Failed: {char}")
             
-            # Rate limiting
+            # Rate limiting to avoid overwhelming the server
             time.sleep(0.1)
     
     print(f"\n✓ Generated {total_files} audio files")
     print(f"✓ Total size: {total_size / 1024 / 1024:.2f} MB")
+    print(f"\nNote: voiceConfig.ts is NOT modified by this script.")
+    print(f"Voice configuration should be manually managed in src/data/voiceConfig.ts")
     
-    # Save voice configuration
-    config_path = Path("src/data/voiceConfig.ts")
-    config_content = f"""// Auto-generated voice configuration
-// DO NOT EDIT - Generated by scripts/generate-voices.py
-
-export interface VoiceCharacter {{
-  id: string;
-  name: string;
-  description: string;
-  credit: string;
-}}
-
-export const VOICE_CHARACTERS: VoiceCharacter[] = {json.dumps(list(VOICES.values()), indent=2, ensure_ascii=False)};
-
-export const VOICE_TERMS_LINKS = {{
-  metan: "https://zunko.jp/con_ongen_kiyaku.html",
-  tsumugi: "https://tsukushinyoki.seesaa.net/article/498559636.html", 
-  hau: "https://amehau.com/"
-}};
-"""
-    
-    config_path.write_text(config_content, encoding='utf-8')
-    print(f"\n✓ Saved voice configuration to {config_path}")
+    return 0
 
 if __name__ == "__main__":
-    main()
+    exit(main())
