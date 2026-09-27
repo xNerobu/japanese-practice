@@ -3,12 +3,14 @@ import { KanaChart } from './components/KanaChart';
 import { Quiz } from './components/Quiz';
 import { Review } from './components/Review';
 import { HandwritingPractice } from './components/HandwritingPractice';
+import { VoicePicker } from './components/VoicePicker';
 import { hiraganaData, katakanaData } from './data/kana';
 import { loadProgress, saveProgress, getAccuracy } from './utils/progress';
 import type { ProgressData } from './utils/progress';
 import { initSpeech } from './utils/speech';
 import { getReviewStats } from './utils/spacedRepetition';
-import { BookOpen, Brain, BarChart3, Calendar, PenTool } from 'lucide-react';
+import { VOICE_CHARACTERS } from './data/voiceConfig';
+import { BookOpen, Brain, BarChart3, Calendar, PenTool, Settings } from 'lucide-react';
 
 type View = 'chart' | 'quiz' | 'review' | 'handwriting' | 'progress';
 type KanaType = 'hiragana' | 'katakana';
@@ -17,6 +19,7 @@ function App() {
   const [view, setView] = useState<View>('chart');
   const [kanaType, setKanaType] = useState<KanaType>('hiragana');
   const [progress, setProgress] = useState<ProgressData>(loadProgress());
+  const [showVoicePicker, setShowVoicePicker] = useState(false);
 
   useEffect(() => {
     initSpeech();
@@ -44,9 +47,19 @@ function App() {
     <div className="min-h-screen pb-20">
       <div className="max-w-4xl mx-auto px-4 py-6">
         <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">
-            日語假名學習
-          </h1>
+          <div className="flex items-center justify-between mb-2">
+            <div className="w-10"></div>
+            <h1 className="text-4xl font-bold text-purple-600 dark:text-purple-400 flex-1">
+              日語假名學習
+            </h1>
+            <button
+              onClick={() => setShowVoicePicker(true)}
+              className="p-2 rounded-full bg-purple-100 dark:bg-purple-900 hover:bg-purple-200 dark:hover:bg-purple-800 transition-colors"
+              aria-label="聲音設定"
+            >
+              <Settings size={24} className="text-purple-600 dark:text-purple-400" />
+            </button>
+          </div>
           <p className="text-gray-600 dark:text-gray-400">
             學習平假名和片假名的互動工具
           </p>
@@ -256,12 +269,23 @@ function App() {
           )}
         </main>
 
-        <footer className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 text-center text-xs text-gray-500 dark:text-gray-400">
+        <footer className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 text-center text-xs text-gray-500 dark:text-gray-400 space-y-2">
           <p>
             筆順資料來自 <a href="https://github.com/KanjiVG/kanjivg" target="_blank" rel="noopener noreferrer" className="underline hover:text-purple-600 dark:hover:text-purple-400">KanjiVG</a> (CC BY-SA 3.0)
           </p>
+          <p>
+            語音角色：
+            {VOICE_CHARACTERS.map((char, idx) => (
+              <span key={char.id}>
+                {idx > 0 && '、'}
+                {char.credit}
+              </span>
+            ))}
+          </p>
         </footer>
       </div>
+
+      {showVoicePicker && <VoicePicker onClose={() => setShowVoicePicker(false)} />}
     </div>
   );
 }
