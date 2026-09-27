@@ -22,15 +22,15 @@ export const VOICE_CHARACTERS: VoiceCharacter[] = [
     "credit": "VOICEVOX:春日部つむぎ"
   },
   {
-    "id": "hau",
-    "name": "雨晴はう",
-    "description": "活潑開朗的少女聲音",
-    "credit": "VOICEVOX:雨晴はう"
+    "id": "sora",
+    "name": "九州そら",
+    "description": "開朗活潑的少女聲音",
+    "credit": "VOICEVOX:九州そら"
   }
 ];
 
 export const VOICE_TERMS_LINKS = {
   metan: "https://zunko.jp/con_ongen_kiyaku.html",
-  tsumugi: "https://tsukushinyoki.seesaa.net/article/498559636.html", 
-  hau: "https://amehau.com/"
+  tsumugi: "https://virvoxproject.wixsite.com/official/tsumugi",
+  sora: "https://zunko.jp/con_ongen_kiyaku.html"
 };

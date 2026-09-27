@@ -1,12 +1,19 @@
 const VOICE_STORAGE_KEY = 'selectedVoice';
 
-export type VoiceOption = 'metan' | 'tsumugi' | 'hau' | 'browser';
+export type VoiceOption = 'metan' | 'tsumugi' | 'sora' | 'browser';
 
 export function getSelectedVoice(): VoiceOption {
   if (typeof window === 'undefined') return 'metan';
   
   const stored = localStorage.getItem(VOICE_STORAGE_KEY);
-  if (stored === 'metan' || stored === 'tsumugi' || stored === 'hau' || stored === 'browser') {
+  
+  // Migrate old 'hau' selection to 'sora'
+  if (stored === 'hau') {
+    localStorage.setItem(VOICE_STORAGE_KEY, 'sora');
+    return 'sora';
+  }
+  
+  if (stored === 'metan' || stored === 'tsumugi' || stored === 'sora' || stored === 'browser') {
     return stored;
   }
   
