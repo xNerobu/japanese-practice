@@ -15,6 +15,7 @@ Audio Quality Settings:
 - Codec: libmp3lame (high quality)
 - Format: MP3
 - Phoneme Padding: Pre/post silence for smooth playback
+- Loudness Normalization: RMS-based normalization to -20 dBFS with -1 dBFS peak limiting
 """
 
 import requests
@@ -22,6 +23,7 @@ import json
 import time
 import os
 import subprocess
+import re
 from pathlib import Path
 
 # VOICEVOX API endpoint
@@ -32,6 +34,10 @@ SAMPLE_RATE = 24000  # 24kHz
 MP3_BITRATE = "96k"  # 96 kbps
 PHONEME_PRE_PADDING = 0.15  # 150ms pre-padding
 PHONEME_POST_PADDING = 0.15  # 150ms post-padding
+
+# Loudness normalization settings
+TARGET_RMS_DB = -20.0  # Target RMS level in dBFS
+PEAK_LIMIT_DB = -1.0  # Peak limiter threshold in dBFS
 
 # Voice character configurations
 VOICES = {
@@ -140,8 +146,35 @@ def check_ffmpeg():
     except:
         return False
 
+def measure_rms(audio_file):
+    """Measure RMS level of audio file in dBFS using ffmpeg volumedetect."""
+    try:
+        result = subprocess.run([
+            'ffmpeg',
+            '-i', str(audio_file),
+            '-filter:a', 'volumedetect',
+            '-f', 'null',
+            '/dev/null'
+        ], capture_output=True, text=True)
+        
+        # Parse mean_volume from stderr (ffmpeg outputs to stderr)
+        output = result.stderr + result.stdout
+        for line in output.split('\n'):
+            if 'mean_volume:' in line:
+                match = re.search(r'mean_volume:\s*([-\d.]+)\s*dB', line)
+                if match:
+                    return float(match.group(1))
+        
+        return None
+    except Exception as e:
+        print(f"Error measuring RMS: {e}")
+        return None
+
 def generate_audio(text, speaker_id, output_path):
-    """Generate audio file using VOICEVOX API with enhanced quality settings."""
+    """Generate audio file using VOICEVOX API with enhanced quality settings and loudness normalization."""
+    temp_wav = None
+    temp_normalized_wav = None
+    
     try:
         # Step 1: Create audio query with phoneme padding
         query_response = requests.post(
@@ -173,10 +206,33 @@ def generate_audio(text, speaker_id, output_path):
         with open(temp_wav, 'wb') as f:
             f.write(synthesis_response.content)
         
-        # Step 4: Convert to MP3 with ffmpeg (high quality, 96kbps, mono)
+        # Step 4: Measure current RMS level
+        current_rms = measure_rms(temp_wav)
+        if current_rms is None:
+            print(f"Warning: Could not measure RMS for '{text}', skipping normalization")
+            gain_db = 0
+        else:
+            # Calculate gain needed to reach target RMS
+            gain_db = TARGET_RMS_DB - current_rms
+        
+        # Step 5: Apply loudness normalization with peak limiting
+        # Use volume filter for gain adjustment and alimiter for peak control
+        # alimiter preserves weak onsets better than compressor/limiter combos
+        temp_normalized_wav = output_path.with_suffix('.normalized.wav.tmp')
         subprocess.run([
             'ffmpeg',
             '-i', str(temp_wav),
+            '-filter:a', f'volume={gain_db}dB,alimiter=limit={PEAK_LIMIT_DB}dB:attack=1:release=50',
+            '-ar', str(SAMPLE_RATE),
+            '-ac', '1',
+            '-y',
+            str(temp_normalized_wav)
+        ], capture_output=True, check=True)
+        
+        # Step 6: Convert to MP3 with ffmpeg (high quality, 96kbps, mono)
+        subprocess.run([
+            'ffmpeg',
+            '-i', str(temp_normalized_wav),
             '-codec:a', 'libmp3lame',
             '-b:a', MP3_BITRATE,
             '-ac', '1',  # mono
@@ -186,15 +242,20 @@ def generate_audio(text, speaker_id, output_path):
             str(output_path)
         ], capture_output=True, check=True)
         
-        # Clean up temporary WAV file
-        temp_wav.unlink()
+        # Clean up temporary files
+        if temp_wav and temp_wav.exists():
+            temp_wav.unlink()
+        if temp_normalized_wav and temp_normalized_wav.exists():
+            temp_normalized_wav.unlink()
         
         return True
     except Exception as e:
         print(f"Error generating audio for '{text}': {e}")
-        # Clean up temp file if it exists
-        if temp_wav.exists():
+        # Clean up temp files if they exist
+        if temp_wav and temp_wav.exists():
             temp_wav.unlink()
+        if temp_normalized_wav and temp_normalized_wav.exists():
+            temp_normalized_wav.unlink()
         return False
 
 def main():
@@ -214,6 +275,7 @@ def main():
     print("VOICEVOX server detected!")
     print(f"Generating high-quality audio for {len(HIRAGANA) + len(KATAKANA)} kana characters...")
     print(f"Audio settings: {SAMPLE_RATE}Hz, mono, MP3 {MP3_BITRATE}, libmp3lame high quality")
+    print(f"Loudness: RMS normalization to {TARGET_RMS_DB} dBFS, peak limited to {PEAK_LIMIT_DB} dBFS")
     print(f"Phoneme padding: {PHONEME_PRE_PADDING}s pre, {PHONEME_POST_PADDING}s post")
     print(f"Using {len(VOICES)} voice characters")
     

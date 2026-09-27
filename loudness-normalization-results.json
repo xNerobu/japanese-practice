@@ -1,0 +1,4994 @@
+[
+  {
+    "file": "public/audio/metan/い.mp3",
+    "success": true,
+    "original_rms": -30.1,
+    "target_rms": -20.0,
+    "gain_applied": 10.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/あ.mp3",
+    "success": true,
+    "original_rms": -29.8,
+    "target_rms": -20.0,
+    "gain_applied": 9.8,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/え.mp3",
+    "success": true,
+    "original_rms": -35.7,
+    "target_rms": -20.0,
+    "gain_applied": 15.700000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/う.mp3",
+    "success": true,
+    "original_rms": -39.7,
+    "target_rms": -20.0,
+    "gain_applied": 19.700000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/が.mp3",
+    "success": true,
+    "original_rms": -28.7,
+    "target_rms": -20.0,
+    "gain_applied": 8.7,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/お.mp3",
+    "success": true,
+    "original_rms": -24.2,
+    "target_rms": -20.0,
+    "gain_applied": 4.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/か.mp3",
+    "success": true,
+    "original_rms": -29.9,
+    "target_rms": -20.0,
+    "gain_applied": 9.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/き.mp3",
+    "success": true,
+    "original_rms": -29.3,
+    "target_rms": -20.0,
+    "gain_applied": 9.3,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/きゃ.mp3",
+    "success": true,
+    "original_rms": -30.4,
+    "target_rms": -20.0,
+    "gain_applied": 10.399999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/きゅ.mp3",
+    "success": true,
+    "original_rms": -28.4,
+    "target_rms": -20.0,
+    "gain_applied": 8.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ぎ.mp3",
+    "success": true,
+    "original_rms": -27.6,
+    "target_rms": -20.0,
+    "gain_applied": 7.600000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/きょ.mp3",
+    "success": true,
+    "original_rms": -24.9,
+    "target_rms": -20.0,
+    "gain_applied": 4.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ぎゃ.mp3",
+    "success": true,
+    "original_rms": -26.6,
+    "target_rms": -20.0,
+    "gain_applied": 6.600000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ぎゅ.mp3",
+    "success": true,
+    "original_rms": -28.0,
+    "target_rms": -20.0,
+    "gain_applied": 8.0,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/く.mp3",
+    "success": true,
+    "original_rms": -31.1,
+    "target_rms": -20.0,
+    "gain_applied": 11.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ぎょ.mp3",
+    "success": true,
+    "original_rms": -25.1,
+    "target_rms": -20.0,
+    "gain_applied": 5.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ぐ.mp3",
+    "success": true,
+    "original_rms": -32.1,
+    "target_rms": -20.0,
+    "gain_applied": 12.100000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/け.mp3",
+    "success": true,
+    "original_rms": -28.5,
+    "target_rms": -20.0,
+    "gain_applied": 8.5,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/げ.mp3",
+    "success": true,
+    "original_rms": -26.7,
+    "target_rms": -20.0,
+    "gain_applied": 6.699999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/こ.mp3",
+    "success": true,
+    "original_rms": -28.4,
+    "target_rms": -20.0,
+    "gain_applied": 8.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ご.mp3",
+    "success": true,
+    "original_rms": -26.6,
+    "target_rms": -20.0,
+    "gain_applied": 6.600000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/さ.mp3",
+    "success": true,
+    "original_rms": -29.9,
+    "target_rms": -20.0,
+    "gain_applied": 9.899999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ざ.mp3",
+    "success": true,
+    "original_rms": -29.0,
+    "target_rms": -20.0,
+    "gain_applied": 9.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/し.mp3",
+    "success": true,
+    "original_rms": -27.3,
+    "target_rms": -20.0,
+    "gain_applied": 7.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/しゃ.mp3",
+    "success": true,
+    "original_rms": -30.0,
+    "target_rms": -20.0,
+    "gain_applied": 10.0,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/しゅ.mp3",
+    "success": true,
+    "original_rms": -28.3,
+    "target_rms": -20.0,
+    "gain_applied": 8.3,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/しょ.mp3",
+    "success": true,
+    "original_rms": -26.6,
+    "target_rms": -20.0,
+    "gain_applied": 6.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/じ.mp3",
+    "success": true,
+    "original_rms": -27.0,
+    "target_rms": -20.0,
+    "gain_applied": 7.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/じゃ.mp3",
+    "success": true,
+    "original_rms": -27.4,
+    "target_rms": -20.0,
+    "gain_applied": 7.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/じゅ.mp3",
+    "success": true,
+    "original_rms": -28.1,
+    "target_rms": -20.0,
+    "gain_applied": 8.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/じょ.mp3",
+    "success": true,
+    "original_rms": -25.9,
+    "target_rms": -20.0,
+    "gain_applied": 5.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/す.mp3",
+    "success": true,
+    "original_rms": -33.1,
+    "target_rms": -20.0,
+    "gain_applied": 13.100000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/せ.mp3",
+    "success": true,
+    "original_rms": -27.9,
+    "target_rms": -20.0,
+    "gain_applied": 7.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ず.mp3",
+    "success": true,
+    "original_rms": -31.4,
+    "target_rms": -20.0,
+    "gain_applied": 11.399999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ぜ.mp3",
+    "success": true,
+    "original_rms": -29.3,
+    "target_rms": -20.0,
+    "gain_applied": 9.3,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/そ.mp3",
+    "success": true,
+    "original_rms": -25.5,
+    "target_rms": -20.0,
+    "gain_applied": 5.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/た.mp3",
+    "success": true,
+    "original_rms": -30.0,
+    "target_rms": -20.0,
+    "gain_applied": 10.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ぞ.mp3",
+    "success": true,
+    "original_rms": -26.9,
+    "target_rms": -20.0,
+    "gain_applied": 6.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ち.mp3",
+    "success": true,
+    "original_rms": -26.9,
+    "target_rms": -20.0,
+    "gain_applied": 6.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/だ.mp3",
+    "success": true,
+    "original_rms": -28.8,
+    "target_rms": -20.0,
+    "gain_applied": 8.8,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ちゃ.mp3",
+    "success": true,
+    "original_rms": -30.0,
+    "target_rms": -20.0,
+    "gain_applied": 10.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ちゅ.mp3",
+    "success": true,
+    "original_rms": -27.5,
+    "target_rms": -20.0,
+    "gain_applied": 7.5,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ぢ.mp3",
+    "success": true,
+    "original_rms": -27.0,
+    "target_rms": -20.0,
+    "gain_applied": 7.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ちょ.mp3",
+    "success": true,
+    "original_rms": -26.4,
+    "target_rms": -20.0,
+    "gain_applied": 6.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/つ.mp3",
+    "success": true,
+    "original_rms": -33.3,
+    "target_rms": -20.0,
+    "gain_applied": 13.299999999999997,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/づ.mp3",
+    "success": true,
+    "original_rms": -31.4,
+    "target_rms": -20.0,
+    "gain_applied": 11.399999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/て.mp3",
+    "success": true,
+    "original_rms": -28.0,
+    "target_rms": -20.0,
+    "gain_applied": 8.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/で.mp3",
+    "success": true,
+    "original_rms": -27.9,
+    "target_rms": -20.0,
+    "gain_applied": 7.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/と.mp3",
+    "success": true,
+    "original_rms": -28.4,
+    "target_rms": -20.0,
+    "gain_applied": 8.399999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ど.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/な.mp3",
+    "success": true,
+    "original_rms": -30.3,
+    "target_rms": -20.0,
+    "gain_applied": 10.3,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/に.mp3",
+    "success": true,
+    "original_rms": -30.3,
+    "target_rms": -20.0,
+    "gain_applied": 10.3,
+    "final_rms": -19.2
+  },
+  {
+    "file": "public/audio/metan/にゃ.mp3",
+    "success": true,
+    "original_rms": -28.6,
+    "target_rms": -20.0,
+    "gain_applied": 8.600000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/にゅ.mp3",
+    "success": true,
+    "original_rms": -28.3,
+    "target_rms": -20.0,
+    "gain_applied": 8.3,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/にょ.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ぬ.mp3",
+    "success": true,
+    "original_rms": -32.0,
+    "target_rms": -20.0,
+    "gain_applied": 12.0,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ね.mp3",
+    "success": true,
+    "original_rms": -28.2,
+    "target_rms": -20.0,
+    "gain_applied": 8.2,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/の.mp3",
+    "success": true,
+    "original_rms": -29.6,
+    "target_rms": -20.0,
+    "gain_applied": 9.600000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/は.mp3",
+    "success": true,
+    "original_rms": -27.3,
+    "target_rms": -20.0,
+    "gain_applied": 7.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ば.mp3",
+    "success": true,
+    "original_rms": -27.7,
+    "target_rms": -20.0,
+    "gain_applied": 7.699999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ぱ.mp3",
+    "success": true,
+    "original_rms": -29.6,
+    "target_rms": -20.0,
+    "gain_applied": 9.600000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ひ.mp3",
+    "success": true,
+    "original_rms": -28.3,
+    "target_rms": -20.0,
+    "gain_applied": 8.3,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ひゃ.mp3",
+    "success": true,
+    "original_rms": -30.4,
+    "target_rms": -20.0,
+    "gain_applied": 10.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ひゅ.mp3",
+    "success": true,
+    "original_rms": -30.2,
+    "target_rms": -20.0,
+    "gain_applied": 10.2,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ひょ.mp3",
+    "success": true,
+    "original_rms": -26.3,
+    "target_rms": -20.0,
+    "gain_applied": 6.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/び.mp3",
+    "success": true,
+    "original_rms": -26.9,
+    "target_rms": -20.0,
+    "gain_applied": 6.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/びゃ.mp3",
+    "success": true,
+    "original_rms": -28.1,
+    "target_rms": -20.0,
+    "gain_applied": 8.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/びゅ.mp3",
+    "success": true,
+    "original_rms": -27.3,
+    "target_rms": -20.0,
+    "gain_applied": 7.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/びょ.mp3",
+    "success": true,
+    "original_rms": -26.1,
+    "target_rms": -20.0,
+    "gain_applied": 6.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ぴ.mp3",
+    "success": true,
+    "original_rms": -27.3,
+    "target_rms": -20.0,
+    "gain_applied": 7.300000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ぴゃ.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ぴゅ.mp3",
+    "success": true,
+    "original_rms": -28.9,
+    "target_rms": -20.0,
+    "gain_applied": 8.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ぴょ.mp3",
+    "success": true,
+    "original_rms": -23.4,
+    "target_rms": -20.0,
+    "gain_applied": 3.3999999999999986,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ふ.mp3",
+    "success": true,
+    "original_rms": -36.3,
+    "target_rms": -20.0,
+    "gain_applied": 16.299999999999997,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ぶ.mp3",
+    "success": true,
+    "original_rms": -31.4,
+    "target_rms": -20.0,
+    "gain_applied": 11.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ぷ.mp3",
+    "success": true,
+    "original_rms": -33.3,
+    "target_rms": -20.0,
+    "gain_applied": 13.299999999999997,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/へ.mp3",
+    "success": true,
+    "original_rms": -38.9,
+    "target_rms": -20.0,
+    "gain_applied": 18.9,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/べ.mp3",
+    "success": true,
+    "original_rms": -26.5,
+    "target_rms": -20.0,
+    "gain_applied": 6.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ぺ.mp3",
+    "success": true,
+    "original_rms": -26.6,
+    "target_rms": -20.0,
+    "gain_applied": 6.600000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ほ.mp3",
+    "success": true,
+    "original_rms": -25.5,
+    "target_rms": -20.0,
+    "gain_applied": 5.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ぼ.mp3",
+    "success": true,
+    "original_rms": -26.4,
+    "target_rms": -20.0,
+    "gain_applied": 6.399999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ぽ.mp3",
+    "success": true,
+    "original_rms": -26.4,
+    "target_rms": -20.0,
+    "gain_applied": 6.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ま.mp3",
+    "success": true,
+    "original_rms": -28.1,
+    "target_rms": -20.0,
+    "gain_applied": 8.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/み.mp3",
+    "success": true,
+    "original_rms": -27.7,
+    "target_rms": -20.0,
+    "gain_applied": 7.699999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/みゃ.mp3",
+    "success": true,
+    "original_rms": -27.4,
+    "target_rms": -20.0,
+    "gain_applied": 7.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/みゅ.mp3",
+    "success": true,
+    "original_rms": -27.4,
+    "target_rms": -20.0,
+    "gain_applied": 7.399999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/みょ.mp3",
+    "success": true,
+    "original_rms": -25.4,
+    "target_rms": -20.0,
+    "gain_applied": 5.399999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/む.mp3",
+    "success": true,
+    "original_rms": -34.2,
+    "target_rms": -20.0,
+    "gain_applied": 14.200000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/め.mp3",
+    "success": true,
+    "original_rms": -27.3,
+    "target_rms": -20.0,
+    "gain_applied": 7.300000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/も.mp3",
+    "success": true,
+    "original_rms": -27.2,
+    "target_rms": -20.0,
+    "gain_applied": 7.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/や.mp3",
+    "success": true,
+    "original_rms": -27.8,
+    "target_rms": -20.0,
+    "gain_applied": 7.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ゆ.mp3",
+    "success": true,
+    "original_rms": -29.2,
+    "target_rms": -20.0,
+    "gain_applied": 9.2,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/よ.mp3",
+    "success": true,
+    "original_rms": -26.1,
+    "target_rms": -20.0,
+    "gain_applied": 6.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ら.mp3",
+    "success": true,
+    "original_rms": -28.9,
+    "target_rms": -20.0,
+    "gain_applied": 8.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/り.mp3",
+    "success": true,
+    "original_rms": -29.6,
+    "target_rms": -20.0,
+    "gain_applied": 9.600000000000001,
+    "final_rms": -19.2
+  },
+  {
+    "file": "public/audio/metan/りゃ.mp3",
+    "success": true,
+    "original_rms": -27.0,
+    "target_rms": -20.0,
+    "gain_applied": 7.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/りゅ.mp3",
+    "success": true,
+    "original_rms": -28.0,
+    "target_rms": -20.0,
+    "gain_applied": 8.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/りょ.mp3",
+    "success": true,
+    "original_rms": -24.9,
+    "target_rms": -20.0,
+    "gain_applied": 4.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/る.mp3",
+    "success": true,
+    "original_rms": -34.9,
+    "target_rms": -20.0,
+    "gain_applied": 14.899999999999999,
+    "final_rms": -18.8
+  },
+  {
+    "file": "public/audio/metan/れ.mp3",
+    "success": true,
+    "original_rms": -28.3,
+    "target_rms": -20.0,
+    "gain_applied": 8.3,
+    "final_rms": -19.2
+  },
+  {
+    "file": "public/audio/metan/ろ.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/わ.mp3",
+    "success": true,
+    "original_rms": -27.6,
+    "target_rms": -20.0,
+    "gain_applied": 7.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/を.mp3",
+    "success": true,
+    "original_rms": -24.2,
+    "target_rms": -20.0,
+    "gain_applied": 4.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ん.mp3",
+    "success": true,
+    "original_rms": -35.7,
+    "target_rms": -20.0,
+    "gain_applied": 15.700000000000003,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ア.mp3",
+    "success": true,
+    "original_rms": -29.8,
+    "target_rms": -20.0,
+    "gain_applied": 9.8,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/イ.mp3",
+    "success": true,
+    "original_rms": -30.1,
+    "target_rms": -20.0,
+    "gain_applied": 10.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ウ.mp3",
+    "success": true,
+    "original_rms": -39.7,
+    "target_rms": -20.0,
+    "gain_applied": 19.700000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/エ.mp3",
+    "success": true,
+    "original_rms": -35.7,
+    "target_rms": -20.0,
+    "gain_applied": 15.700000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/カ.mp3",
+    "success": true,
+    "original_rms": -29.9,
+    "target_rms": -20.0,
+    "gain_applied": 9.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/オ.mp3",
+    "success": true,
+    "original_rms": -24.2,
+    "target_rms": -20.0,
+    "gain_applied": 4.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ガ.mp3",
+    "success": true,
+    "original_rms": -28.7,
+    "target_rms": -20.0,
+    "gain_applied": 8.7,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/キ.mp3",
+    "success": true,
+    "original_rms": -29.3,
+    "target_rms": -20.0,
+    "gain_applied": 9.3,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/キャ.mp3",
+    "success": true,
+    "original_rms": -30.4,
+    "target_rms": -20.0,
+    "gain_applied": 10.399999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/キュ.mp3",
+    "success": true,
+    "original_rms": -28.4,
+    "target_rms": -20.0,
+    "gain_applied": 8.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/キョ.mp3",
+    "success": true,
+    "original_rms": -24.9,
+    "target_rms": -20.0,
+    "gain_applied": 4.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ギ.mp3",
+    "success": true,
+    "original_rms": -27.6,
+    "target_rms": -20.0,
+    "gain_applied": 7.600000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ギャ.mp3",
+    "success": true,
+    "original_rms": -26.6,
+    "target_rms": -20.0,
+    "gain_applied": 6.600000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ギュ.mp3",
+    "success": true,
+    "original_rms": -28.0,
+    "target_rms": -20.0,
+    "gain_applied": 8.0,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ギョ.mp3",
+    "success": true,
+    "original_rms": -25.1,
+    "target_rms": -20.0,
+    "gain_applied": 5.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ク.mp3",
+    "success": true,
+    "original_rms": -31.1,
+    "target_rms": -20.0,
+    "gain_applied": 11.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/グ.mp3",
+    "success": true,
+    "original_rms": -32.1,
+    "target_rms": -20.0,
+    "gain_applied": 12.100000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ケ.mp3",
+    "success": true,
+    "original_rms": -28.5,
+    "target_rms": -20.0,
+    "gain_applied": 8.5,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ゲ.mp3",
+    "success": true,
+    "original_rms": -26.7,
+    "target_rms": -20.0,
+    "gain_applied": 6.699999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/コ.mp3",
+    "success": true,
+    "original_rms": -28.4,
+    "target_rms": -20.0,
+    "gain_applied": 8.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ゴ.mp3",
+    "success": true,
+    "original_rms": -26.6,
+    "target_rms": -20.0,
+    "gain_applied": 6.600000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/サ.mp3",
+    "success": true,
+    "original_rms": -29.9,
+    "target_rms": -20.0,
+    "gain_applied": 9.899999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ザ.mp3",
+    "success": true,
+    "original_rms": -29.0,
+    "target_rms": -20.0,
+    "gain_applied": 9.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/シ.mp3",
+    "success": true,
+    "original_rms": -27.3,
+    "target_rms": -20.0,
+    "gain_applied": 7.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/シャ.mp3",
+    "success": true,
+    "original_rms": -30.0,
+    "target_rms": -20.0,
+    "gain_applied": 10.0,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/シュ.mp3",
+    "success": true,
+    "original_rms": -28.3,
+    "target_rms": -20.0,
+    "gain_applied": 8.3,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ショ.mp3",
+    "success": true,
+    "original_rms": -26.6,
+    "target_rms": -20.0,
+    "gain_applied": 6.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ジ.mp3",
+    "success": true,
+    "original_rms": -27.0,
+    "target_rms": -20.0,
+    "gain_applied": 7.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ジャ.mp3",
+    "success": true,
+    "original_rms": -27.4,
+    "target_rms": -20.0,
+    "gain_applied": 7.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ジュ.mp3",
+    "success": true,
+    "original_rms": -28.1,
+    "target_rms": -20.0,
+    "gain_applied": 8.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ジョ.mp3",
+    "success": true,
+    "original_rms": -25.9,
+    "target_rms": -20.0,
+    "gain_applied": 5.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ス.mp3",
+    "success": true,
+    "original_rms": -33.1,
+    "target_rms": -20.0,
+    "gain_applied": 13.100000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ズ.mp3",
+    "success": true,
+    "original_rms": -31.4,
+    "target_rms": -20.0,
+    "gain_applied": 11.399999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/セ.mp3",
+    "success": true,
+    "original_rms": -27.9,
+    "target_rms": -20.0,
+    "gain_applied": 7.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ゼ.mp3",
+    "success": true,
+    "original_rms": -29.3,
+    "target_rms": -20.0,
+    "gain_applied": 9.3,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ソ.mp3",
+    "success": true,
+    "original_rms": -25.5,
+    "target_rms": -20.0,
+    "gain_applied": 5.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ゾ.mp3",
+    "success": true,
+    "original_rms": -26.9,
+    "target_rms": -20.0,
+    "gain_applied": 6.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/タ.mp3",
+    "success": true,
+    "original_rms": -30.0,
+    "target_rms": -20.0,
+    "gain_applied": 10.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ダ.mp3",
+    "success": true,
+    "original_rms": -28.8,
+    "target_rms": -20.0,
+    "gain_applied": 8.8,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/チ.mp3",
+    "success": true,
+    "original_rms": -26.9,
+    "target_rms": -20.0,
+    "gain_applied": 6.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/チャ.mp3",
+    "success": true,
+    "original_rms": -30.0,
+    "target_rms": -20.0,
+    "gain_applied": 10.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/チョ.mp3",
+    "success": true,
+    "original_rms": -26.4,
+    "target_rms": -20.0,
+    "gain_applied": 6.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/チュ.mp3",
+    "success": true,
+    "original_rms": -27.5,
+    "target_rms": -20.0,
+    "gain_applied": 7.5,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ヂ.mp3",
+    "success": true,
+    "original_rms": -27.0,
+    "target_rms": -20.0,
+    "gain_applied": 7.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ヅ.mp3",
+    "success": true,
+    "original_rms": -31.4,
+    "target_rms": -20.0,
+    "gain_applied": 11.399999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ツ.mp3",
+    "success": true,
+    "original_rms": -33.3,
+    "target_rms": -20.0,
+    "gain_applied": 13.299999999999997,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/テ.mp3",
+    "success": true,
+    "original_rms": -28.0,
+    "target_rms": -20.0,
+    "gain_applied": 8.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/デ.mp3",
+    "success": true,
+    "original_rms": -27.9,
+    "target_rms": -20.0,
+    "gain_applied": 7.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ト.mp3",
+    "success": true,
+    "original_rms": -28.4,
+    "target_rms": -20.0,
+    "gain_applied": 8.399999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ド.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ナ.mp3",
+    "success": true,
+    "original_rms": -30.3,
+    "target_rms": -20.0,
+    "gain_applied": 10.3,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ニ.mp3",
+    "success": true,
+    "original_rms": -30.3,
+    "target_rms": -20.0,
+    "gain_applied": 10.3,
+    "final_rms": -19.2
+  },
+  {
+    "file": "public/audio/metan/ニャ.mp3",
+    "success": true,
+    "original_rms": -28.6,
+    "target_rms": -20.0,
+    "gain_applied": 8.600000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ニュ.mp3",
+    "success": true,
+    "original_rms": -28.3,
+    "target_rms": -20.0,
+    "gain_applied": 8.3,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ニョ.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ヌ.mp3",
+    "success": true,
+    "original_rms": -32.0,
+    "target_rms": -20.0,
+    "gain_applied": 12.0,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ネ.mp3",
+    "success": true,
+    "original_rms": -28.2,
+    "target_rms": -20.0,
+    "gain_applied": 8.2,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ハ.mp3",
+    "success": true,
+    "original_rms": -30.7,
+    "target_rms": -20.0,
+    "gain_applied": 10.7,
+    "final_rms": -19.2
+  },
+  {
+    "file": "public/audio/metan/ノ.mp3",
+    "success": true,
+    "original_rms": -29.6,
+    "target_rms": -20.0,
+    "gain_applied": 9.600000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/バ.mp3",
+    "success": true,
+    "original_rms": -27.7,
+    "target_rms": -20.0,
+    "gain_applied": 7.699999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/パ.mp3",
+    "success": true,
+    "original_rms": -29.6,
+    "target_rms": -20.0,
+    "gain_applied": 9.600000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ヒ.mp3",
+    "success": true,
+    "original_rms": -28.9,
+    "target_rms": -20.0,
+    "gain_applied": 8.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ヒャ.mp3",
+    "success": true,
+    "original_rms": -30.4,
+    "target_rms": -20.0,
+    "gain_applied": 10.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ヒュ.mp3",
+    "success": true,
+    "original_rms": -30.2,
+    "target_rms": -20.0,
+    "gain_applied": 10.2,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ヒョ.mp3",
+    "success": true,
+    "original_rms": -26.3,
+    "target_rms": -20.0,
+    "gain_applied": 6.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ビ.mp3",
+    "success": true,
+    "original_rms": -26.9,
+    "target_rms": -20.0,
+    "gain_applied": 6.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ビャ.mp3",
+    "success": true,
+    "original_rms": -28.1,
+    "target_rms": -20.0,
+    "gain_applied": 8.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ビュ.mp3",
+    "success": true,
+    "original_rms": -27.3,
+    "target_rms": -20.0,
+    "gain_applied": 7.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ビョ.mp3",
+    "success": true,
+    "original_rms": -26.1,
+    "target_rms": -20.0,
+    "gain_applied": 6.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ピ.mp3",
+    "success": true,
+    "original_rms": -27.3,
+    "target_rms": -20.0,
+    "gain_applied": 7.300000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ピャ.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ピュ.mp3",
+    "success": true,
+    "original_rms": -28.9,
+    "target_rms": -20.0,
+    "gain_applied": 8.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ピョ.mp3",
+    "success": true,
+    "original_rms": -23.4,
+    "target_rms": -20.0,
+    "gain_applied": 3.3999999999999986,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/フ.mp3",
+    "success": true,
+    "original_rms": -36.5,
+    "target_rms": -20.0,
+    "gain_applied": 16.5,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ブ.mp3",
+    "success": true,
+    "original_rms": -31.4,
+    "target_rms": -20.0,
+    "gain_applied": 11.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/プ.mp3",
+    "success": true,
+    "original_rms": -33.3,
+    "target_rms": -20.0,
+    "gain_applied": 13.299999999999997,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ヘ.mp3",
+    "success": true,
+    "original_rms": -27.2,
+    "target_rms": -20.0,
+    "gain_applied": 7.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ベ.mp3",
+    "success": true,
+    "original_rms": -26.5,
+    "target_rms": -20.0,
+    "gain_applied": 6.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ペ.mp3",
+    "success": true,
+    "original_rms": -26.6,
+    "target_rms": -20.0,
+    "gain_applied": 6.600000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ホ.mp3",
+    "success": true,
+    "original_rms": -26.4,
+    "target_rms": -20.0,
+    "gain_applied": 6.399999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ボ.mp3",
+    "success": true,
+    "original_rms": -26.4,
+    "target_rms": -20.0,
+    "gain_applied": 6.399999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ポ.mp3",
+    "success": true,
+    "original_rms": -26.4,
+    "target_rms": -20.0,
+    "gain_applied": 6.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/マ.mp3",
+    "success": true,
+    "original_rms": -28.1,
+    "target_rms": -20.0,
+    "gain_applied": 8.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ミ.mp3",
+    "success": true,
+    "original_rms": -27.7,
+    "target_rms": -20.0,
+    "gain_applied": 7.699999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ミャ.mp3",
+    "success": true,
+    "original_rms": -27.4,
+    "target_rms": -20.0,
+    "gain_applied": 7.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ミュ.mp3",
+    "success": true,
+    "original_rms": -27.4,
+    "target_rms": -20.0,
+    "gain_applied": 7.399999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ミョ.mp3",
+    "success": true,
+    "original_rms": -25.4,
+    "target_rms": -20.0,
+    "gain_applied": 5.399999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/ム.mp3",
+    "success": true,
+    "original_rms": -34.2,
+    "target_rms": -20.0,
+    "gain_applied": 14.200000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/メ.mp3",
+    "success": true,
+    "original_rms": -27.3,
+    "target_rms": -20.0,
+    "gain_applied": 7.300000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/metan/モ.mp3",
+    "success": true,
+    "original_rms": -27.2,
+    "target_rms": -20.0,
+    "gain_applied": 7.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ヤ.mp3",
+    "success": true,
+    "original_rms": -27.8,
+    "target_rms": -20.0,
+    "gain_applied": 7.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ユ.mp3",
+    "success": true,
+    "original_rms": -29.2,
+    "target_rms": -20.0,
+    "gain_applied": 9.2,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ヨ.mp3",
+    "success": true,
+    "original_rms": -26.1,
+    "target_rms": -20.0,
+    "gain_applied": 6.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ラ.mp3",
+    "success": true,
+    "original_rms": -28.9,
+    "target_rms": -20.0,
+    "gain_applied": 8.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/リ.mp3",
+    "success": true,
+    "original_rms": -29.6,
+    "target_rms": -20.0,
+    "gain_applied": 9.600000000000001,
+    "final_rms": -19.2
+  },
+  {
+    "file": "public/audio/metan/リャ.mp3",
+    "success": true,
+    "original_rms": -27.0,
+    "target_rms": -20.0,
+    "gain_applied": 7.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/リュ.mp3",
+    "success": true,
+    "original_rms": -28.0,
+    "target_rms": -20.0,
+    "gain_applied": 8.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/リョ.mp3",
+    "success": true,
+    "original_rms": -24.9,
+    "target_rms": -20.0,
+    "gain_applied": 4.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ル.mp3",
+    "success": true,
+    "original_rms": -34.9,
+    "target_rms": -20.0,
+    "gain_applied": 14.899999999999999,
+    "final_rms": -18.8
+  },
+  {
+    "file": "public/audio/metan/レ.mp3",
+    "success": true,
+    "original_rms": -28.3,
+    "target_rms": -20.0,
+    "gain_applied": 8.3,
+    "final_rms": -19.2
+  },
+  {
+    "file": "public/audio/metan/ロ.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/metan/ワ.mp3",
+    "success": true,
+    "original_rms": -27.6,
+    "target_rms": -20.0,
+    "gain_applied": 7.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ヲ.mp3",
+    "success": true,
+    "original_rms": -24.2,
+    "target_rms": -20.0,
+    "gain_applied": 4.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/metan/ン.mp3",
+    "success": true,
+    "original_rms": -35.7,
+    "target_rms": -20.0,
+    "gain_applied": 15.700000000000003,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/あ.mp3",
+    "success": true,
+    "original_rms": -23.0,
+    "target_rms": -20.0,
+    "gain_applied": 3.0,
+    "final_rms": -19.2
+  },
+  {
+    "file": "public/audio/sora/い.mp3",
+    "success": true,
+    "original_rms": -27.0,
+    "target_rms": -20.0,
+    "gain_applied": 7.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/う.mp3",
+    "success": true,
+    "original_rms": -30.7,
+    "target_rms": -20.0,
+    "gain_applied": 10.7,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/え.mp3",
+    "success": true,
+    "original_rms": -24.1,
+    "target_rms": -20.0,
+    "gain_applied": 4.100000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/お.mp3",
+    "success": true,
+    "original_rms": -25.5,
+    "target_rms": -20.0,
+    "gain_applied": 5.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/か.mp3",
+    "success": true,
+    "original_rms": -28.7,
+    "target_rms": -20.0,
+    "gain_applied": 8.7,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/が.mp3",
+    "success": true,
+    "original_rms": -23.5,
+    "target_rms": -20.0,
+    "gain_applied": 3.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/き.mp3",
+    "success": true,
+    "original_rms": -29.9,
+    "target_rms": -20.0,
+    "gain_applied": 9.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/きゃ.mp3",
+    "success": true,
+    "original_rms": -28.3,
+    "target_rms": -20.0,
+    "gain_applied": 8.3,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/きゅ.mp3",
+    "success": true,
+    "original_rms": -29.4,
+    "target_rms": -20.0,
+    "gain_applied": 9.399999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/きょ.mp3",
+    "success": true,
+    "original_rms": -27.0,
+    "target_rms": -20.0,
+    "gain_applied": 7.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ぎ.mp3",
+    "success": true,
+    "original_rms": -25.2,
+    "target_rms": -20.0,
+    "gain_applied": 5.199999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ぎゃ.mp3",
+    "success": true,
+    "original_rms": -25.8,
+    "target_rms": -20.0,
+    "gain_applied": 5.800000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ぎゅ.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ぎょ.mp3",
+    "success": true,
+    "original_rms": -21.3,
+    "target_rms": -20.0,
+    "gain_applied": 1.3000000000000007,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/く.mp3",
+    "success": true,
+    "original_rms": -39.9,
+    "target_rms": -20.0,
+    "gain_applied": 19.9,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ぐ.mp3",
+    "success": true,
+    "original_rms": -25.8,
+    "target_rms": -20.0,
+    "gain_applied": 5.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/け.mp3",
+    "success": true,
+    "original_rms": -26.1,
+    "target_rms": -20.0,
+    "gain_applied": 6.100000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/げ.mp3",
+    "success": true,
+    "original_rms": -24.5,
+    "target_rms": -20.0,
+    "gain_applied": 4.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/こ.mp3",
+    "success": true,
+    "original_rms": -26.8,
+    "target_rms": -20.0,
+    "gain_applied": 6.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ご.mp3",
+    "success": true,
+    "original_rms": -22.8,
+    "target_rms": -20.0,
+    "gain_applied": 2.8000000000000007,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/さ.mp3",
+    "success": true,
+    "original_rms": -31.8,
+    "target_rms": -20.0,
+    "gain_applied": 11.8,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ざ.mp3",
+    "success": true,
+    "original_rms": -24.9,
+    "target_rms": -20.0,
+    "gain_applied": 4.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/し.mp3",
+    "success": true,
+    "original_rms": -28.8,
+    "target_rms": -20.0,
+    "gain_applied": 8.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/しゃ.mp3",
+    "success": true,
+    "original_rms": -31.4,
+    "target_rms": -20.0,
+    "gain_applied": 11.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/しゅ.mp3",
+    "success": true,
+    "original_rms": -31.5,
+    "target_rms": -20.0,
+    "gain_applied": 11.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/しょ.mp3",
+    "success": true,
+    "original_rms": -30.1,
+    "target_rms": -20.0,
+    "gain_applied": 10.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/じ.mp3",
+    "success": true,
+    "original_rms": -24.7,
+    "target_rms": -20.0,
+    "gain_applied": 4.699999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/じゃ.mp3",
+    "success": true,
+    "original_rms": -28.8,
+    "target_rms": -20.0,
+    "gain_applied": 8.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/じゅ.mp3",
+    "success": true,
+    "original_rms": -28.0,
+    "target_rms": -20.0,
+    "gain_applied": 8.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/じょ.mp3",
+    "success": true,
+    "original_rms": -24.2,
+    "target_rms": -20.0,
+    "gain_applied": 4.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/す.mp3",
+    "success": true,
+    "original_rms": -31.9,
+    "target_rms": -20.0,
+    "gain_applied": 11.899999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ず.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/せ.mp3",
+    "success": true,
+    "original_rms": -28.5,
+    "target_rms": -20.0,
+    "gain_applied": 8.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ぜ.mp3",
+    "success": true,
+    "original_rms": -23.5,
+    "target_rms": -20.0,
+    "gain_applied": 3.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/そ.mp3",
+    "success": true,
+    "original_rms": -29.7,
+    "target_rms": -20.0,
+    "gain_applied": 9.7,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ぞ.mp3",
+    "success": true,
+    "original_rms": -24.3,
+    "target_rms": -20.0,
+    "gain_applied": 4.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/た.mp3",
+    "success": true,
+    "original_rms": -28.4,
+    "target_rms": -20.0,
+    "gain_applied": 8.399999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/だ.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ち.mp3",
+    "success": true,
+    "original_rms": -26.6,
+    "target_rms": -20.0,
+    "gain_applied": 6.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ちゃ.mp3",
+    "success": true,
+    "original_rms": -29.5,
+    "target_rms": -20.0,
+    "gain_applied": 9.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ちゅ.mp3",
+    "success": true,
+    "original_rms": -29.9,
+    "target_rms": -20.0,
+    "gain_applied": 9.899999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ちょ.mp3",
+    "success": true,
+    "original_rms": -25.2,
+    "target_rms": -20.0,
+    "gain_applied": 5.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ぢ.mp3",
+    "success": true,
+    "original_rms": -24.7,
+    "target_rms": -20.0,
+    "gain_applied": 4.699999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/つ.mp3",
+    "success": true,
+    "original_rms": -30.0,
+    "target_rms": -20.0,
+    "gain_applied": 10.0,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/づ.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/て.mp3",
+    "success": true,
+    "original_rms": -26.9,
+    "target_rms": -20.0,
+    "gain_applied": 6.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/で.mp3",
+    "success": true,
+    "original_rms": -24.0,
+    "target_rms": -20.0,
+    "gain_applied": 4.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/と.mp3",
+    "success": true,
+    "original_rms": -28.3,
+    "target_rms": -20.0,
+    "gain_applied": 8.3,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ど.mp3",
+    "success": true,
+    "original_rms": -23.8,
+    "target_rms": -20.0,
+    "gain_applied": 3.8000000000000007,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/な.mp3",
+    "success": true,
+    "original_rms": -26.8,
+    "target_rms": -20.0,
+    "gain_applied": 6.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/に.mp3",
+    "success": true,
+    "original_rms": -23.3,
+    "target_rms": -20.0,
+    "gain_applied": 3.3000000000000007,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/にゃ.mp3",
+    "success": true,
+    "original_rms": -23.6,
+    "target_rms": -20.0,
+    "gain_applied": 3.6000000000000014,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/にゅ.mp3",
+    "success": true,
+    "original_rms": -22.1,
+    "target_rms": -20.0,
+    "gain_applied": 2.1000000000000014,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/にょ.mp3",
+    "success": true,
+    "original_rms": -24.1,
+    "target_rms": -20.0,
+    "gain_applied": 4.100000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ぬ.mp3",
+    "success": true,
+    "original_rms": -27.6,
+    "target_rms": -20.0,
+    "gain_applied": 7.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ね.mp3",
+    "success": true,
+    "original_rms": -23.8,
+    "target_rms": -20.0,
+    "gain_applied": 3.8000000000000007,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/の.mp3",
+    "success": true,
+    "original_rms": -26.1,
+    "target_rms": -20.0,
+    "gain_applied": 6.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/は.mp3",
+    "success": true,
+    "original_rms": -22.5,
+    "target_rms": -20.0,
+    "gain_applied": 2.5,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ば.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ぱ.mp3",
+    "success": true,
+    "original_rms": -31.3,
+    "target_rms": -20.0,
+    "gain_applied": 11.3,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ひ.mp3",
+    "success": true,
+    "original_rms": -27.4,
+    "target_rms": -20.0,
+    "gain_applied": 7.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ひゃ.mp3",
+    "success": true,
+    "original_rms": -29.3,
+    "target_rms": -20.0,
+    "gain_applied": 9.3,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ひゅ.mp3",
+    "success": true,
+    "original_rms": -29.8,
+    "target_rms": -20.0,
+    "gain_applied": 9.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ひょ.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/び.mp3",
+    "success": true,
+    "original_rms": -25.6,
+    "target_rms": -20.0,
+    "gain_applied": 5.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/びゃ.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/びゅ.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/びょ.mp3",
+    "success": true,
+    "original_rms": -23.6,
+    "target_rms": -20.0,
+    "gain_applied": 3.6000000000000014,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ぴ.mp3",
+    "success": true,
+    "original_rms": -32.0,
+    "target_rms": -20.0,
+    "gain_applied": 12.0,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ぴゃ.mp3",
+    "success": true,
+    "original_rms": -27.4,
+    "target_rms": -20.0,
+    "gain_applied": 7.399999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ぴゅ.mp3",
+    "success": true,
+    "original_rms": -26.2,
+    "target_rms": -20.0,
+    "gain_applied": 6.199999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ぴょ.mp3",
+    "success": true,
+    "original_rms": -23.0,
+    "target_rms": -20.0,
+    "gain_applied": 3.0,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ふ.mp3",
+    "success": true,
+    "original_rms": -29.8,
+    "target_rms": -20.0,
+    "gain_applied": 9.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ぶ.mp3",
+    "success": true,
+    "original_rms": -30.5,
+    "target_rms": -20.0,
+    "gain_applied": 10.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ぷ.mp3",
+    "success": true,
+    "original_rms": -44.6,
+    "target_rms": -20.0,
+    "gain_applied": 24.6,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/へ.mp3",
+    "success": true,
+    "original_rms": -23.4,
+    "target_rms": -20.0,
+    "gain_applied": 3.3999999999999986,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/べ.mp3",
+    "success": true,
+    "original_rms": -24.7,
+    "target_rms": -20.0,
+    "gain_applied": 4.699999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ぺ.mp3",
+    "success": true,
+    "original_rms": -26.2,
+    "target_rms": -20.0,
+    "gain_applied": 6.199999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ほ.mp3",
+    "success": true,
+    "original_rms": -23.5,
+    "target_rms": -20.0,
+    "gain_applied": 3.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ぼ.mp3",
+    "success": true,
+    "original_rms": -24.4,
+    "target_rms": -20.0,
+    "gain_applied": 4.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ぽ.mp3",
+    "success": true,
+    "original_rms": -26.5,
+    "target_rms": -20.0,
+    "gain_applied": 6.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ま.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/み.mp3",
+    "success": true,
+    "original_rms": -24.3,
+    "target_rms": -20.0,
+    "gain_applied": 4.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/みゃ.mp3",
+    "success": true,
+    "original_rms": -19.4,
+    "target_rms": -20.0,
+    "gain_applied": -0.6000000000000014,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/みゅ.mp3",
+    "success": true,
+    "original_rms": -19.4,
+    "target_rms": -20.0,
+    "gain_applied": -0.6000000000000014,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/みょ.mp3",
+    "success": true,
+    "original_rms": -20.6,
+    "target_rms": -20.0,
+    "gain_applied": 0.6000000000000014,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/む.mp3",
+    "success": true,
+    "original_rms": -26.7,
+    "target_rms": -20.0,
+    "gain_applied": 6.699999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/め.mp3",
+    "success": true,
+    "original_rms": -23.7,
+    "target_rms": -20.0,
+    "gain_applied": 3.6999999999999993,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/も.mp3",
+    "success": true,
+    "original_rms": -24.8,
+    "target_rms": -20.0,
+    "gain_applied": 4.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/や.mp3",
+    "success": true,
+    "original_rms": -25.6,
+    "target_rms": -20.0,
+    "gain_applied": 5.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ゆ.mp3",
+    "success": true,
+    "original_rms": -26.7,
+    "target_rms": -20.0,
+    "gain_applied": 6.699999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/よ.mp3",
+    "success": true,
+    "original_rms": -26.1,
+    "target_rms": -20.0,
+    "gain_applied": 6.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ら.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/り.mp3",
+    "success": true,
+    "original_rms": -25.4,
+    "target_rms": -20.0,
+    "gain_applied": 5.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/りゃ.mp3",
+    "success": true,
+    "original_rms": -24.5,
+    "target_rms": -20.0,
+    "gain_applied": 4.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/りゅ.mp3",
+    "success": true,
+    "original_rms": -24.6,
+    "target_rms": -20.0,
+    "gain_applied": 4.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/りょ.mp3",
+    "success": true,
+    "original_rms": -23.8,
+    "target_rms": -20.0,
+    "gain_applied": 3.8000000000000007,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/る.mp3",
+    "success": true,
+    "original_rms": -26.4,
+    "target_rms": -20.0,
+    "gain_applied": 6.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/れ.mp3",
+    "success": true,
+    "original_rms": -24.2,
+    "target_rms": -20.0,
+    "gain_applied": 4.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ろ.mp3",
+    "success": true,
+    "original_rms": -24.8,
+    "target_rms": -20.0,
+    "gain_applied": 4.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/わ.mp3",
+    "success": true,
+    "original_rms": -22.8,
+    "target_rms": -20.0,
+    "gain_applied": 2.8000000000000007,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/を.mp3",
+    "success": true,
+    "original_rms": -25.5,
+    "target_rms": -20.0,
+    "gain_applied": 5.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ん.mp3",
+    "success": true,
+    "original_rms": -22.0,
+    "target_rms": -20.0,
+    "gain_applied": 2.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ア.mp3",
+    "success": true,
+    "original_rms": -23.0,
+    "target_rms": -20.0,
+    "gain_applied": 3.0,
+    "final_rms": -19.2
+  },
+  {
+    "file": "public/audio/sora/イ.mp3",
+    "success": true,
+    "original_rms": -27.0,
+    "target_rms": -20.0,
+    "gain_applied": 7.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ウ.mp3",
+    "success": true,
+    "original_rms": -30.7,
+    "target_rms": -20.0,
+    "gain_applied": 10.7,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/エ.mp3",
+    "success": true,
+    "original_rms": -24.1,
+    "target_rms": -20.0,
+    "gain_applied": 4.100000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/オ.mp3",
+    "success": true,
+    "original_rms": -25.5,
+    "target_rms": -20.0,
+    "gain_applied": 5.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/カ.mp3",
+    "success": true,
+    "original_rms": -28.7,
+    "target_rms": -20.0,
+    "gain_applied": 8.7,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ガ.mp3",
+    "success": true,
+    "original_rms": -23.5,
+    "target_rms": -20.0,
+    "gain_applied": 3.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/キ.mp3",
+    "success": true,
+    "original_rms": -29.9,
+    "target_rms": -20.0,
+    "gain_applied": 9.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/キャ.mp3",
+    "success": true,
+    "original_rms": -28.3,
+    "target_rms": -20.0,
+    "gain_applied": 8.3,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/キュ.mp3",
+    "success": true,
+    "original_rms": -29.4,
+    "target_rms": -20.0,
+    "gain_applied": 9.399999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/キョ.mp3",
+    "success": true,
+    "original_rms": -27.0,
+    "target_rms": -20.0,
+    "gain_applied": 7.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ギ.mp3",
+    "success": true,
+    "original_rms": -25.2,
+    "target_rms": -20.0,
+    "gain_applied": 5.199999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ギャ.mp3",
+    "success": true,
+    "original_rms": -25.8,
+    "target_rms": -20.0,
+    "gain_applied": 5.800000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ギュ.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ギョ.mp3",
+    "success": true,
+    "original_rms": -21.3,
+    "target_rms": -20.0,
+    "gain_applied": 1.3000000000000007,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ク.mp3",
+    "success": true,
+    "original_rms": -39.9,
+    "target_rms": -20.0,
+    "gain_applied": 19.9,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/グ.mp3",
+    "success": true,
+    "original_rms": -25.8,
+    "target_rms": -20.0,
+    "gain_applied": 5.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ケ.mp3",
+    "success": true,
+    "original_rms": -26.1,
+    "target_rms": -20.0,
+    "gain_applied": 6.100000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ゲ.mp3",
+    "success": true,
+    "original_rms": -24.5,
+    "target_rms": -20.0,
+    "gain_applied": 4.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/コ.mp3",
+    "success": true,
+    "original_rms": -26.8,
+    "target_rms": -20.0,
+    "gain_applied": 6.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ゴ.mp3",
+    "success": true,
+    "original_rms": -22.8,
+    "target_rms": -20.0,
+    "gain_applied": 2.8000000000000007,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/サ.mp3",
+    "success": true,
+    "original_rms": -31.8,
+    "target_rms": -20.0,
+    "gain_applied": 11.8,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ザ.mp3",
+    "success": true,
+    "original_rms": -24.9,
+    "target_rms": -20.0,
+    "gain_applied": 4.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/シ.mp3",
+    "success": true,
+    "original_rms": -28.8,
+    "target_rms": -20.0,
+    "gain_applied": 8.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/シャ.mp3",
+    "success": true,
+    "original_rms": -31.4,
+    "target_rms": -20.0,
+    "gain_applied": 11.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/シュ.mp3",
+    "success": true,
+    "original_rms": -31.5,
+    "target_rms": -20.0,
+    "gain_applied": 11.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ショ.mp3",
+    "success": true,
+    "original_rms": -30.1,
+    "target_rms": -20.0,
+    "gain_applied": 10.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ジ.mp3",
+    "success": true,
+    "original_rms": -24.7,
+    "target_rms": -20.0,
+    "gain_applied": 4.699999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ジャ.mp3",
+    "success": true,
+    "original_rms": -28.8,
+    "target_rms": -20.0,
+    "gain_applied": 8.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ジュ.mp3",
+    "success": true,
+    "original_rms": -28.0,
+    "target_rms": -20.0,
+    "gain_applied": 8.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ジョ.mp3",
+    "success": true,
+    "original_rms": -24.2,
+    "target_rms": -20.0,
+    "gain_applied": 4.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ス.mp3",
+    "success": true,
+    "original_rms": -31.9,
+    "target_rms": -20.0,
+    "gain_applied": 11.899999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ズ.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/セ.mp3",
+    "success": true,
+    "original_rms": -28.5,
+    "target_rms": -20.0,
+    "gain_applied": 8.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ゼ.mp3",
+    "success": true,
+    "original_rms": -23.5,
+    "target_rms": -20.0,
+    "gain_applied": 3.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ソ.mp3",
+    "success": true,
+    "original_rms": -29.7,
+    "target_rms": -20.0,
+    "gain_applied": 9.7,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ゾ.mp3",
+    "success": true,
+    "original_rms": -24.3,
+    "target_rms": -20.0,
+    "gain_applied": 4.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/タ.mp3",
+    "success": true,
+    "original_rms": -28.4,
+    "target_rms": -20.0,
+    "gain_applied": 8.399999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ダ.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/チ.mp3",
+    "success": true,
+    "original_rms": -26.6,
+    "target_rms": -20.0,
+    "gain_applied": 6.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/チャ.mp3",
+    "success": true,
+    "original_rms": -29.5,
+    "target_rms": -20.0,
+    "gain_applied": 9.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/チュ.mp3",
+    "success": true,
+    "original_rms": -29.9,
+    "target_rms": -20.0,
+    "gain_applied": 9.899999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/チョ.mp3",
+    "success": true,
+    "original_rms": -25.2,
+    "target_rms": -20.0,
+    "gain_applied": 5.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ヂ.mp3",
+    "success": true,
+    "original_rms": -24.7,
+    "target_rms": -20.0,
+    "gain_applied": 4.699999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ツ.mp3",
+    "success": true,
+    "original_rms": -30.0,
+    "target_rms": -20.0,
+    "gain_applied": 10.0,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ヅ.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/テ.mp3",
+    "success": true,
+    "original_rms": -26.9,
+    "target_rms": -20.0,
+    "gain_applied": 6.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/デ.mp3",
+    "success": true,
+    "original_rms": -24.0,
+    "target_rms": -20.0,
+    "gain_applied": 4.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ト.mp3",
+    "success": true,
+    "original_rms": -28.3,
+    "target_rms": -20.0,
+    "gain_applied": 8.3,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ド.mp3",
+    "success": true,
+    "original_rms": -23.8,
+    "target_rms": -20.0,
+    "gain_applied": 3.8000000000000007,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ナ.mp3",
+    "success": true,
+    "original_rms": -26.8,
+    "target_rms": -20.0,
+    "gain_applied": 6.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ニ.mp3",
+    "success": true,
+    "original_rms": -23.3,
+    "target_rms": -20.0,
+    "gain_applied": 3.3000000000000007,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ニャ.mp3",
+    "success": true,
+    "original_rms": -23.6,
+    "target_rms": -20.0,
+    "gain_applied": 3.6000000000000014,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ニュ.mp3",
+    "success": true,
+    "original_rms": -22.1,
+    "target_rms": -20.0,
+    "gain_applied": 2.1000000000000014,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ヌ.mp3",
+    "success": true,
+    "original_rms": -27.6,
+    "target_rms": -20.0,
+    "gain_applied": 7.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ニョ.mp3",
+    "success": true,
+    "original_rms": -24.1,
+    "target_rms": -20.0,
+    "gain_applied": 4.100000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ネ.mp3",
+    "success": true,
+    "original_rms": -23.8,
+    "target_rms": -20.0,
+    "gain_applied": 3.8000000000000007,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ノ.mp3",
+    "success": true,
+    "original_rms": -26.1,
+    "target_rms": -20.0,
+    "gain_applied": 6.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ハ.mp3",
+    "success": true,
+    "original_rms": -28.6,
+    "target_rms": -20.0,
+    "gain_applied": 8.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/バ.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/パ.mp3",
+    "success": true,
+    "original_rms": -31.3,
+    "target_rms": -20.0,
+    "gain_applied": 11.3,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ヒ.mp3",
+    "success": true,
+    "original_rms": -28.6,
+    "target_rms": -20.0,
+    "gain_applied": 8.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ヒャ.mp3",
+    "success": true,
+    "original_rms": -29.3,
+    "target_rms": -20.0,
+    "gain_applied": 9.3,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ヒュ.mp3",
+    "success": true,
+    "original_rms": -29.8,
+    "target_rms": -20.0,
+    "gain_applied": 9.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ヒョ.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ビ.mp3",
+    "success": true,
+    "original_rms": -25.6,
+    "target_rms": -20.0,
+    "gain_applied": 5.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ビャ.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ビュ.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ビョ.mp3",
+    "success": true,
+    "original_rms": -23.6,
+    "target_rms": -20.0,
+    "gain_applied": 3.6000000000000014,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ピ.mp3",
+    "success": true,
+    "original_rms": -32.0,
+    "target_rms": -20.0,
+    "gain_applied": 12.0,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ピャ.mp3",
+    "success": true,
+    "original_rms": -27.4,
+    "target_rms": -20.0,
+    "gain_applied": 7.399999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ピュ.mp3",
+    "success": true,
+    "original_rms": -26.2,
+    "target_rms": -20.0,
+    "gain_applied": 6.199999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ピョ.mp3",
+    "success": true,
+    "original_rms": -23.0,
+    "target_rms": -20.0,
+    "gain_applied": 3.0,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/フ.mp3",
+    "success": true,
+    "original_rms": -29.8,
+    "target_rms": -20.0,
+    "gain_applied": 9.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ブ.mp3",
+    "success": true,
+    "original_rms": -30.5,
+    "target_rms": -20.0,
+    "gain_applied": 10.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/プ.mp3",
+    "success": true,
+    "original_rms": -44.6,
+    "target_rms": -20.0,
+    "gain_applied": 24.6,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ベ.mp3",
+    "success": true,
+    "original_rms": -24.7,
+    "target_rms": -20.0,
+    "gain_applied": 4.699999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ヘ.mp3",
+    "success": true,
+    "original_rms": -25.2,
+    "target_rms": -20.0,
+    "gain_applied": 5.199999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ペ.mp3",
+    "success": true,
+    "original_rms": -26.2,
+    "target_rms": -20.0,
+    "gain_applied": 6.199999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ホ.mp3",
+    "success": true,
+    "original_rms": -24.0,
+    "target_rms": -20.0,
+    "gain_applied": 4.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ポ.mp3",
+    "success": true,
+    "original_rms": -26.5,
+    "target_rms": -20.0,
+    "gain_applied": 6.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ボ.mp3",
+    "success": true,
+    "original_rms": -24.4,
+    "target_rms": -20.0,
+    "gain_applied": 4.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/マ.mp3",
+    "success": true,
+    "original_rms": -27.1,
+    "target_rms": -20.0,
+    "gain_applied": 7.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ミ.mp3",
+    "success": true,
+    "original_rms": -24.3,
+    "target_rms": -20.0,
+    "gain_applied": 4.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ミャ.mp3",
+    "success": true,
+    "original_rms": -19.4,
+    "target_rms": -20.0,
+    "gain_applied": -0.6000000000000014,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ミュ.mp3",
+    "success": true,
+    "original_rms": -19.4,
+    "target_rms": -20.0,
+    "gain_applied": -0.6000000000000014,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ミョ.mp3",
+    "success": true,
+    "original_rms": -20.6,
+    "target_rms": -20.0,
+    "gain_applied": 0.6000000000000014,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/sora/ム.mp3",
+    "success": true,
+    "original_rms": -26.7,
+    "target_rms": -20.0,
+    "gain_applied": 6.699999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/メ.mp3",
+    "success": true,
+    "original_rms": -23.7,
+    "target_rms": -20.0,
+    "gain_applied": 3.6999999999999993,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/モ.mp3",
+    "success": true,
+    "original_rms": -24.8,
+    "target_rms": -20.0,
+    "gain_applied": 4.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ヤ.mp3",
+    "success": true,
+    "original_rms": -25.6,
+    "target_rms": -20.0,
+    "gain_applied": 5.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ユ.mp3",
+    "success": true,
+    "original_rms": -26.7,
+    "target_rms": -20.0,
+    "gain_applied": 6.699999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/sora/ヨ.mp3",
+    "success": true,
+    "original_rms": -26.1,
+    "target_rms": -20.0,
+    "gain_applied": 6.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ラ.mp3",
+    "success": true,
+    "original_rms": -25.3,
+    "target_rms": -20.0,
+    "gain_applied": 5.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/リ.mp3",
+    "success": true,
+    "original_rms": -25.4,
+    "target_rms": -20.0,
+    "gain_applied": 5.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/リャ.mp3",
+    "success": true,
+    "original_rms": -24.5,
+    "target_rms": -20.0,
+    "gain_applied": 4.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/リュ.mp3",
+    "success": true,
+    "original_rms": -24.6,
+    "target_rms": -20.0,
+    "gain_applied": 4.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/リョ.mp3",
+    "success": true,
+    "original_rms": -23.8,
+    "target_rms": -20.0,
+    "gain_applied": 3.8000000000000007,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ル.mp3",
+    "success": true,
+    "original_rms": -26.4,
+    "target_rms": -20.0,
+    "gain_applied": 6.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/レ.mp3",
+    "success": true,
+    "original_rms": -24.2,
+    "target_rms": -20.0,
+    "gain_applied": 4.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ロ.mp3",
+    "success": true,
+    "original_rms": -24.8,
+    "target_rms": -20.0,
+    "gain_applied": 4.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ワ.mp3",
+    "success": true,
+    "original_rms": -22.8,
+    "target_rms": -20.0,
+    "gain_applied": 2.8000000000000007,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ヲ.mp3",
+    "success": true,
+    "original_rms": -25.5,
+    "target_rms": -20.0,
+    "gain_applied": 5.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/sora/ン.mp3",
+    "success": true,
+    "original_rms": -22.0,
+    "target_rms": -20.0,
+    "gain_applied": 2.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/あ.mp3",
+    "success": true,
+    "original_rms": -32.1,
+    "target_rms": -20.0,
+    "gain_applied": 12.100000000000001,
+    "final_rms": -20.6
+  },
+  {
+    "file": "public/audio/tsumugi/い.mp3",
+    "success": true,
+    "original_rms": -33.1,
+    "target_rms": -20.0,
+    "gain_applied": 13.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/う.mp3",
+    "success": true,
+    "original_rms": -34.2,
+    "target_rms": -20.0,
+    "gain_applied": 14.200000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/え.mp3",
+    "success": true,
+    "original_rms": -31.0,
+    "target_rms": -20.0,
+    "gain_applied": 11.0,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/お.mp3",
+    "success": true,
+    "original_rms": -35.1,
+    "target_rms": -20.0,
+    "gain_applied": 15.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/か.mp3",
+    "success": true,
+    "original_rms": -34.6,
+    "target_rms": -20.0,
+    "gain_applied": 14.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/が.mp3",
+    "success": true,
+    "original_rms": -32.2,
+    "target_rms": -20.0,
+    "gain_applied": 12.200000000000003,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/き.mp3",
+    "success": true,
+    "original_rms": -32.8,
+    "target_rms": -20.0,
+    "gain_applied": 12.799999999999997,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/きゃ.mp3",
+    "success": true,
+    "original_rms": -33.1,
+    "target_rms": -20.0,
+    "gain_applied": 13.100000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/きゅ.mp3",
+    "success": true,
+    "original_rms": -29.4,
+    "target_rms": -20.0,
+    "gain_applied": 9.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/きょ.mp3",
+    "success": true,
+    "original_rms": -30.3,
+    "target_rms": -20.0,
+    "gain_applied": 10.3,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぎ.mp3",
+    "success": true,
+    "original_rms": -31.4,
+    "target_rms": -20.0,
+    "gain_applied": 11.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぎゃ.mp3",
+    "success": true,
+    "original_rms": -24.8,
+    "target_rms": -20.0,
+    "gain_applied": 4.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぎゅ.mp3",
+    "success": true,
+    "original_rms": -27.8,
+    "target_rms": -20.0,
+    "gain_applied": 7.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/く.mp3",
+    "success": true,
+    "original_rms": -33.7,
+    "target_rms": -20.0,
+    "gain_applied": 13.700000000000003,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ぎょ.mp3",
+    "success": true,
+    "original_rms": -26.1,
+    "target_rms": -20.0,
+    "gain_applied": 6.100000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ぐ.mp3",
+    "success": true,
+    "original_rms": -33.3,
+    "target_rms": -20.0,
+    "gain_applied": 13.299999999999997,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/け.mp3",
+    "success": true,
+    "original_rms": -31.8,
+    "target_rms": -20.0,
+    "gain_applied": 11.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/げ.mp3",
+    "success": true,
+    "original_rms": -30.9,
+    "target_rms": -20.0,
+    "gain_applied": 10.899999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/こ.mp3",
+    "success": true,
+    "original_rms": -35.1,
+    "target_rms": -20.0,
+    "gain_applied": 15.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ご.mp3",
+    "success": true,
+    "original_rms": -32.2,
+    "target_rms": -20.0,
+    "gain_applied": 12.200000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/さ.mp3",
+    "success": true,
+    "original_rms": -32.7,
+    "target_rms": -20.0,
+    "gain_applied": 12.700000000000003,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ざ.mp3",
+    "success": true,
+    "original_rms": -30.2,
+    "target_rms": -20.0,
+    "gain_applied": 10.2,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/し.mp3",
+    "success": true,
+    "original_rms": -35.5,
+    "target_rms": -20.0,
+    "gain_applied": 15.5,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/しゃ.mp3",
+    "success": true,
+    "original_rms": -30.9,
+    "target_rms": -20.0,
+    "gain_applied": 10.899999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/しゅ.mp3",
+    "success": true,
+    "original_rms": -30.4,
+    "target_rms": -20.0,
+    "gain_applied": 10.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/しょ.mp3",
+    "success": true,
+    "original_rms": -31.0,
+    "target_rms": -20.0,
+    "gain_applied": 11.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/じ.mp3",
+    "success": true,
+    "original_rms": -32.7,
+    "target_rms": -20.0,
+    "gain_applied": 12.700000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/じゃ.mp3",
+    "success": true,
+    "original_rms": -29.6,
+    "target_rms": -20.0,
+    "gain_applied": 9.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/じゅ.mp3",
+    "success": true,
+    "original_rms": -30.4,
+    "target_rms": -20.0,
+    "gain_applied": 10.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/じょ.mp3",
+    "success": true,
+    "original_rms": -30.2,
+    "target_rms": -20.0,
+    "gain_applied": 10.2,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/す.mp3",
+    "success": true,
+    "original_rms": -35.3,
+    "target_rms": -20.0,
+    "gain_applied": 15.299999999999997,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ず.mp3",
+    "success": true,
+    "original_rms": -34.2,
+    "target_rms": -20.0,
+    "gain_applied": 14.200000000000003,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/せ.mp3",
+    "success": true,
+    "original_rms": -31.1,
+    "target_rms": -20.0,
+    "gain_applied": 11.100000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ぜ.mp3",
+    "success": true,
+    "original_rms": -30.3,
+    "target_rms": -20.0,
+    "gain_applied": 10.3,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/そ.mp3",
+    "success": true,
+    "original_rms": -30.5,
+    "target_rms": -20.0,
+    "gain_applied": 10.5,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ぞ.mp3",
+    "success": true,
+    "original_rms": -31.4,
+    "target_rms": -20.0,
+    "gain_applied": 11.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/た.mp3",
+    "success": true,
+    "original_rms": -30.8,
+    "target_rms": -20.0,
+    "gain_applied": 10.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/だ.mp3",
+    "success": true,
+    "original_rms": -30.8,
+    "target_rms": -20.0,
+    "gain_applied": 10.8,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ち.mp3",
+    "success": true,
+    "original_rms": -34.4,
+    "target_rms": -20.0,
+    "gain_applied": 14.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ちゃ.mp3",
+    "success": true,
+    "original_rms": -34.5,
+    "target_rms": -20.0,
+    "gain_applied": 14.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ちゅ.mp3",
+    "success": true,
+    "original_rms": -31.3,
+    "target_rms": -20.0,
+    "gain_applied": 11.3,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ちょ.mp3",
+    "success": true,
+    "original_rms": -32.0,
+    "target_rms": -20.0,
+    "gain_applied": 12.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぢ.mp3",
+    "success": true,
+    "original_rms": -32.7,
+    "target_rms": -20.0,
+    "gain_applied": 12.700000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/つ.mp3",
+    "success": true,
+    "original_rms": -36.8,
+    "target_rms": -20.0,
+    "gain_applied": 16.799999999999997,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/づ.mp3",
+    "success": true,
+    "original_rms": -34.2,
+    "target_rms": -20.0,
+    "gain_applied": 14.200000000000003,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/て.mp3",
+    "success": true,
+    "original_rms": -32.3,
+    "target_rms": -20.0,
+    "gain_applied": 12.299999999999997,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/で.mp3",
+    "success": true,
+    "original_rms": -32.1,
+    "target_rms": -20.0,
+    "gain_applied": 12.100000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/と.mp3",
+    "success": true,
+    "original_rms": -33.5,
+    "target_rms": -20.0,
+    "gain_applied": 13.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ど.mp3",
+    "success": true,
+    "original_rms": -33.6,
+    "target_rms": -20.0,
+    "gain_applied": 13.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/な.mp3",
+    "success": true,
+    "original_rms": -33.6,
+    "target_rms": -20.0,
+    "gain_applied": 13.600000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/に.mp3",
+    "success": true,
+    "original_rms": -30.0,
+    "target_rms": -20.0,
+    "gain_applied": 10.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/にゃ.mp3",
+    "success": true,
+    "original_rms": -30.5,
+    "target_rms": -20.0,
+    "gain_applied": 10.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/にゅ.mp3",
+    "success": true,
+    "original_rms": -27.7,
+    "target_rms": -20.0,
+    "gain_applied": 7.699999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/にょ.mp3",
+    "success": true,
+    "original_rms": -25.1,
+    "target_rms": -20.0,
+    "gain_applied": 5.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぬ.mp3",
+    "success": true,
+    "original_rms": -30.7,
+    "target_rms": -20.0,
+    "gain_applied": 10.7,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ね.mp3",
+    "success": true,
+    "original_rms": -33.1,
+    "target_rms": -20.0,
+    "gain_applied": 13.100000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/の.mp3",
+    "success": true,
+    "original_rms": -34.2,
+    "target_rms": -20.0,
+    "gain_applied": 14.200000000000003,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ば.mp3",
+    "success": true,
+    "original_rms": -29.8,
+    "target_rms": -20.0,
+    "gain_applied": 9.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/は.mp3",
+    "success": true,
+    "original_rms": -30.1,
+    "target_rms": -20.0,
+    "gain_applied": 10.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぱ.mp3",
+    "success": true,
+    "original_rms": -31.8,
+    "target_rms": -20.0,
+    "gain_applied": 11.8,
+    "final_rms": -19.2
+  },
+  {
+    "file": "public/audio/tsumugi/ひ.mp3",
+    "success": true,
+    "original_rms": -32.9,
+    "target_rms": -20.0,
+    "gain_applied": 12.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ひゃ.mp3",
+    "success": true,
+    "original_rms": -31.1,
+    "target_rms": -20.0,
+    "gain_applied": 11.100000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ひゅ.mp3",
+    "success": true,
+    "original_rms": -33.0,
+    "target_rms": -20.0,
+    "gain_applied": 13.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ひょ.mp3",
+    "success": true,
+    "original_rms": -30.8,
+    "target_rms": -20.0,
+    "gain_applied": 10.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/び.mp3",
+    "success": true,
+    "original_rms": -32.6,
+    "target_rms": -20.0,
+    "gain_applied": 12.600000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/びゃ.mp3",
+    "success": true,
+    "original_rms": -25.0,
+    "target_rms": -20.0,
+    "gain_applied": 5.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/びゅ.mp3",
+    "success": true,
+    "original_rms": -26.2,
+    "target_rms": -20.0,
+    "gain_applied": 6.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/びょ.mp3",
+    "success": true,
+    "original_rms": -26.3,
+    "target_rms": -20.0,
+    "gain_applied": 6.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぴ.mp3",
+    "success": true,
+    "original_rms": -33.5,
+    "target_rms": -20.0,
+    "gain_applied": 13.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぴゃ.mp3",
+    "success": true,
+    "original_rms": -27.0,
+    "target_rms": -20.0,
+    "gain_applied": 7.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぴゅ.mp3",
+    "success": true,
+    "original_rms": -27.6,
+    "target_rms": -20.0,
+    "gain_applied": 7.600000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ぴょ.mp3",
+    "success": true,
+    "original_rms": -27.2,
+    "target_rms": -20.0,
+    "gain_applied": 7.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ふ.mp3",
+    "success": true,
+    "original_rms": -39.6,
+    "target_rms": -20.0,
+    "gain_applied": 19.6,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぶ.mp3",
+    "success": true,
+    "original_rms": -35.2,
+    "target_rms": -20.0,
+    "gain_applied": 15.200000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぷ.mp3",
+    "success": true,
+    "original_rms": -37.0,
+    "target_rms": -20.0,
+    "gain_applied": 17.0,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/へ.mp3",
+    "success": true,
+    "original_rms": -30.6,
+    "target_rms": -20.0,
+    "gain_applied": 10.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/べ.mp3",
+    "success": true,
+    "original_rms": -31.0,
+    "target_rms": -20.0,
+    "gain_applied": 11.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぺ.mp3",
+    "success": true,
+    "original_rms": -31.6,
+    "target_rms": -20.0,
+    "gain_applied": 11.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ほ.mp3",
+    "success": true,
+    "original_rms": -31.0,
+    "target_rms": -20.0,
+    "gain_applied": 11.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぼ.mp3",
+    "success": true,
+    "original_rms": -32.8,
+    "target_rms": -20.0,
+    "gain_applied": 12.799999999999997,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ぽ.mp3",
+    "success": true,
+    "original_rms": -33.2,
+    "target_rms": -20.0,
+    "gain_applied": 13.200000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ま.mp3",
+    "success": true,
+    "original_rms": -28.9,
+    "target_rms": -20.0,
+    "gain_applied": 8.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/み.mp3",
+    "success": true,
+    "original_rms": -28.2,
+    "target_rms": -20.0,
+    "gain_applied": 8.2,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/みゃ.mp3",
+    "success": true,
+    "original_rms": -28.9,
+    "target_rms": -20.0,
+    "gain_applied": 8.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/みゅ.mp3",
+    "success": true,
+    "original_rms": -24.8,
+    "target_rms": -20.0,
+    "gain_applied": 4.800000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/みょ.mp3",
+    "success": true,
+    "original_rms": -25.1,
+    "target_rms": -20.0,
+    "gain_applied": 5.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/む.mp3",
+    "success": true,
+    "original_rms": -28.3,
+    "target_rms": -20.0,
+    "gain_applied": 8.3,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/め.mp3",
+    "success": true,
+    "original_rms": -28.2,
+    "target_rms": -20.0,
+    "gain_applied": 8.2,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/も.mp3",
+    "success": true,
+    "original_rms": -28.9,
+    "target_rms": -20.0,
+    "gain_applied": 8.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/や.mp3",
+    "success": true,
+    "original_rms": -29.1,
+    "target_rms": -20.0,
+    "gain_applied": 9.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ゆ.mp3",
+    "success": true,
+    "original_rms": -29.2,
+    "target_rms": -20.0,
+    "gain_applied": 9.2,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ら.mp3",
+    "success": true,
+    "original_rms": -30.9,
+    "target_rms": -20.0,
+    "gain_applied": 10.899999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/よ.mp3",
+    "success": true,
+    "original_rms": -30.2,
+    "target_rms": -20.0,
+    "gain_applied": 10.2,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/り.mp3",
+    "success": true,
+    "original_rms": -36.5,
+    "target_rms": -20.0,
+    "gain_applied": 16.5,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/りゃ.mp3",
+    "success": true,
+    "original_rms": -27.9,
+    "target_rms": -20.0,
+    "gain_applied": 7.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/りゅ.mp3",
+    "success": true,
+    "original_rms": -29.2,
+    "target_rms": -20.0,
+    "gain_applied": 9.2,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/りょ.mp3",
+    "success": true,
+    "original_rms": -26.9,
+    "target_rms": -20.0,
+    "gain_applied": 6.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/る.mp3",
+    "success": true,
+    "original_rms": -37.3,
+    "target_rms": -20.0,
+    "gain_applied": 17.299999999999997,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/れ.mp3",
+    "success": true,
+    "original_rms": -32.8,
+    "target_rms": -20.0,
+    "gain_applied": 12.799999999999997,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ろ.mp3",
+    "success": true,
+    "original_rms": -32.1,
+    "target_rms": -20.0,
+    "gain_applied": 12.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/わ.mp3",
+    "success": true,
+    "original_rms": -31.8,
+    "target_rms": -20.0,
+    "gain_applied": 11.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/を.mp3",
+    "success": true,
+    "original_rms": -35.1,
+    "target_rms": -20.0,
+    "gain_applied": 15.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ん.mp3",
+    "success": true,
+    "original_rms": -34.9,
+    "target_rms": -20.0,
+    "gain_applied": 14.899999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ア.mp3",
+    "success": true,
+    "original_rms": -32.1,
+    "target_rms": -20.0,
+    "gain_applied": 12.100000000000001,
+    "final_rms": -20.6
+  },
+  {
+    "file": "public/audio/tsumugi/イ.mp3",
+    "success": true,
+    "original_rms": -33.1,
+    "target_rms": -20.0,
+    "gain_applied": 13.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ウ.mp3",
+    "success": true,
+    "original_rms": -34.2,
+    "target_rms": -20.0,
+    "gain_applied": 14.200000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/エ.mp3",
+    "success": true,
+    "original_rms": -31.0,
+    "target_rms": -20.0,
+    "gain_applied": 11.0,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/オ.mp3",
+    "success": true,
+    "original_rms": -35.1,
+    "target_rms": -20.0,
+    "gain_applied": 15.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/カ.mp3",
+    "success": true,
+    "original_rms": -34.6,
+    "target_rms": -20.0,
+    "gain_applied": 14.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ガ.mp3",
+    "success": true,
+    "original_rms": -32.2,
+    "target_rms": -20.0,
+    "gain_applied": 12.200000000000003,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/キ.mp3",
+    "success": true,
+    "original_rms": -32.8,
+    "target_rms": -20.0,
+    "gain_applied": 12.799999999999997,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/キャ.mp3",
+    "success": true,
+    "original_rms": -33.1,
+    "target_rms": -20.0,
+    "gain_applied": 13.100000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/キュ.mp3",
+    "success": true,
+    "original_rms": -29.4,
+    "target_rms": -20.0,
+    "gain_applied": 9.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/キョ.mp3",
+    "success": true,
+    "original_rms": -30.3,
+    "target_rms": -20.0,
+    "gain_applied": 10.3,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ギ.mp3",
+    "success": true,
+    "original_rms": -31.4,
+    "target_rms": -20.0,
+    "gain_applied": 11.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ギャ.mp3",
+    "success": true,
+    "original_rms": -24.8,
+    "target_rms": -20.0,
+    "gain_applied": 4.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ギュ.mp3",
+    "success": true,
+    "original_rms": -27.8,
+    "target_rms": -20.0,
+    "gain_applied": 7.800000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ギョ.mp3",
+    "success": true,
+    "original_rms": -26.1,
+    "target_rms": -20.0,
+    "gain_applied": 6.100000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ク.mp3",
+    "success": true,
+    "original_rms": -33.7,
+    "target_rms": -20.0,
+    "gain_applied": 13.700000000000003,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/グ.mp3",
+    "success": true,
+    "original_rms": -33.3,
+    "target_rms": -20.0,
+    "gain_applied": 13.299999999999997,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ケ.mp3",
+    "success": true,
+    "original_rms": -31.8,
+    "target_rms": -20.0,
+    "gain_applied": 11.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ゲ.mp3",
+    "success": true,
+    "original_rms": -30.9,
+    "target_rms": -20.0,
+    "gain_applied": 10.899999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/コ.mp3",
+    "success": true,
+    "original_rms": -35.1,
+    "target_rms": -20.0,
+    "gain_applied": 15.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ゴ.mp3",
+    "success": true,
+    "original_rms": -32.2,
+    "target_rms": -20.0,
+    "gain_applied": 12.200000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/サ.mp3",
+    "success": true,
+    "original_rms": -32.7,
+    "target_rms": -20.0,
+    "gain_applied": 12.700000000000003,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ザ.mp3",
+    "success": true,
+    "original_rms": -30.2,
+    "target_rms": -20.0,
+    "gain_applied": 10.2,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/シ.mp3",
+    "success": true,
+    "original_rms": -35.5,
+    "target_rms": -20.0,
+    "gain_applied": 15.5,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/シャ.mp3",
+    "success": true,
+    "original_rms": -30.9,
+    "target_rms": -20.0,
+    "gain_applied": 10.899999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/シュ.mp3",
+    "success": true,
+    "original_rms": -30.4,
+    "target_rms": -20.0,
+    "gain_applied": 10.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ショ.mp3",
+    "success": true,
+    "original_rms": -31.0,
+    "target_rms": -20.0,
+    "gain_applied": 11.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ジ.mp3",
+    "success": true,
+    "original_rms": -32.7,
+    "target_rms": -20.0,
+    "gain_applied": 12.700000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ジャ.mp3",
+    "success": true,
+    "original_rms": -29.6,
+    "target_rms": -20.0,
+    "gain_applied": 9.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ジュ.mp3",
+    "success": true,
+    "original_rms": -30.4,
+    "target_rms": -20.0,
+    "gain_applied": 10.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ジョ.mp3",
+    "success": true,
+    "original_rms": -30.2,
+    "target_rms": -20.0,
+    "gain_applied": 10.2,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ス.mp3",
+    "success": true,
+    "original_rms": -35.3,
+    "target_rms": -20.0,
+    "gain_applied": 15.299999999999997,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ズ.mp3",
+    "success": true,
+    "original_rms": -34.2,
+    "target_rms": -20.0,
+    "gain_applied": 14.200000000000003,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/セ.mp3",
+    "success": true,
+    "original_rms": -31.1,
+    "target_rms": -20.0,
+    "gain_applied": 11.100000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ゼ.mp3",
+    "success": true,
+    "original_rms": -30.3,
+    "target_rms": -20.0,
+    "gain_applied": 10.3,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ソ.mp3",
+    "success": true,
+    "original_rms": -30.5,
+    "target_rms": -20.0,
+    "gain_applied": 10.5,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ゾ.mp3",
+    "success": true,
+    "original_rms": -31.4,
+    "target_rms": -20.0,
+    "gain_applied": 11.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/タ.mp3",
+    "success": true,
+    "original_rms": -30.8,
+    "target_rms": -20.0,
+    "gain_applied": 10.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ダ.mp3",
+    "success": true,
+    "original_rms": -30.8,
+    "target_rms": -20.0,
+    "gain_applied": 10.8,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/チ.mp3",
+    "success": true,
+    "original_rms": -34.4,
+    "target_rms": -20.0,
+    "gain_applied": 14.399999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/チャ.mp3",
+    "success": true,
+    "original_rms": -34.5,
+    "target_rms": -20.0,
+    "gain_applied": 14.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/チュ.mp3",
+    "success": true,
+    "original_rms": -31.3,
+    "target_rms": -20.0,
+    "gain_applied": 11.3,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/チョ.mp3",
+    "success": true,
+    "original_rms": -32.0,
+    "target_rms": -20.0,
+    "gain_applied": 12.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ヂ.mp3",
+    "success": true,
+    "original_rms": -32.7,
+    "target_rms": -20.0,
+    "gain_applied": 12.700000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ツ.mp3",
+    "success": true,
+    "original_rms": -36.8,
+    "target_rms": -20.0,
+    "gain_applied": 16.799999999999997,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ヅ.mp3",
+    "success": true,
+    "original_rms": -34.2,
+    "target_rms": -20.0,
+    "gain_applied": 14.200000000000003,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/テ.mp3",
+    "success": true,
+    "original_rms": -32.3,
+    "target_rms": -20.0,
+    "gain_applied": 12.299999999999997,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/デ.mp3",
+    "success": true,
+    "original_rms": -32.1,
+    "target_rms": -20.0,
+    "gain_applied": 12.100000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ト.mp3",
+    "success": true,
+    "original_rms": -33.5,
+    "target_rms": -20.0,
+    "gain_applied": 13.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ド.mp3",
+    "success": true,
+    "original_rms": -33.6,
+    "target_rms": -20.0,
+    "gain_applied": 13.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ナ.mp3",
+    "success": true,
+    "original_rms": -33.6,
+    "target_rms": -20.0,
+    "gain_applied": 13.600000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ニ.mp3",
+    "success": true,
+    "original_rms": -30.0,
+    "target_rms": -20.0,
+    "gain_applied": 10.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ニャ.mp3",
+    "success": true,
+    "original_rms": -30.5,
+    "target_rms": -20.0,
+    "gain_applied": 10.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ニュ.mp3",
+    "success": true,
+    "original_rms": -27.7,
+    "target_rms": -20.0,
+    "gain_applied": 7.699999999999999,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ニョ.mp3",
+    "success": true,
+    "original_rms": -25.1,
+    "target_rms": -20.0,
+    "gain_applied": 5.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ヌ.mp3",
+    "success": true,
+    "original_rms": -30.7,
+    "target_rms": -20.0,
+    "gain_applied": 10.7,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ネ.mp3",
+    "success": true,
+    "original_rms": -33.1,
+    "target_rms": -20.0,
+    "gain_applied": 13.100000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ノ.mp3",
+    "success": true,
+    "original_rms": -34.2,
+    "target_rms": -20.0,
+    "gain_applied": 14.200000000000003,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ハ.mp3",
+    "success": true,
+    "original_rms": -33.0,
+    "target_rms": -20.0,
+    "gain_applied": 13.0,
+    "final_rms": -19.2
+  },
+  {
+    "file": "public/audio/tsumugi/バ.mp3",
+    "success": true,
+    "original_rms": -29.8,
+    "target_rms": -20.0,
+    "gain_applied": 9.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/パ.mp3",
+    "success": true,
+    "original_rms": -31.8,
+    "target_rms": -20.0,
+    "gain_applied": 11.8,
+    "final_rms": -19.2
+  },
+  {
+    "file": "public/audio/tsumugi/ヒ.mp3",
+    "success": true,
+    "original_rms": -33.0,
+    "target_rms": -20.0,
+    "gain_applied": 13.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ヒャ.mp3",
+    "success": true,
+    "original_rms": -31.1,
+    "target_rms": -20.0,
+    "gain_applied": 11.100000000000001,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ヒュ.mp3",
+    "success": true,
+    "original_rms": -33.0,
+    "target_rms": -20.0,
+    "gain_applied": 13.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ヒョ.mp3",
+    "success": true,
+    "original_rms": -30.8,
+    "target_rms": -20.0,
+    "gain_applied": 10.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ビ.mp3",
+    "success": true,
+    "original_rms": -32.6,
+    "target_rms": -20.0,
+    "gain_applied": 12.600000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ビャ.mp3",
+    "success": true,
+    "original_rms": -25.0,
+    "target_rms": -20.0,
+    "gain_applied": 5.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ビュ.mp3",
+    "success": true,
+    "original_rms": -26.2,
+    "target_rms": -20.0,
+    "gain_applied": 6.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ビョ.mp3",
+    "success": true,
+    "original_rms": -26.3,
+    "target_rms": -20.0,
+    "gain_applied": 6.300000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ピ.mp3",
+    "success": true,
+    "original_rms": -33.5,
+    "target_rms": -20.0,
+    "gain_applied": 13.5,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ピュ.mp3",
+    "success": true,
+    "original_rms": -27.6,
+    "target_rms": -20.0,
+    "gain_applied": 7.600000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ピャ.mp3",
+    "success": true,
+    "original_rms": -27.0,
+    "target_rms": -20.0,
+    "gain_applied": 7.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ピョ.mp3",
+    "success": true,
+    "original_rms": -27.2,
+    "target_rms": -20.0,
+    "gain_applied": 7.199999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/フ.mp3",
+    "success": true,
+    "original_rms": -40.3,
+    "target_rms": -20.0,
+    "gain_applied": 20.299999999999997,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ブ.mp3",
+    "success": true,
+    "original_rms": -35.2,
+    "target_rms": -20.0,
+    "gain_applied": 15.200000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/プ.mp3",
+    "success": true,
+    "original_rms": -37.0,
+    "target_rms": -20.0,
+    "gain_applied": 17.0,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ヘ.mp3",
+    "success": true,
+    "original_rms": -31.5,
+    "target_rms": -20.0,
+    "gain_applied": 11.5,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ベ.mp3",
+    "success": true,
+    "original_rms": -31.0,
+    "target_rms": -20.0,
+    "gain_applied": 11.0,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ペ.mp3",
+    "success": true,
+    "original_rms": -31.6,
+    "target_rms": -20.0,
+    "gain_applied": 11.600000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ホ.mp3",
+    "success": true,
+    "original_rms": -32.2,
+    "target_rms": -20.0,
+    "gain_applied": 12.200000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ボ.mp3",
+    "success": true,
+    "original_rms": -32.8,
+    "target_rms": -20.0,
+    "gain_applied": 12.799999999999997,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ポ.mp3",
+    "success": true,
+    "original_rms": -33.2,
+    "target_rms": -20.0,
+    "gain_applied": 13.200000000000003,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/マ.mp3",
+    "success": true,
+    "original_rms": -28.9,
+    "target_rms": -20.0,
+    "gain_applied": 8.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ミ.mp3",
+    "success": true,
+    "original_rms": -28.2,
+    "target_rms": -20.0,
+    "gain_applied": 8.2,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ミャ.mp3",
+    "success": true,
+    "original_rms": -28.9,
+    "target_rms": -20.0,
+    "gain_applied": 8.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ミュ.mp3",
+    "success": true,
+    "original_rms": -24.8,
+    "target_rms": -20.0,
+    "gain_applied": 4.800000000000001,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/ミョ.mp3",
+    "success": true,
+    "original_rms": -25.1,
+    "target_rms": -20.0,
+    "gain_applied": 5.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ム.mp3",
+    "success": true,
+    "original_rms": -28.3,
+    "target_rms": -20.0,
+    "gain_applied": 8.3,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/メ.mp3",
+    "success": true,
+    "original_rms": -28.2,
+    "target_rms": -20.0,
+    "gain_applied": 8.2,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/モ.mp3",
+    "success": true,
+    "original_rms": -28.9,
+    "target_rms": -20.0,
+    "gain_applied": 8.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ヤ.mp3",
+    "success": true,
+    "original_rms": -29.1,
+    "target_rms": -20.0,
+    "gain_applied": 9.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ユ.mp3",
+    "success": true,
+    "original_rms": -29.2,
+    "target_rms": -20.0,
+    "gain_applied": 9.2,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ヨ.mp3",
+    "success": true,
+    "original_rms": -30.2,
+    "target_rms": -20.0,
+    "gain_applied": 10.2,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ラ.mp3",
+    "success": true,
+    "original_rms": -30.9,
+    "target_rms": -20.0,
+    "gain_applied": 10.899999999999999,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/リ.mp3",
+    "success": true,
+    "original_rms": -36.5,
+    "target_rms": -20.0,
+    "gain_applied": 16.5,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/リャ.mp3",
+    "success": true,
+    "original_rms": -27.9,
+    "target_rms": -20.0,
+    "gain_applied": 7.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/リュ.mp3",
+    "success": true,
+    "original_rms": -29.2,
+    "target_rms": -20.0,
+    "gain_applied": 9.2,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/リョ.mp3",
+    "success": true,
+    "original_rms": -26.9,
+    "target_rms": -20.0,
+    "gain_applied": 6.899999999999999,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ル.mp3",
+    "success": true,
+    "original_rms": -37.3,
+    "target_rms": -20.0,
+    "gain_applied": 17.299999999999997,
+    "final_rms": -18.9
+  },
+  {
+    "file": "public/audio/tsumugi/レ.mp3",
+    "success": true,
+    "original_rms": -32.8,
+    "target_rms": -20.0,
+    "gain_applied": 12.799999999999997,
+    "final_rms": -19.1
+  },
+  {
+    "file": "public/audio/tsumugi/ロ.mp3",
+    "success": true,
+    "original_rms": -32.1,
+    "target_rms": -20.0,
+    "gain_applied": 12.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ワ.mp3",
+    "success": true,
+    "original_rms": -31.8,
+    "target_rms": -20.0,
+    "gain_applied": 11.8,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ヲ.mp3",
+    "success": true,
+    "original_rms": -35.1,
+    "target_rms": -20.0,
+    "gain_applied": 15.100000000000001,
+    "final_rms": -19.0
+  },
+  {
+    "file": "public/audio/tsumugi/ン.mp3",
+    "success": true,
+    "original_rms": -34.9,
+    "target_rms": -20.0,
+    "gain_applied": 14.899999999999999,
+    "final_rms": -19.1
+  }
+]

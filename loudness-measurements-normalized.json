@@ -1,0 +1,3128 @@
+{
+  "metan": [
+    {
+      "file": "あ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.7
+    },
+    {
+      "file": "い.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.9
+    },
+    {
+      "file": "う.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.5
+    },
+    {
+      "file": "え.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.9
+    },
+    {
+      "file": "お.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.1
+    },
+    {
+      "file": "か.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "が.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.2
+    },
+    {
+      "file": "き.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.8
+    },
+    {
+      "file": "きゃ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.9
+    },
+    {
+      "file": "きゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.7
+    },
+    {
+      "file": "きょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.6
+    },
+    {
+      "file": "ぎ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -0.8
+    },
+    {
+      "file": "ぎゃ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -0.0
+    },
+    {
+      "file": "ぎゅ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.1
+    },
+    {
+      "file": "ぎょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.9
+    },
+    {
+      "file": "く.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "ぐ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.0
+    },
+    {
+      "file": "け.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.8
+    },
+    {
+      "file": "げ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.7
+    },
+    {
+      "file": "こ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.4
+    },
+    {
+      "file": "ご.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.2
+    },
+    {
+      "file": "さ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -0.2
+    },
+    {
+      "file": "ざ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "し.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.0
+    },
+    {
+      "file": "しゃ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.6
+    },
+    {
+      "file": "しゅ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.8
+    },
+    {
+      "file": "しょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.5
+    },
+    {
+      "file": "じ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "じゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "じゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.4
+    },
+    {
+      "file": "じょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.0
+    },
+    {
+      "file": "す.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.7
+    },
+    {
+      "file": "ず.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.6
+    },
+    {
+      "file": "せ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.4
+    },
+    {
+      "file": "ぜ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.1
+    },
+    {
+      "file": "そ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "ぞ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.2
+    },
+    {
+      "file": "た.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.3
+    },
+    {
+      "file": "だ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.0
+    },
+    {
+      "file": "ち.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "ちゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "ちゅ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ちょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.3
+    },
+    {
+      "file": "ぢ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "つ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "づ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.6
+    },
+    {
+      "file": "て.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.3
+    },
+    {
+      "file": "で.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.4
+    },
+    {
+      "file": "と.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.4
+    },
+    {
+      "file": "ど.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.9
+    },
+    {
+      "file": "な.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.4
+    },
+    {
+      "file": "に.mp3",
+      "mean_volume": -19.2,
+      "max_volume": -3.7
+    },
+    {
+      "file": "にゃ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.7
+    },
+    {
+      "file": "にゅ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -4.0
+    },
+    {
+      "file": "にょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.7
+    },
+    {
+      "file": "ぬ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -4.1
+    },
+    {
+      "file": "ね.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.2
+    },
+    {
+      "file": "の.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.8
+    },
+    {
+      "file": "は.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.6
+    },
+    {
+      "file": "ば.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.5
+    },
+    {
+      "file": "ぱ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -0.4
+    },
+    {
+      "file": "ひ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.3
+    },
+    {
+      "file": "ひゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "ひゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.8
+    },
+    {
+      "file": "ひょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.3
+    },
+    {
+      "file": "び.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.4
+    },
+    {
+      "file": "びゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.9
+    },
+    {
+      "file": "びゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.9
+    },
+    {
+      "file": "びょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.8
+    },
+    {
+      "file": "ぴ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.2
+    },
+    {
+      "file": "ぴゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.3
+    },
+    {
+      "file": "ぴゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "ぴょ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.8
+    },
+    {
+      "file": "ふ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.5
+    },
+    {
+      "file": "ぶ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.0
+    },
+    {
+      "file": "ぷ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.5
+    },
+    {
+      "file": "へ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.2
+    },
+    {
+      "file": "べ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.8
+    },
+    {
+      "file": "ぺ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.6
+    },
+    {
+      "file": "ほ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.2
+    },
+    {
+      "file": "ぼ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.2
+    },
+    {
+      "file": "ぽ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.5
+    },
+    {
+      "file": "ま.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "み.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.4
+    },
+    {
+      "file": "みゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "みゅ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -5.1
+    },
+    {
+      "file": "みょ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -4.1
+    },
+    {
+      "file": "む.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.5
+    },
+    {
+      "file": "め.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.5
+    },
+    {
+      "file": "も.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.4
+    },
+    {
+      "file": "や.mp3",
+      "mean_volume": -19.0,
+      "max_volume": 0.0
+    },
+    {
+      "file": "ゆ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.4
+    },
+    {
+      "file": "よ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.4
+    },
+    {
+      "file": "ら.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "り.mp3",
+      "mean_volume": -19.2,
+      "max_volume": -0.0
+    },
+    {
+      "file": "りゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.7
+    },
+    {
+      "file": "りゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "りょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "る.mp3",
+      "mean_volume": -18.8,
+      "max_volume": -1.5
+    },
+    {
+      "file": "れ.mp3",
+      "mean_volume": -19.2,
+      "max_volume": 0.0
+    },
+    {
+      "file": "ろ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.7
+    },
+    {
+      "file": "わ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.6
+    },
+    {
+      "file": "を.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.1
+    },
+    {
+      "file": "ん.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -5.4
+    },
+    {
+      "file": "ア.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.7
+    },
+    {
+      "file": "イ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.9
+    },
+    {
+      "file": "ウ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.5
+    },
+    {
+      "file": "エ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.9
+    },
+    {
+      "file": "オ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.1
+    },
+    {
+      "file": "カ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "ガ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.2
+    },
+    {
+      "file": "キ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.8
+    },
+    {
+      "file": "キャ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.9
+    },
+    {
+      "file": "キュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.7
+    },
+    {
+      "file": "キョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.6
+    },
+    {
+      "file": "ギ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -0.8
+    },
+    {
+      "file": "ギャ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -0.0
+    },
+    {
+      "file": "ギュ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.1
+    },
+    {
+      "file": "ギョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.9
+    },
+    {
+      "file": "ク.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "グ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.0
+    },
+    {
+      "file": "ケ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.8
+    },
+    {
+      "file": "ゲ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.7
+    },
+    {
+      "file": "コ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.4
+    },
+    {
+      "file": "ゴ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.2
+    },
+    {
+      "file": "サ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -0.2
+    },
+    {
+      "file": "ザ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "シ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.0
+    },
+    {
+      "file": "シャ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.6
+    },
+    {
+      "file": "シュ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.8
+    },
+    {
+      "file": "ショ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.5
+    },
+    {
+      "file": "ジ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "ジャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "ジュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.4
+    },
+    {
+      "file": "ジョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.0
+    },
+    {
+      "file": "ス.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.7
+    },
+    {
+      "file": "ズ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.6
+    },
+    {
+      "file": "セ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.4
+    },
+    {
+      "file": "ゼ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.1
+    },
+    {
+      "file": "ソ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "ゾ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.2
+    },
+    {
+      "file": "タ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.3
+    },
+    {
+      "file": "ダ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.0
+    },
+    {
+      "file": "チ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "チャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "チュ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.0
+    },
+    {
+      "file": "チョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.3
+    },
+    {
+      "file": "ヂ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "ツ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ヅ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.6
+    },
+    {
+      "file": "テ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.3
+    },
+    {
+      "file": "デ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.4
+    },
+    {
+      "file": "ト.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.4
+    },
+    {
+      "file": "ド.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.9
+    },
+    {
+      "file": "ナ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.4
+    },
+    {
+      "file": "ニ.mp3",
+      "mean_volume": -19.2,
+      "max_volume": -3.7
+    },
+    {
+      "file": "ニャ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.7
+    },
+    {
+      "file": "ニュ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -4.0
+    },
+    {
+      "file": "ニョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.7
+    },
+    {
+      "file": "ヌ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -4.1
+    },
+    {
+      "file": "ネ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.2
+    },
+    {
+      "file": "ノ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.8
+    },
+    {
+      "file": "ハ.mp3",
+      "mean_volume": -19.2,
+      "max_volume": -1.3
+    },
+    {
+      "file": "バ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.5
+    },
+    {
+      "file": "パ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -0.4
+    },
+    {
+      "file": "ヒ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.7
+    },
+    {
+      "file": "ヒャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "ヒュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.8
+    },
+    {
+      "file": "ヒョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.3
+    },
+    {
+      "file": "ビ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.4
+    },
+    {
+      "file": "ビャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.9
+    },
+    {
+      "file": "ビュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.9
+    },
+    {
+      "file": "ビョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.8
+    },
+    {
+      "file": "ピ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.2
+    },
+    {
+      "file": "ピャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.3
+    },
+    {
+      "file": "ピュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "ピョ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.8
+    },
+    {
+      "file": "フ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.4
+    },
+    {
+      "file": "ブ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.0
+    },
+    {
+      "file": "プ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.5
+    },
+    {
+      "file": "ヘ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "ベ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.8
+    },
+    {
+      "file": "ペ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.6
+    },
+    {
+      "file": "ホ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.9
+    },
+    {
+      "file": "ボ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.2
+    },
+    {
+      "file": "ポ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.5
+    },
+    {
+      "file": "マ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "ミ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.4
+    },
+    {
+      "file": "ミャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "ミュ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -5.1
+    },
+    {
+      "file": "ミョ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -4.1
+    },
+    {
+      "file": "ム.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.5
+    },
+    {
+      "file": "メ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.5
+    },
+    {
+      "file": "モ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.4
+    },
+    {
+      "file": "ヤ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": 0.0
+    },
+    {
+      "file": "ユ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.4
+    },
+    {
+      "file": "ヨ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.4
+    },
+    {
+      "file": "ラ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "リ.mp3",
+      "mean_volume": -19.2,
+      "max_volume": -0.0
+    },
+    {
+      "file": "リャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.7
+    },
+    {
+      "file": "リュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "リョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "ル.mp3",
+      "mean_volume": -18.8,
+      "max_volume": -1.5
+    },
+    {
+      "file": "レ.mp3",
+      "mean_volume": -19.2,
+      "max_volume": 0.0
+    },
+    {
+      "file": "ロ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.7
+    },
+    {
+      "file": "ワ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.6
+    },
+    {
+      "file": "ヲ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.1
+    },
+    {
+      "file": "ン.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -5.4
+    }
+  ],
+  "sora": [
+    {
+      "file": "あ.mp3",
+      "mean_volume": -19.2,
+      "max_volume": -0.0
+    },
+    {
+      "file": "い.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "う.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -5.4
+    },
+    {
+      "file": "え.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -5.1
+    },
+    {
+      "file": "お.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.6
+    },
+    {
+      "file": "か.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.5
+    },
+    {
+      "file": "が.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.3
+    },
+    {
+      "file": "き.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.7
+    },
+    {
+      "file": "きゃ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.8
+    },
+    {
+      "file": "きゅ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -4.9
+    },
+    {
+      "file": "きょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.8
+    },
+    {
+      "file": "ぎ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ぎゃ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.0
+    },
+    {
+      "file": "ぎゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.6
+    },
+    {
+      "file": "ぎょ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.2
+    },
+    {
+      "file": "く.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.9
+    },
+    {
+      "file": "ぐ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.9
+    },
+    {
+      "file": "け.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.7
+    },
+    {
+      "file": "げ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.7
+    },
+    {
+      "file": "こ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.5
+    },
+    {
+      "file": "ご.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.1
+    },
+    {
+      "file": "さ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.1
+    },
+    {
+      "file": "ざ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.0
+    },
+    {
+      "file": "し.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "しゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.3
+    },
+    {
+      "file": "しゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.6
+    },
+    {
+      "file": "しょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "じ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.3
+    },
+    {
+      "file": "じゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "じゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.8
+    },
+    {
+      "file": "じょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.2
+    },
+    {
+      "file": "す.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.0
+    },
+    {
+      "file": "ず.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "せ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.6
+    },
+    {
+      "file": "ぜ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.8
+    },
+    {
+      "file": "そ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.4
+    },
+    {
+      "file": "ぞ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.6
+    },
+    {
+      "file": "た.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.2
+    },
+    {
+      "file": "だ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.9
+    },
+    {
+      "file": "ち.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.8
+    },
+    {
+      "file": "ちゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ちゅ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.3
+    },
+    {
+      "file": "ちょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.4
+    },
+    {
+      "file": "ぢ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.3
+    },
+    {
+      "file": "つ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.9
+    },
+    {
+      "file": "づ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "て.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.1
+    },
+    {
+      "file": "で.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.4
+    },
+    {
+      "file": "と.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.9
+    },
+    {
+      "file": "ど.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.3
+    },
+    {
+      "file": "な.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "に.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.7
+    },
+    {
+      "file": "にゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "にゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.7
+    },
+    {
+      "file": "にょ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.7
+    },
+    {
+      "file": "ぬ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.9
+    },
+    {
+      "file": "ね.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.7
+    },
+    {
+      "file": "の.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.3
+    },
+    {
+      "file": "は.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ば.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -0.0
+    },
+    {
+      "file": "ぱ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.3
+    },
+    {
+      "file": "ひ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "ひゃ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.7
+    },
+    {
+      "file": "ひゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.6
+    },
+    {
+      "file": "ひょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.3
+    },
+    {
+      "file": "び.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "びゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.1
+    },
+    {
+      "file": "びゅ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.2
+    },
+    {
+      "file": "びょ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.8
+    },
+    {
+      "file": "ぴ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.0
+    },
+    {
+      "file": "ぴゃ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.7
+    },
+    {
+      "file": "ぴゅ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ぴょ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.8
+    },
+    {
+      "file": "ふ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -6.8
+    },
+    {
+      "file": "ぶ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.2
+    },
+    {
+      "file": "ぷ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "へ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.5
+    },
+    {
+      "file": "べ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "ぺ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -5.1
+    },
+    {
+      "file": "ほ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.5
+    },
+    {
+      "file": "ぼ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "ぽ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ま.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.5
+    },
+    {
+      "file": "み.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.7
+    },
+    {
+      "file": "みゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.6
+    },
+    {
+      "file": "みゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -6.0
+    },
+    {
+      "file": "みょ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.6
+    },
+    {
+      "file": "む.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.8
+    },
+    {
+      "file": "め.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.6
+    },
+    {
+      "file": "も.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.8
+    },
+    {
+      "file": "や.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "ゆ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -5.0
+    },
+    {
+      "file": "よ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "ら.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.5
+    },
+    {
+      "file": "り.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.4
+    },
+    {
+      "file": "りゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.5
+    },
+    {
+      "file": "りゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.4
+    },
+    {
+      "file": "りょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.8
+    },
+    {
+      "file": "る.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.8
+    },
+    {
+      "file": "れ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.6
+    },
+    {
+      "file": "ろ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "わ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "を.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.6
+    },
+    {
+      "file": "ん.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -9.3
+    },
+    {
+      "file": "ア.mp3",
+      "mean_volume": -19.2,
+      "max_volume": -0.0
+    },
+    {
+      "file": "イ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "ウ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -5.4
+    },
+    {
+      "file": "エ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -5.1
+    },
+    {
+      "file": "オ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.6
+    },
+    {
+      "file": "カ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.5
+    },
+    {
+      "file": "ガ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.3
+    },
+    {
+      "file": "キ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.7
+    },
+    {
+      "file": "キャ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.8
+    },
+    {
+      "file": "キュ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -4.9
+    },
+    {
+      "file": "キョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.8
+    },
+    {
+      "file": "ギ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ギャ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.0
+    },
+    {
+      "file": "ギュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.6
+    },
+    {
+      "file": "ギョ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ク.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.9
+    },
+    {
+      "file": "グ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.9
+    },
+    {
+      "file": "ケ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.7
+    },
+    {
+      "file": "ゲ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.7
+    },
+    {
+      "file": "コ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.5
+    },
+    {
+      "file": "ゴ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.1
+    },
+    {
+      "file": "サ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.1
+    },
+    {
+      "file": "ザ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.0
+    },
+    {
+      "file": "シ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "シャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.3
+    },
+    {
+      "file": "シュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.6
+    },
+    {
+      "file": "ショ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ジ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.3
+    },
+    {
+      "file": "ジャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "ジュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.8
+    },
+    {
+      "file": "ジョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.2
+    },
+    {
+      "file": "ス.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.0
+    },
+    {
+      "file": "ズ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "セ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.6
+    },
+    {
+      "file": "ゼ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.8
+    },
+    {
+      "file": "ソ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.4
+    },
+    {
+      "file": "ゾ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.6
+    },
+    {
+      "file": "タ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.2
+    },
+    {
+      "file": "ダ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.9
+    },
+    {
+      "file": "チ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.8
+    },
+    {
+      "file": "チャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "チュ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.3
+    },
+    {
+      "file": "チョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.4
+    },
+    {
+      "file": "ヂ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.3
+    },
+    {
+      "file": "ツ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.9
+    },
+    {
+      "file": "ヅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "テ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.1
+    },
+    {
+      "file": "デ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.4
+    },
+    {
+      "file": "ト.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.9
+    },
+    {
+      "file": "ド.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.3
+    },
+    {
+      "file": "ナ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "ニ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.7
+    },
+    {
+      "file": "ニャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "ニュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.7
+    },
+    {
+      "file": "ニョ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.7
+    },
+    {
+      "file": "ヌ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.9
+    },
+    {
+      "file": "ネ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.7
+    },
+    {
+      "file": "ノ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.3
+    },
+    {
+      "file": "ハ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.4
+    },
+    {
+      "file": "バ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -0.0
+    },
+    {
+      "file": "パ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.3
+    },
+    {
+      "file": "ヒ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.4
+    },
+    {
+      "file": "ヒャ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.7
+    },
+    {
+      "file": "ヒュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.6
+    },
+    {
+      "file": "ヒョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.3
+    },
+    {
+      "file": "ビ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "ビャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.1
+    },
+    {
+      "file": "ビュ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ビョ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.8
+    },
+    {
+      "file": "ピ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.0
+    },
+    {
+      "file": "ピャ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.7
+    },
+    {
+      "file": "ピュ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ピョ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.8
+    },
+    {
+      "file": "フ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.8
+    },
+    {
+      "file": "ブ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.2
+    },
+    {
+      "file": "プ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ヘ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -5.1
+    },
+    {
+      "file": "ベ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "ペ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -5.1
+    },
+    {
+      "file": "ホ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.4
+    },
+    {
+      "file": "ボ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "ポ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "マ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.5
+    },
+    {
+      "file": "ミ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.7
+    },
+    {
+      "file": "ミャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.6
+    },
+    {
+      "file": "ミュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -6.0
+    },
+    {
+      "file": "ミョ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.6
+    },
+    {
+      "file": "ム.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.8
+    },
+    {
+      "file": "メ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.6
+    },
+    {
+      "file": "モ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.8
+    },
+    {
+      "file": "ヤ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "ユ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -5.0
+    },
+    {
+      "file": "ヨ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "ラ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.5
+    },
+    {
+      "file": "リ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.4
+    },
+    {
+      "file": "リャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.5
+    },
+    {
+      "file": "リュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.4
+    },
+    {
+      "file": "リョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.8
+    },
+    {
+      "file": "ル.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.8
+    },
+    {
+      "file": "レ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.6
+    },
+    {
+      "file": "ロ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "ワ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ヲ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.6
+    },
+    {
+      "file": "ン.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -9.3
+    }
+  ],
+  "tsumugi": [
+    {
+      "file": "あ.mp3",
+      "mean_volume": -20.6,
+      "max_volume": -0.0
+    },
+    {
+      "file": "い.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "う.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.5
+    },
+    {
+      "file": "え.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.9
+    },
+    {
+      "file": "お.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.3
+    },
+    {
+      "file": "か.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.9
+    },
+    {
+      "file": "が.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.8
+    },
+    {
+      "file": "き.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "きゃ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.3
+    },
+    {
+      "file": "きゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "きょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ぎ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.6
+    },
+    {
+      "file": "ぎゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.6
+    },
+    {
+      "file": "ぎゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.3
+    },
+    {
+      "file": "ぎょ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.8
+    },
+    {
+      "file": "く.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.5
+    },
+    {
+      "file": "ぐ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.6
+    },
+    {
+      "file": "け.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "げ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.7
+    },
+    {
+      "file": "こ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "ご.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.4
+    },
+    {
+      "file": "さ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.3
+    },
+    {
+      "file": "ざ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "し.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.0
+    },
+    {
+      "file": "しゃ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.2
+    },
+    {
+      "file": "しゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "しょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.6
+    },
+    {
+      "file": "じ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.5
+    },
+    {
+      "file": "じゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.8
+    },
+    {
+      "file": "じゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.1
+    },
+    {
+      "file": "じょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "す.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.4
+    },
+    {
+      "file": "ず.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.8
+    },
+    {
+      "file": "せ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -4.7
+    },
+    {
+      "file": "ぜ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "そ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.9
+    },
+    {
+      "file": "ぞ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "た.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.6
+    },
+    {
+      "file": "だ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.4
+    },
+    {
+      "file": "ち.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "ちゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.8
+    },
+    {
+      "file": "ちゅ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.5
+    },
+    {
+      "file": "ちょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ぢ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.5
+    },
+    {
+      "file": "つ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.7
+    },
+    {
+      "file": "づ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.8
+    },
+    {
+      "file": "て.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.5
+    },
+    {
+      "file": "で.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.1
+    },
+    {
+      "file": "と.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.3
+    },
+    {
+      "file": "ど.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "な.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.9
+    },
+    {
+      "file": "に.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.8
+    },
+    {
+      "file": "にゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.6
+    },
+    {
+      "file": "にゅ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.9
+    },
+    {
+      "file": "にょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "ぬ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.6
+    },
+    {
+      "file": "ね.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.4
+    },
+    {
+      "file": "の.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.9
+    },
+    {
+      "file": "は.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.2
+    },
+    {
+      "file": "ば.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "ぱ.mp3",
+      "mean_volume": -19.2,
+      "max_volume": 0.0
+    },
+    {
+      "file": "ひ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ひゃ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -0.8
+    },
+    {
+      "file": "ひゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.8
+    },
+    {
+      "file": "ひょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "び.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.4
+    },
+    {
+      "file": "びゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.2
+    },
+    {
+      "file": "びゅ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.6
+    },
+    {
+      "file": "びょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.9
+    },
+    {
+      "file": "ぴ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.6
+    },
+    {
+      "file": "ぴゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.9
+    },
+    {
+      "file": "ぴゅ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.8
+    },
+    {
+      "file": "ぴょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "ふ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "ぶ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ぷ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.7
+    },
+    {
+      "file": "へ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.5
+    },
+    {
+      "file": "べ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "ぺ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ほ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.7
+    },
+    {
+      "file": "ぼ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ぽ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.3
+    },
+    {
+      "file": "ま.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "み.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.8
+    },
+    {
+      "file": "みゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.8
+    },
+    {
+      "file": "みゅ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -5.7
+    },
+    {
+      "file": "みょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.4
+    },
+    {
+      "file": "む.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.1
+    },
+    {
+      "file": "め.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.6
+    },
+    {
+      "file": "も.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.8
+    },
+    {
+      "file": "や.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "ゆ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -5.7
+    },
+    {
+      "file": "よ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.8
+    },
+    {
+      "file": "ら.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.1
+    },
+    {
+      "file": "り.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.4
+    },
+    {
+      "file": "りゃ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "りゅ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.5
+    },
+    {
+      "file": "りょ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.7
+    },
+    {
+      "file": "る.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.4
+    },
+    {
+      "file": "れ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ろ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.8
+    },
+    {
+      "file": "わ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.5
+    },
+    {
+      "file": "を.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.3
+    },
+    {
+      "file": "ん.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.5
+    },
+    {
+      "file": "ア.mp3",
+      "mean_volume": -20.6,
+      "max_volume": -0.0
+    },
+    {
+      "file": "イ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "ウ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.5
+    },
+    {
+      "file": "エ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.9
+    },
+    {
+      "file": "オ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.3
+    },
+    {
+      "file": "カ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.9
+    },
+    {
+      "file": "ガ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.8
+    },
+    {
+      "file": "キ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "キャ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.3
+    },
+    {
+      "file": "キュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "キョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ギ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.6
+    },
+    {
+      "file": "ギャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.6
+    },
+    {
+      "file": "ギュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.3
+    },
+    {
+      "file": "ギョ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.8
+    },
+    {
+      "file": "ク.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.5
+    },
+    {
+      "file": "グ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.6
+    },
+    {
+      "file": "ケ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "ゲ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.7
+    },
+    {
+      "file": "コ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "ゴ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.4
+    },
+    {
+      "file": "サ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.3
+    },
+    {
+      "file": "ザ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "シ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.0
+    },
+    {
+      "file": "シャ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.2
+    },
+    {
+      "file": "シュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ショ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.6
+    },
+    {
+      "file": "ジ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.5
+    },
+    {
+      "file": "ジャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.8
+    },
+    {
+      "file": "ジュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.1
+    },
+    {
+      "file": "ジョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ス.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.4
+    },
+    {
+      "file": "ズ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.8
+    },
+    {
+      "file": "セ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -4.7
+    },
+    {
+      "file": "ゼ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "ソ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.9
+    },
+    {
+      "file": "ゾ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "タ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.6
+    },
+    {
+      "file": "ダ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.4
+    },
+    {
+      "file": "チ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "チャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.8
+    },
+    {
+      "file": "チュ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.5
+    },
+    {
+      "file": "チョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ヂ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.5
+    },
+    {
+      "file": "ツ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.7
+    },
+    {
+      "file": "ヅ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -1.8
+    },
+    {
+      "file": "テ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.5
+    },
+    {
+      "file": "デ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.1
+    },
+    {
+      "file": "ト.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.3
+    },
+    {
+      "file": "ド.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "ナ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.9
+    },
+    {
+      "file": "ニ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.8
+    },
+    {
+      "file": "ニャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.6
+    },
+    {
+      "file": "ニュ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.9
+    },
+    {
+      "file": "ニョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.2
+    },
+    {
+      "file": "ヌ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.6
+    },
+    {
+      "file": "ネ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.4
+    },
+    {
+      "file": "ノ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.9
+    },
+    {
+      "file": "ハ.mp3",
+      "mean_volume": -19.2,
+      "max_volume": 0.0
+    },
+    {
+      "file": "バ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "パ.mp3",
+      "mean_volume": -19.2,
+      "max_volume": 0.0
+    },
+    {
+      "file": "ヒ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.1
+    },
+    {
+      "file": "ヒャ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -0.8
+    },
+    {
+      "file": "ヒュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.8
+    },
+    {
+      "file": "ヒョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.1
+    },
+    {
+      "file": "ビ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.4
+    },
+    {
+      "file": "ビャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.2
+    },
+    {
+      "file": "ビュ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.6
+    },
+    {
+      "file": "ビョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.9
+    },
+    {
+      "file": "ピ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.6
+    },
+    {
+      "file": "ピャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.9
+    },
+    {
+      "file": "ピュ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.8
+    },
+    {
+      "file": "ピョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "フ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.9
+    },
+    {
+      "file": "ブ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.2
+    },
+    {
+      "file": "プ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -1.7
+    },
+    {
+      "file": "ヘ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -3.2
+    },
+    {
+      "file": "ベ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.5
+    },
+    {
+      "file": "ペ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ホ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "ボ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ポ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.3
+    },
+    {
+      "file": "マ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "ミ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.8
+    },
+    {
+      "file": "ミャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.8
+    },
+    {
+      "file": "ミュ.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -5.7
+    },
+    {
+      "file": "ミョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -5.4
+    },
+    {
+      "file": "ム.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.1
+    },
+    {
+      "file": "メ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.6
+    },
+    {
+      "file": "モ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -4.8
+    },
+    {
+      "file": "ヤ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.9
+    },
+    {
+      "file": "ユ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -5.7
+    },
+    {
+      "file": "ヨ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.8
+    },
+    {
+      "file": "ラ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.1
+    },
+    {
+      "file": "リ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -2.4
+    },
+    {
+      "file": "リャ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.7
+    },
+    {
+      "file": "リュ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.5
+    },
+    {
+      "file": "リョ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -3.7
+    },
+    {
+      "file": "ル.mp3",
+      "mean_volume": -18.9,
+      "max_volume": -2.4
+    },
+    {
+      "file": "レ.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -3.0
+    },
+    {
+      "file": "ロ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -2.8
+    },
+    {
+      "file": "ワ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -0.5
+    },
+    {
+      "file": "ヲ.mp3",
+      "mean_volume": -19.0,
+      "max_volume": -1.3
+    },
+    {
+      "file": "ン.mp3",
+      "mean_volume": -19.1,
+      "max_volume": -4.5
+    }
+  ]
+}
