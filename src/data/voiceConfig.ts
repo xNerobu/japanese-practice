@@ -31,6 +31,6 @@ export const VOICE_CHARACTERS: VoiceCharacter[] = [
 
 export const VOICE_TERMS_LINKS = {
   metan: "https://zunko.jp/con_ongen_kiyaku.html",
-  tsumugi: "https://virvoxproject.wixsite.com/official/tsumugi",
+  tsumugi: "https://tsumugi-official.studio.site/rule",
   sora: "https://zunko.jp/con_ongen_kiyaku.html"
 };

@@ -35,7 +35,7 @@
 | 角色 | 授權條款 | 允許條款 |
 |------|---------|---------|
 | 四國めたん | [ZUNKO 音源利用規約](https://zunko.jp/con_ongen_kiyaku.html) | 「音声合成ソフトで生成した音声は、商用・非商用を問わず無償で利用可能」 |
-| 春日部つむぎ | [ViRVOX Project 角色頁面](https://virvoxproject.wixsite.com/official/tsumugi) | 商用・非商用問わず無償利用可、クレジット表記必須 |
+| 春日部つむぎ | [利用規約](https://tsumugi-official.studio.site/rule) | 商用・非商用問わず無償利用可、クレジット表記必須 |
 | 九州そら | [ZUNKO 音源利用規約](https://zunko.jp/con_ongen_kiyaku.html) | 「音声合成ソフトで生成した音声は、商用・非商用を問わず無償で利用可能」 |
 
 **VOICEVOX 軟體授權**：LGPL v3（引擎）、MIT/LGPL v3 雙授權（核心函式庫）
