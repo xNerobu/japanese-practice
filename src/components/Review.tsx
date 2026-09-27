@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { KanaChar } from '../data/kana';
 import type { ProgressData } from '../utils/progress';
+import { recordDailyActivity, addExp } from '../utils/progress';
 import { getDueCards, getReviewStats, initializeSRS, updateSRS } from '../utils/spacedRepetition';
 import { speakKana, isSpeechSupported } from '../utils/speech';
 import { Volume2, Check, X, RotateCcw } from 'lucide-react';
@@ -10,11 +11,12 @@ interface ReviewProps {
   kanaType: 'hiragana' | 'katakana';
   progress: ProgressData;
   onProgressUpdate: (progress: ProgressData) => void;
+  onExpGain?: (amount: number, leveledUp: boolean, oldLevel?: number, newLevel?: number) => void;
 }
 
 type ReviewState = 'start' | 'question' | 'answer' | 'complete';
 
-export function Review({ data, kanaType, progress, onProgressUpdate }: ReviewProps) {
+export function Review({ data, kanaType, progress, onProgressUpdate, onExpGain }: ReviewProps) {
   const [reviewState, setReviewState] = useState<ReviewState>('start');
   const [dueCards, setDueCards] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,6 +25,7 @@ export function Review({ data, kanaType, progress, onProgressUpdate }: ReviewPro
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [sessionStats, setSessionStats] = useState({ correct: 0, total: 0 });
+  const [isFirstReview, setIsFirstReview] = useState(true);
 
   const allChars = data.map(k => k.char);
   const stats = getReviewStats(progress[kanaType], allChars);
@@ -40,6 +43,7 @@ export function Review({ data, kanaType, progress, onProgressUpdate }: ReviewPro
     }
     setCurrentIndex(0);
     setSessionStats({ correct: 0, total: 0 });
+    setIsFirstReview(true);
     setReviewState('question');
     generateQuestion(0);
   };
@@ -87,7 +91,7 @@ export function Review({ data, kanaType, progress, onProgressUpdate }: ReviewPro
 
     const updatedSRS = updateSRS(currentProgress.srs || initializeSRS(currentChar.char), quality);
 
-    const updatedProgress: ProgressData = {
+    let updatedProgress: ProgressData = {
       ...progress,
       [kanaType]: {
         ...progress[kanaType],
@@ -100,8 +104,26 @@ export function Review({ data, kanaType, progress, onProgressUpdate }: ReviewPro
         },
       },
     };
+    
+    // Record daily activity
+    updatedProgress = recordDailyActivity(updatedProgress, correct);
+    
+    // Award EXP: scale 5-10 based on quality (0-5)
+    // quality 0-2: 5 EXP, quality 3: 7 EXP, quality 4: 8 EXP, quality 5: 10 EXP
+    const expAmount = Math.floor(5 + (quality / 5) * 5);
+    const expResult = addExp(updatedProgress, expAmount, isFirstReview);
+    updatedProgress = expResult.progress;
+    
+    if (isFirstReview) {
+      setIsFirstReview(false);
+    }
 
     onProgressUpdate(updatedProgress);
+    
+    // Trigger EXP animation
+    if (onExpGain) {
+      onExpGain(expResult.expGained, expResult.leveledUp, expResult.oldLevel, expResult.newLevel);
+    }
 
     // Move to next card or complete
     setTimeout(() => {

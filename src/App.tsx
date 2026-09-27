@@ -4,8 +4,10 @@ import { Quiz } from './components/Quiz';
 import { Review } from './components/Review';
 import { HandwritingPractice } from './components/HandwritingPractice';
 import { VoicePicker } from './components/VoicePicker';
+import { Progress } from './components/Progress';
+import { LevelBadge, ExpAnimation, LevelUpModal } from './components/ExpSystem';
 import { hiraganaData, katakanaData } from './data/kana';
-import { loadProgress, saveProgress, getAccuracy } from './utils/progress';
+import { loadProgress, saveProgress } from './utils/progress';
 import type { ProgressData } from './utils/progress';
 import { initSpeech } from './utils/speech';
 import { getReviewStats } from './utils/spacedRepetition';
@@ -20,6 +22,8 @@ function App() {
   const [kanaType, setKanaType] = useState<KanaType>('hiragana');
   const [progress, setProgress] = useState<ProgressData>(loadProgress());
   const [showVoicePicker, setShowVoicePicker] = useState(false);
+  const [expAnimation, setExpAnimation] = useState<number | null>(null);
+  const [levelUpData, setLevelUpData] = useState<{ oldLevel: number; newLevel: number } | null>(null);
 
   useEffect(() => {
     initSpeech();
@@ -29,40 +33,52 @@ function App() {
     saveProgress(progress);
   }, [progress]);
 
+  // Handle EXP gain
+  const handleExpGain = (amount: number, leveledUp: boolean, oldLevel?: number, newLevel?: number) => {
+    setExpAnimation(amount);
+    if (leveledUp && oldLevel && newLevel) {
+      // Show level-up modal after animation
+      setTimeout(() => {
+        setLevelUpData({ oldLevel, newLevel });
+      }, 1600);
+    }
+  };
+
   const currentData = kanaType === 'hiragana' ? hiraganaData : katakanaData;
   const currentTitle = kanaType === 'hiragana' ? '平假名' : '片假名';
-
-  const progressStats = Object.values(progress[kanaType]);
-  const totalPracticed = progressStats.length;
-  const avgAccuracy = totalPracticed > 0
-    ? progressStats.reduce((sum, p) => sum + getAccuracy(p), 0) / totalPracticed
-    : 0;
 
   // Get review stats for due count badge
   const allChars = currentData.map(k => k.char);
   const reviewStats = getReviewStats(progress[kanaType], allChars);
   const dueCount = reviewStats.due;
 
+  const exp = progress.exp || { totalExp: 0, level: 1 };
+
   return (
     <div className="min-h-screen pb-20">
       <div className="max-w-4xl mx-auto px-4 py-6">
-        <header className="text-center mb-8">
+        <header className="text-center mb-6">
           <div className="flex items-center justify-between mb-2">
             <div className="w-10"></div>
-            <h1 className="text-4xl font-bold text-purple-600 dark:text-purple-400 flex-1">
+            <h1 className="text-3xl sm:text-4xl font-bold text-purple-600 dark:text-purple-400 flex-1">
               日語假名學習
             </h1>
             <button
               onClick={() => setShowVoicePicker(true)}
-              className="p-2 rounded-full bg-purple-100 dark:bg-purple-900 hover:bg-purple-200 dark:hover:bg-purple-800 transition-colors"
+              className="p-2 rounded-full bg-purple-100 dark:bg-purple-900 hover:bg-purple-200 dark:hover:bg-purple-800 transition-colors flex-shrink-0"
               aria-label="聲音設定"
             >
-              <Settings size={24} className="text-purple-600 dark:text-purple-400" />
+              <Settings size={20} className="text-purple-600 dark:text-purple-400" />
             </button>
           </div>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
             學習平假名和片假名的互動工具
           </p>
+          
+          {/* Level Badge and EXP Bar */}
+          <div className="max-w-md mx-auto">
+            <LevelBadge exp={exp} compact />
+          </div>
         </header>
 
         <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
@@ -161,6 +177,7 @@ function App() {
               kanaType={kanaType}
               progress={progress}
               onProgressUpdate={setProgress}
+              onExpGain={handleExpGain}
             />
           )}
           {view === 'review' && (
@@ -169,6 +186,7 @@ function App() {
               kanaType={kanaType}
               progress={progress}
               onProgressUpdate={setProgress}
+              onExpGain={handleExpGain}
             />
           )}
           {view === 'handwriting' && (
@@ -177,95 +195,16 @@ function App() {
               kanaType={kanaType}
               progress={progress}
               onProgressUpdate={setProgress}
+              onExpGain={handleExpGain}
             />
           )}
           {view === 'progress' && (
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
-                  <div className="text-gray-600 dark:text-gray-400 mb-2">已練習字符</div>
-                  <div className="text-4xl font-bold text-purple-600 dark:text-purple-400">
-                    {totalPracticed}
-                  </div>
-                </div>
-                <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
-                  <div className="text-gray-600 dark:text-gray-400 mb-2">平均正確率</div>
-                  <div className="text-4xl font-bold text-purple-600 dark:text-purple-400">
-                    {Math.round(avgAccuracy)}%
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
-                <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">
-                  各字符表現
-                </h3>
-                {totalPracticed === 0 ? (
-                  <div className="text-center text-gray-600 dark:text-gray-400 py-8">
-                    還沒有練習記錄。開始測驗來追蹤你的進度！
-                  </div>
-                ) : (
-                  <div className="space-y-2 max-h-96 overflow-y-auto">
-                    {Object.values(progress[kanaType])
-                      .sort((a, b) => getAccuracy(a) - getAccuracy(b))
-                      .map(charProgress => {
-                        const accuracy = getAccuracy(charProgress);
-                        const total = charProgress.correct + charProgress.incorrect;
-                        const kana = currentData.find(k => k.char === charProgress.char);
-
-                        return (
-                          <div
-                            key={charProgress.char}
-                            className="flex items-center gap-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
-                          >
-                            <div className="text-2xl font-bold w-12 text-center">
-                              {charProgress.char}
-                            </div>
-                            <div className="text-gray-600 dark:text-gray-400 w-16">
-                              {kana?.romaji}
-                            </div>
-                            <div className="flex-1">
-                              <div className="flex items-center gap-2">
-                                <div className="flex-1 bg-gray-200 dark:bg-gray-600 rounded-full h-2">
-                                  <div
-                                    className={`h-2 rounded-full transition-all ${
-                                      accuracy >= 70
-                                        ? 'bg-green-500'
-                                        : accuracy >= 40
-                                        ? 'bg-yellow-500'
-                                        : 'bg-red-500'
-                                    }`}
-                                    style={{ width: `${accuracy}%` }}
-                                  />
-                                </div>
-                                <div className="text-sm font-semibold w-12 text-right">
-                                  {Math.round(accuracy)}%
-                                </div>
-                              </div>
-                            </div>
-                            <div className="text-sm text-gray-600 dark:text-gray-400">
-                              {charProgress.correct}/{total}
-                            </div>
-                          </div>
-                        );
-                      })}
-                  </div>
-                )}
-              </div>
-
-              {totalPracticed > 0 && (
-                <button
-                  onClick={() => {
-                    if (confirm('確定要清除所有進度記錄嗎？')) {
-                      setProgress({ hiragana: {}, katakana: {} });
-                    }
-                  }}
-                  className="w-full py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-colors"
-                >
-                  清除所有進度
-                </button>
-              )}
-            </div>
+            <Progress
+              data={currentData}
+              kanaType={kanaType}
+              progress={progress}
+              onProgressUpdate={setProgress}
+            />
           )}
         </main>
 
@@ -285,9 +224,25 @@ function App() {
         </footer>
       </div>
 
+      {/* Voice Picker Modal */}
       {showVoicePicker && <VoicePicker onClose={() => setShowVoicePicker(false)} />}
+
+      {/* EXP Animation */}
+      {expAnimation !== null && (
+        <ExpAnimation
+          amount={expAnimation}
+          onComplete={() => setExpAnimation(null)}
+        />
+      )}
+
+      {/* Level Up Modal */}
+      {levelUpData && (
+        <LevelUpModal
+          oldLevel={levelUpData.oldLevel}
+          newLevel={levelUpData.newLevel}
+          onClose={() => setLevelUpData(null)}
+        />
+      )}
     </div>
   );
 }
-
-export default App;
