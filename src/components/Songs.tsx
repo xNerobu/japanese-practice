@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { songsData, type Song, type ThemeWord } from '../data/songs';
+import { hiraganaData, katakanaData } from '../data/kana';
 import { speakKana } from '../utils/speech';
 import { addExp } from '../utils/progress';
 import type { ProgressData } from '../utils/progress';
@@ -11,7 +12,7 @@ interface SongsProps {
   onExpGain?: (amount: number, leveledUp: boolean, oldLevel?: number, newLevel?: number) => void;
 }
 
-type View = 'list' | 'detail' | 'quiz';
+type View = 'list' | 'detail' | 'quiz' | 'result';
 
 type QuizQuestion = {
   type: 'word-to-meaning' | 'audio-to-kana';
@@ -19,6 +20,12 @@ type QuizQuestion = {
   options: string[];
   correctAnswer: string;
 };
+
+interface MoraUnit {
+  text: string;
+  romaji: string;
+  isPlayable: boolean;
+}
 
 export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
   const [view, setView] = useState<View>('list');
@@ -30,6 +37,50 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [score, setScore] = useState({ correct: 0, total: 0 });
   const [isFirstQuestion, setIsFirstQuestion] = useState(true);
+  const [totalExpEarned, setTotalExpEarned] = useState(0);
+
+  // Create a combined kana lookup map
+  const kanaMap = new Map<string, string>();
+  [...hiraganaData, ...katakanaData].forEach(k => {
+    kanaMap.set(k.char, k.romaji);
+  });
+
+  // Split kana string into mora units (attach small kana to preceding kana)
+  const splitIntoMoraUnits = (kanaString: string): MoraUnit[] => {
+    const units: MoraUnit[] = [];
+    const smallKana = new Set(['ゃ', 'ゅ', 'ょ', 'ャ', 'ュ', 'ョ', 'ぁ', 'ぃ', 'ぅ', 'ぇ', 'ぉ', 'ァ', 'ィ', 'ゥ', 'ェ', 'ォ']);
+    
+    let i = 0;
+    while (i < kanaString.length) {
+      const char = kanaString[i];
+      
+      // Check if next character is a small kana
+      if (i + 1 < kanaString.length && smallKana.has(kanaString[i + 1])) {
+        const combined = char + kanaString[i + 1];
+        const romaji = kanaMap.get(combined) || combined;
+        units.push({ text: combined, romaji, isPlayable: true });
+        i += 2;
+      } 
+      // Long vowel marker (ー)
+      else if (char === 'ー') {
+        units.push({ text: char, romaji: 'ー', isPlayable: false });
+        i++;
+      }
+      // Small tsu (っ/ッ)
+      else if (char === 'っ' || char === 'ッ') {
+        units.push({ text: char, romaji: '(促音)', isPlayable: false });
+        i++;
+      }
+      // Regular kana
+      else {
+        const romaji = kanaMap.get(char) || char;
+        units.push({ text: char, romaji, isPlayable: kanaMap.has(char) });
+        i++;
+      }
+    }
+    
+    return units;
+  };
 
   const handleSongClick = (song: Song) => {
     setSelectedSong(song);
@@ -51,6 +102,7 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
     setIsCorrect(null);
     setScore({ correct: 0, total: 0 });
     setIsFirstQuestion(true);
+    setTotalExpEarned(0);
   };
 
   const speakWord = (text: string) => {
@@ -60,6 +112,18 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
       utterance.lang = 'ja-JP';
       utterance.rate = 0.8;
       window.speechSynthesis.speak(utterance);
+    }
+  };
+
+  const playMoraUnit = (unit: MoraUnit) => {
+    if (!unit.isPlayable) return;
+    
+    // Try to play with existing audio first
+    try {
+      speakKana(unit.text);
+    } catch {
+      // Fall back to browser TTS
+      speakWord(unit.text);
     }
   };
 
@@ -74,15 +138,38 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
       const questionType = Math.random() < 0.5 ? 'word-to-meaning' : 'audio-to-kana';
 
       if (questionType === 'word-to-meaning') {
-        // Show word, pick meaning
+        // Show kana, pick meaning
         const correctAnswer = word.meaning;
-        const allWords = songsData.flatMap(s => s.themeWords);
-        const wrongOptions = allWords
-          .filter(w => w.meaning !== word.meaning)
-          .map(w => w.meaning)
-          .filter((value, index, self) => self.indexOf(value) === index)
+        
+        // Get distractors: prefer same song first, then other songs
+        const sameSongWords = selectedSong.themeWords.filter(w => w.meaning !== word.meaning);
+        const otherSongWords = songsData
+          .filter(s => s.id !== selectedSong.id)
+          .flatMap(s => s.themeWords)
+          .filter(w => w.meaning !== word.meaning);
+        
+        const wrongOptions: string[] = [];
+        
+        // Add up to 3 from same song
+        sameSongWords
           .sort(() => Math.random() - 0.5)
-          .slice(0, 3);
+          .slice(0, 3)
+          .forEach(w => {
+            if (!wrongOptions.includes(w.meaning)) {
+              wrongOptions.push(w.meaning);
+            }
+          });
+        
+        // Fill remaining with other songs
+        if (wrongOptions.length < 3) {
+          otherSongWords
+            .sort(() => Math.random() - 0.5)
+            .forEach(w => {
+              if (wrongOptions.length < 3 && !wrongOptions.includes(w.meaning)) {
+                wrongOptions.push(w.meaning);
+              }
+            });
+        }
 
         const options = [correctAnswer, ...wrongOptions].sort(() => Math.random() - 0.5);
 
@@ -95,13 +182,36 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
       } else {
         // Play audio, pick kana reading
         const correctAnswer = word.kana;
-        const allWords = songsData.flatMap(s => s.themeWords);
-        const wrongOptions = allWords
-          .filter(w => w.kana !== word.kana)
-          .map(w => w.kana)
-          .filter((value, index, self) => self.indexOf(value) === index)
+        
+        // Get distractors: prefer same song first
+        const sameSongWords = selectedSong.themeWords.filter(w => w.kana !== word.kana);
+        const otherSongWords = songsData
+          .filter(s => s.id !== selectedSong.id)
+          .flatMap(s => s.themeWords)
+          .filter(w => w.kana !== word.kana);
+        
+        const wrongOptions: string[] = [];
+        
+        // Add up to 3 from same song
+        sameSongWords
           .sort(() => Math.random() - 0.5)
-          .slice(0, 3);
+          .slice(0, 3)
+          .forEach(w => {
+            if (!wrongOptions.includes(w.kana)) {
+              wrongOptions.push(w.kana);
+            }
+          });
+        
+        // Fill remaining with other songs
+        if (wrongOptions.length < 3) {
+          otherSongWords
+            .sort(() => Math.random() - 0.5)
+            .forEach(w => {
+              if (wrongOptions.length < 3 && !wrongOptions.includes(w.kana)) {
+                wrongOptions.push(w.kana);
+              }
+            });
+        }
 
         const options = [correctAnswer, ...wrongOptions].sort(() => Math.random() - 0.5);
 
@@ -120,6 +230,7 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
     setIsCorrect(null);
     setScore({ correct: 0, total: 0 });
     setIsFirstQuestion(true);
+    setTotalExpEarned(0);
     setView('quiz');
   };
 
@@ -142,6 +253,9 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
       setIsFirstQuestion(false);
     }
 
+    // Track total EXP earned
+    setTotalExpEarned(prev => prev + expResult.expGained);
+
     onProgressUpdate(updatedProgress);
 
     // Trigger EXP animation
@@ -156,14 +270,8 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
       setSelectedAnswer(null);
       setIsCorrect(null);
     } else {
-      // Quiz finished, stay on last question with results
-      setView('detail');
-      setQuizQuestions([]);
-      setCurrentQuestionIndex(0);
-      setSelectedAnswer(null);
-      setIsCorrect(null);
-      setScore({ correct: 0, total: 0 });
-      setIsFirstQuestion(true);
+      // Show result screen
+      setView('result');
     }
   };
 
@@ -216,6 +324,8 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
 
   // Detail view
   if (view === 'detail' && selectedSong) {
+    const moraUnits = splitIntoMoraUnits(selectedSong.titleKana);
+    
     return (
       <div className="space-y-6">
         <button
@@ -238,7 +348,7 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
           )}
           <p className="text-gray-700 dark:text-gray-300 mb-4">{selectedSong.description}</p>
 
-          {/* Title kana-by-kana */}
+          {/* Title kana-by-kana with mora units */}
           <div className="mb-4">
             <div className="flex items-center gap-2 mb-2">
               <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">標題讀音</h3>
@@ -251,16 +361,21 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
               </button>
             </div>
             <div className="flex flex-wrap gap-2">
-              {selectedSong.titleKana.split('').map((kana, idx) => (
+              {moraUnits.map((unit, idx) => (
                 <button
                   key={idx}
-                  onClick={() => speakKana(kana)}
-                  className="flex flex-col items-center gap-1 p-2 bg-purple-50 dark:bg-purple-900/30 rounded hover:bg-purple-100 dark:hover:bg-purple-800/50 transition-colors"
+                  onClick={() => playMoraUnit(unit)}
+                  disabled={!unit.isPlayable}
+                  className={`flex flex-col items-center gap-1 p-2 bg-purple-50 dark:bg-purple-900/30 rounded transition-colors ${
+                    unit.isPlayable
+                      ? 'hover:bg-purple-100 dark:hover:bg-purple-800/50 cursor-pointer'
+                      : 'opacity-60 cursor-not-allowed'
+                  }`}
                 >
-                  <span className="text-2xl font-bold text-gray-800 dark:text-gray-200">{kana}</span>
+                  <span className="text-2xl font-bold text-gray-800 dark:text-gray-200">{unit.text}</span>
                   {showRomaji && (
                     <span className="text-xs text-gray-600 dark:text-gray-400">
-                      {selectedSong.titleRomaji.split(' ').join('').charAt(idx) || ''}
+                      {unit.romaji}
                     </span>
                   )}
                 </button>
@@ -347,7 +462,7 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
 
         <div className="flex justify-between items-center text-gray-700 dark:text-gray-300">
           <div className="text-lg font-semibold">
-            題目 {selectedAnswer !== null ? currentQuestionIndex + 1 : currentQuestionIndex + 1} / {totalQuestions}
+            題目 {currentQuestionIndex + 1} / {totalQuestions}
           </div>
           <div className="text-lg font-semibold">
             得分：{score.correct} / {score.total}
@@ -358,12 +473,16 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
           <div className="text-center mb-6">
             {question.type === 'word-to-meaning' ? (
               <>
+                {/* Show only kana initially */}
                 <div className="text-4xl font-bold text-gray-800 dark:text-gray-200 mb-2">
-                  {question.word.word}
+                  {question.word.kana}
                 </div>
-                <div className="text-gray-600 dark:text-gray-400 mb-4">
-                  {question.word.kana} ({question.word.romaji})
-                </div>
+                {/* Reveal kanji and romaji after answering */}
+                {selectedAnswer !== null && (
+                  <div className="text-gray-600 dark:text-gray-400 mb-4">
+                    {question.word.word} ({question.word.romaji})
+                  </div>
+                )}
                 <div className="text-gray-600 dark:text-gray-400">請選擇正確的中文意思</div>
               </>
             ) : (
@@ -436,6 +555,56 @@ export function Songs({ progress, onProgressUpdate, onExpGain }: SongsProps) {
               </button>
             </>
           )}
+        </div>
+      </div>
+    );
+  }
+
+  // Result view
+  if (view === 'result') {
+    const percentage = score.total > 0 ? Math.round((score.correct / score.total) * 100) : 0;
+    
+    return (
+      <div className="space-y-6">
+        <button
+          onClick={handleBackToList}
+          className="flex items-center gap-2 text-purple-600 dark:text-purple-400 hover:underline"
+        >
+          <ArrowLeft size={20} />
+          <span>返回歌曲列表</span>
+        </button>
+
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg text-center">
+          <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">測驗完成！</h2>
+          
+          <div className="mb-6">
+            <div className="text-6xl font-bold text-purple-600 dark:text-purple-400 mb-4">
+              {percentage}%
+            </div>
+            <div className="text-xl text-gray-700 dark:text-gray-300 mb-2">
+              答對 {score.correct} / {score.total} 題
+            </div>
+            {totalExpEarned > 0 && (
+              <div className="text-lg text-purple-600 dark:text-purple-400">
+                獲得 {totalExpEarned} EXP
+              </div>
+            )}
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={startQuiz}
+              className="flex-1 px-6 py-3 bg-purple-500 hover:bg-purple-600 text-white font-bold rounded-lg transition-colors"
+            >
+              再測一次
+            </button>
+            <button
+              onClick={handleBackToDetail}
+              className="flex-1 px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white font-bold rounded-lg transition-colors"
+            >
+              返回歌曲
+            </button>
+          </div>
         </div>
       </div>
     );
