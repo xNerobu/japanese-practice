@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { hiraganaData, katakanaData } from '../data/kana';
 import type { KanaChar } from '../data/kana';
 import { updateCharProgress, getWeakChars, addExp } from '../utils/progress';
 import type { ProgressData } from '../utils/progress';
@@ -23,13 +24,17 @@ interface MissedKana {
   userAnswer: string;
 }
 
+interface QuestionData extends KanaChar {
+  script: 'hiragana' | 'katakana';
+}
+
 export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: ListeningQuizProps) {
   const [kanaTypeFilter, setKanaTypeFilter] = useState<KanaTypeFilter>(kanaType);
   const [filter, setFilter] = useState<QuizFilter>('all');
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
   const [selectedTypes, setSelectedTypes] = useState<string[]>(['basic']);
   const [isConfiguring, setIsConfiguring] = useState(true);
-  const [currentQuestion, setCurrentQuestion] = useState<KanaChar | null>(null);
+  const [currentQuestion, setCurrentQuestion] = useState<QuestionData | null>(null);
   const [options, setOptions] = useState<string[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -40,6 +45,7 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
   const [isFirstQuestion, setIsFirstQuestion] = useState(true);
   const [needsStartTap, setNeedsStartTap] = useState(true);
   const [missedKana, setMissedKana] = useState<MissedKana[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const allRows = [...new Set(data.map(k => k.row))];
   const allTypes = [
@@ -49,21 +55,36 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
     { key: 'yoon', label: '拗音' },
   ];
 
+  // Default selectedRows to all rows
+  useEffect(() => {
+    if (selectedRows.length === 0) {
+      setSelectedRows(allRows);
+    }
+  }, [allRows]);
+
   useEffect(() => {
     if (kanaTypeFilter !== kanaType && kanaTypeFilter !== 'mixed') {
       setKanaTypeFilter(kanaType);
     }
   }, [kanaType, kanaTypeFilter]);
 
+  // Auto-play audio when question changes (after start tap)
+  useEffect(() => {
+    if (currentQuestion && !needsStartTap && selectedAnswer === null) {
+      speakKana(currentQuestion.char);
+    }
+  }, [currentQuestion, needsStartTap, selectedAnswer]);
+
   const startQuiz = () => {
     if (selectedRows.length === 0) {
-      alert('請至少選擇一個行');
+      setErrorMessage('請至少選擇一個行');
       return;
     }
     if (selectedTypes.length === 0) {
-      alert('請至少選擇一個類型');
+      setErrorMessage('請至少選擇一個類型');
       return;
     }
+    setErrorMessage('');
     setIsConfiguring(false);
     setScore({ correct: 0, total: 0 });
     setShowResults(false);
@@ -71,73 +92,103 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
     setNeedsStartTap(true);
     setQuestionsRemaining(questionCount);
     setMissedKana([]);
-    generateQuestion();
+    
+    const question = generateQuestion();
+    if (question) {
+      setCurrentQuestion(question);
+    }
   };
 
-  const generateQuestion = () => {
-    let availableChars = data.filter(
-      k => selectedRows.includes(k.row) && selectedTypes.includes(k.type)
-    );
+  const generateQuestion = (): QuestionData | null => {
+    // Get the pool based on kanaTypeFilter
+    let availableChars: QuestionData[] = [];
+    
+    if (kanaTypeFilter === 'mixed') {
+      // Mix both hiragana and katakana
+      const hiraganaChars: QuestionData[] = hiraganaData
+        .filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type))
+        .map(k => ({ ...k, script: 'hiragana' as const }));
+      const katakanaChars: QuestionData[] = katakanaData
+        .filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type))
+        .map(k => ({ ...k, script: 'katakana' as const }));
+      availableChars = [...hiraganaChars, ...katakanaChars];
+    } else {
+      const dataset = kanaTypeFilter === 'hiragana' ? hiraganaData : katakanaData;
+      availableChars = dataset
+        .filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type))
+        .map(k => ({ ...k, script: kanaTypeFilter as 'hiragana' | 'katakana' }));
+    }
 
+    // Apply weak filter if needed
     if (filter === 'weak') {
-      const weakChars = getWeakChars(progress, kanaType, availableChars.map(k => k.char));
+      const scriptToUse = kanaTypeFilter === 'mixed' ? kanaType : kanaTypeFilter;
+      const weakChars = getWeakChars(progress, scriptToUse, availableChars.map(k => k.char));
       if (weakChars.length > 0) {
         availableChars = availableChars.filter(k => weakChars.includes(k.char));
       }
     }
 
     if (availableChars.length === 0) {
-      availableChars = data.filter(
-        k => selectedRows.includes(k.row) && selectedTypes.includes(k.type)
-      );
+      return null;
     }
 
     const question = availableChars[Math.floor(Math.random() * availableChars.length)];
-    setCurrentQuestion(question);
-    setSelectedAnswer(null);
-    setIsCorrect(null);
-
-    const correctAnswer = question.char;
-    const isHiragana = question.char.charCodeAt(0) >= 0x3040 && question.char.charCodeAt(0) <= 0x309F;
     
+    // Generate distractors from the same script
+    const isHiragana = question.script === 'hiragana';
+    const sameScriptData = isHiragana ? hiraganaData : katakanaData;
+    
+    // Get similar kana (can be from outside selected rows, but same script)
     const similarKana = getSimilarKana(question.char, isHiragana);
     let wrongOptions: string[] = [];
     
     if (similarKana.length > 0) {
-      const availableSimilar = similarKana.filter(k => 
-        availableChars.some(ac => ac.char === k)
+      // Always include the top one (most confusable) if available
+      const topSimilar = similarKana[0];
+      const topExists = sameScriptData.some(k => k.char === topSimilar);
+      if (topExists && topSimilar !== question.char) {
+        wrongOptions.push(topSimilar);
+      }
+      
+      // Randomly pick one more from the rest
+      const restSimilar = similarKana.slice(1).filter(k => 
+        sameScriptData.some(ac => ac.char === k) && k !== question.char && !wrongOptions.includes(k)
       );
-      wrongOptions = availableSimilar.slice(0, 2);
+      if (restSimilar.length > 0) {
+        const randomIdx = Math.floor(Math.random() * restSimilar.length);
+        wrongOptions.push(restSimilar[randomIdx]);
+      }
     }
     
-    while (wrongOptions.length < 3) {
-      const randomChar = availableChars[Math.floor(Math.random() * availableChars.length)];
+    // Fill remaining with random from available chars
+    const availableSameScript = availableChars.filter(k => k.script === question.script);
+    while (wrongOptions.length < 3 && availableSameScript.length > wrongOptions.length + 1) {
+      const randomChar = availableSameScript[Math.floor(Math.random() * availableSameScript.length)];
       if (randomChar.char !== question.char && !wrongOptions.includes(randomChar.char)) {
         wrongOptions.push(randomChar.char);
       }
     }
     
     wrongOptions = wrongOptions.slice(0, 3);
-
-    const allOptions = [correctAnswer, ...wrongOptions].sort(() => Math.random() - 0.5);
+    const allOptions = [question.char, ...wrongOptions].sort(() => Math.random() - 0.5);
     setOptions(allOptions);
+    setSelectedAnswer(null);
+    setIsCorrect(null);
+    
+    return question;
   };
 
-  const playQuestionAudio = () => {
+  const handleStartTap = () => {
+    setNeedsStartTap(false);
     if (currentQuestion) {
       speakKana(currentQuestion.char);
     }
   };
 
-  const handleStartTap = () => {
-    setNeedsStartTap(false);
-    playQuestionAudio();
-  };
-
   const handleAnswer = (answer: string) => {
-    if (selectedAnswer !== null) return;
+    if (selectedAnswer !== null || !currentQuestion) return;
 
-    const correctAnswer = currentQuestion!.char;
+    const correctAnswer = currentQuestion.char;
     const correct = answer === correctAnswer;
 
     setSelectedAnswer(answer);
@@ -146,13 +197,14 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
 
     if (!correct) {
       setMissedKana(prev => [...prev, {
-        char: currentQuestion!.char,
-        romaji: currentQuestion!.romaji,
+        char: currentQuestion.char,
+        romaji: currentQuestion.romaji,
         userAnswer: answer,
       }]);
     }
 
-    let updatedProgress = updateCharProgress(progress, kanaType, currentQuestion!.char, correct);
+    // Update progress for the question's own script
+    let updatedProgress = updateCharProgress(progress, currentQuestion.script, currentQuestion.char, correct);
     
     const expResult = addExp(updatedProgress, correct ? 10 : 2, isFirstQuestion);
     updatedProgress = expResult.progress;
@@ -166,27 +218,27 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
     if (onExpGain) {
       onExpGain(expResult.expGained, expResult.leveledUp, expResult.oldLevel, expResult.newLevel);
     }
+  };
 
-    setTimeout(() => {
-      const remaining = questionsRemaining - 1;
-      setQuestionsRemaining(remaining);
-      
-      if (remaining <= 0) {
-        setShowResults(true);
-      } else {
-        generateQuestion();
-        setNeedsStartTap(false);
-        setTimeout(() => {
-          playQuestionAudio();
-        }, 100);
+  const handleNext = () => {
+    const remaining = questionsRemaining - 1;
+    setQuestionsRemaining(remaining);
+    
+    if (remaining <= 0) {
+      setShowResults(true);
+    } else {
+      const nextQuestion = generateQuestion();
+      if (nextQuestion) {
+        setCurrentQuestion(nextQuestion);
       }
-    }, 1800);
+    }
   };
 
   const resetQuiz = () => {
     setIsConfiguring(true);
     setQuestionsRemaining(questionCount);
     setCurrentQuestion(null);
+    setErrorMessage('');
   };
 
   const toggleRow = (row: string) => {
@@ -220,6 +272,12 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
   if (isConfiguring) {
     return (
       <div className="space-y-6">
+        {errorMessage && (
+          <div className="bg-red-100 dark:bg-red-900 border-2 border-red-500 text-red-800 dark:text-red-200 px-4 py-3 rounded-lg">
+            {errorMessage}
+          </div>
+        )}
+        
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
           <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">假名類型</h3>
           <div className="space-y-3">
@@ -430,6 +488,7 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
   if (!currentQuestion) return null;
 
   const correctAnswer = currentQuestion.char;
+  const isLastQuestion = questionsRemaining === 1;
 
   return (
     <div className="space-y-6">
@@ -442,7 +501,7 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg">
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg space-y-6">
         {needsStartTap ? (
           <div className="text-center space-y-6">
             <div className="text-xl text-gray-700 dark:text-gray-300">
@@ -457,14 +516,14 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
           </div>
         ) : (
           <>
-            <div className="text-center mb-8">
+            <div className="text-center">
               {selectedAnswer === null ? (
                 <>
                   <div className="flex items-center justify-center gap-4 mb-6">
                     <div className="text-5xl text-gray-400 dark:text-gray-500">🔊</div>
                   </div>
                   <button
-                    onClick={playQuestionAudio}
+                    onClick={() => speakKana(currentQuestion.char)}
                     className="px-6 py-3 bg-purple-500 hover:bg-purple-600 text-white font-bold text-lg rounded-lg transition-colors flex items-center gap-2 mx-auto"
                   >
                     <Volume2 size={24} />
@@ -483,24 +542,26 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
                     {currentQuestion.romaji}
                   </div>
                   {!isCorrect && selectedAnswer && (
-                    <div className="flex items-center justify-center gap-4">
+                    <div className="flex flex-col items-center gap-3">
                       <div className="text-sm text-gray-600 dark:text-gray-400">
                         比較發音：
                       </div>
-                      <button
-                        onClick={() => speakKana(currentQuestion.char)}
-                        className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors flex items-center gap-2"
-                      >
-                        <Volume2 size={20} />
-                        正確答案
-                      </button>
-                      <button
-                        onClick={() => speakKana(selectedAnswer)}
-                        className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors flex items-center gap-2"
-                      >
-                        <Volume2 size={20} />
-                        你的選擇
-                      </button>
+                      <div className="flex gap-3">
+                        <button
+                          onClick={() => speakKana(currentQuestion.char)}
+                          className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors flex items-center gap-2"
+                        >
+                          <Volume2 size={20} />
+                          正確答案
+                        </button>
+                        <button
+                          onClick={() => speakKana(selectedAnswer)}
+                          className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors flex items-center gap-2"
+                        >
+                          <Volume2 size={20} />
+                          你的選擇
+                        </button>
+                      </div>
                     </div>
                   )}
                 </>
@@ -547,13 +608,22 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
             </div>
 
             {selectedAnswer !== null && (
-              <div className={`mt-6 p-4 rounded-lg text-center text-lg font-semibold ${
-                isCorrect
-                  ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
-                  : 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
-              }`}>
-                {isCorrect ? '答對了！' : `答錯了。正確答案是：${correctAnswer} (${currentQuestion.romaji})`}
-              </div>
+              <>
+                <div className={`p-4 rounded-lg text-center text-lg font-semibold ${
+                  isCorrect
+                    ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
+                    : 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
+                }`}>
+                  {isCorrect ? '答對了！' : `答錯了。正確答案是：${correctAnswer} (${currentQuestion.romaji})`}
+                </div>
+                
+                <button
+                  onClick={handleNext}
+                  className="w-full py-4 bg-purple-500 hover:bg-purple-600 text-white font-bold text-xl rounded-lg transition-colors"
+                >
+                  {isLastQuestion ? '查看結果' : '下一題'}
+                </button>
+              </>
             )}
           </>
         )}
