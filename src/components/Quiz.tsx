@@ -30,7 +30,8 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [score, setScore] = useState({ correct: 0, total: 0 });
-  const [questionsRemaining, setQuestionsRemaining] = useState(10);
+  const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
+  const [totalQuestions] = useState(10);
   const [showResults, setShowResults] = useState(false);
   const [isFirstQuestion, setIsFirstQuestion] = useState(true);
 
@@ -50,9 +51,18 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
       setErrorMessage('請至少選擇一個類型');
       return;
     }
+    
+    // Check if selected rows ∩ types has any characters
+    const availableChars = data.filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type));
+    if (availableChars.length === 0) {
+      setErrorMessage('所選的行段和類型沒有任何假名，請重新選擇');
+      return;
+    }
+    
     setErrorMessage('');
     setIsConfiguring(false);
     setScore({ correct: 0, total: 0 });
+    setCurrentQuestionNumber(1);
     setShowResults(false);
     setIsFirstQuestion(true);
     generateQuestion();
@@ -117,12 +127,10 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
     }
 
     setTimeout(() => {
-      const remaining = questionsRemaining - 1;
-      setQuestionsRemaining(remaining);
-      
-      if (remaining <= 0) {
+      if (currentQuestionNumber >= totalQuestions) {
         setShowResults(true);
       } else {
+        setCurrentQuestionNumber(prev => prev + 1);
         generateQuestion();
       }
     }, 1500);
@@ -130,7 +138,7 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
 
   const resetQuiz = () => {
     setIsConfiguring(true);
-    setQuestionsRemaining(10);
+    setCurrentQuestionNumber(1);
     setCurrentQuestion(null);
   };
 
@@ -328,7 +336,7 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
     <div className="space-y-6">
       <div className="flex justify-between items-center text-gray-700 dark:text-gray-300">
         <div className="text-lg font-semibold">
-          題目 {score.total + 1} / {score.total + questionsRemaining}
+          題目 {currentQuestionNumber} / {totalQuestions}
         </div>
         <div className="text-lg font-semibold">
           得分：{score.correct} / {score.total}

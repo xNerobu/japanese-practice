@@ -41,7 +41,8 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [score, setScore] = useState({ correct: 0, total: 0 });
   const [questionCount, setQuestionCount] = useState(10);
-  const [questionsRemaining, setQuestionsRemaining] = useState(10);
+  const [currentQuestionNumber, setCurrentQuestionNumber] = useState(1);
+  const [totalQuestions, setTotalQuestions] = useState(10);
   const [showResults, setShowResults] = useState(false);
   const [isFirstQuestion, setIsFirstQuestion] = useState(true);
   const [needsStartTap, setNeedsStartTap] = useState(true);
@@ -77,13 +78,37 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
       setErrorMessage('請至少選擇一個類型');
       return;
     }
+    
+    // Check if selected rows ∩ types has any characters
+    let availableChars: QuestionData[] = [];
+    if (kanaTypeFilter === 'mixed') {
+      const hiraganaChars: QuestionData[] = hiraganaData
+        .filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type))
+        .map(k => ({ ...k, script: 'hiragana' as const }));
+      const katakanaChars: QuestionData[] = katakanaData
+        .filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type))
+        .map(k => ({ ...k, script: 'katakana' as const }));
+      availableChars = [...hiraganaChars, ...katakanaChars];
+    } else {
+      const dataset = kanaTypeFilter === 'hiragana' ? hiraganaData : katakanaData;
+      availableChars = dataset
+        .filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type))
+        .map(k => ({ ...k, script: kanaTypeFilter as 'hiragana' | 'katakana' }));
+    }
+    
+    if (availableChars.length === 0) {
+      setErrorMessage('所選的行段和類型沒有任何假名，請重新選擇');
+      return;
+    }
+    
     setErrorMessage('');
     setIsConfiguring(false);
     setScore({ correct: 0, total: 0 });
     setShowResults(false);
     setIsFirstQuestion(true);
     setNeedsStartTap(true);
-    setQuestionsRemaining(questionCount);
+    setCurrentQuestionNumber(1);
+    setTotalQuestions(questionCount);
     setMissedKana([]);
     
     const question = generateQuestion();
@@ -207,12 +232,10 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
   };
 
   const handleNext = () => {
-    const remaining = questionsRemaining - 1;
-    setQuestionsRemaining(remaining);
-    
-    if (remaining <= 0) {
+    if (currentQuestionNumber >= totalQuestions) {
       setShowResults(true);
     } else {
+      setCurrentQuestionNumber(prev => prev + 1);
       const nextQuestion = generateQuestion();
       if (nextQuestion) {
         setCurrentQuestion(nextQuestion);
@@ -222,7 +245,7 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
 
   const resetQuiz = () => {
     setIsConfiguring(true);
-    setQuestionsRemaining(questionCount);
+    setCurrentQuestionNumber(1);
     setCurrentQuestion(null);
     setErrorMessage('');
   };
@@ -474,13 +497,13 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
   if (!currentQuestion) return null;
 
   const correctAnswer = currentQuestion.char;
-  const isLastQuestion = questionsRemaining === 1;
+  const isLastQuestion = currentQuestionNumber >= totalQuestions;
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center text-gray-700 dark:text-gray-300">
         <div className="text-lg font-semibold">
-          題目 {score.total + 1} / {score.total + questionsRemaining}
+          題目 {currentQuestionNumber} / {totalQuestions}
         </div>
         <div className="text-lg font-semibold">
           得分：{score.correct} / {score.total}
