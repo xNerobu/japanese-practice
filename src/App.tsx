@@ -6,6 +6,7 @@ import { Review } from './components/Review';
 import { HandwritingPractice } from './components/HandwritingPractice';
 import { VoicePicker } from './components/VoicePicker';
 import { Progress } from './components/Progress';
+import { Songs } from './components/Songs';
 import { LevelBadge, ExpAnimation, LevelUpModal } from './components/ExpSystem';
 import { hiraganaData, katakanaData } from './data/kana';
 import { loadProgress, saveProgress } from './utils/progress';
@@ -13,9 +14,9 @@ import type { ProgressData } from './utils/progress';
 import { initSpeech } from './utils/speech';
 import { getReviewStats } from './utils/spacedRepetition';
 import { VOICE_CHARACTERS } from './data/voiceConfig';
-import { BookOpen, Brain, BarChart3, Calendar, PenTool, Settings, Headphones } from 'lucide-react';
+import { BookOpen, Brain, BarChart3, Calendar, PenTool, Settings, Headphones, Music2 } from 'lucide-react';
 
-type View = 'chart' | 'quiz' | 'listening' | 'review' | 'handwriting' | 'progress';
+type View = 'chart' | 'quiz' | 'listening' | 'review' | 'handwriting' | 'progress' | 'songs';
 type KanaType = 'hiragana' | 'katakana';
 
 function App() {
@@ -105,7 +106,7 @@ function App() {
           </button>
         </div>
 
-        <nav className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-6 bg-white dark:bg-gray-800 rounded-lg p-2 shadow-md">
+        <nav className="grid grid-cols-3 sm:grid-cols-7 gap-2 mb-6 bg-white dark:bg-gray-800 rounded-lg p-2 shadow-md">
           <button
             onClick={() => setView('chart')}
             className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
@@ -177,6 +178,17 @@ function App() {
             <BarChart3 size={20} />
             <span className="text-xs sm:text-base">進度</span>
           </button>
+          <button
+            onClick={() => setView('songs')}
+            className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
+              view === 'songs'
+                ? 'bg-purple-500 text-white'
+                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+            }`}
+          >
+            <Music2 size={20} />
+            <span className="text-xs sm:text-base">歌曲</span>
+          </button>
         </nav>
 
         <main>
@@ -225,6 +237,13 @@ function App() {
               kanaType={kanaType}
               progress={progress}
               onProgressUpdate={setProgress}
+            />
+          )}
+          {view === 'songs' && (
+            <Songs
+              progress={progress}
+              onProgressUpdate={setProgress}
+              onExpGain={handleExpGain}
             />
           )}
         </main>
