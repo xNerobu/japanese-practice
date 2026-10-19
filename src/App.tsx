@@ -185,6 +185,7 @@ function App() {
           )}
           {view === 'quiz' && (
             <Quiz
+              key={kanaType}
               data={currentData}
               kanaType={kanaType}
               progress={progress}
