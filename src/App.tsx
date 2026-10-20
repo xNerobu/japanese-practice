@@ -181,7 +181,11 @@ function App() {
 
         <main>
           {view === 'chart' && (
-            <KanaChart data={currentData} title={currentTitle} />
+            <KanaChart
+              data={currentData}
+              title={currentTitle}
+              charProgress={progress[kanaType]}
+            />
           )}
           {view === 'quiz' && (
             <Quiz

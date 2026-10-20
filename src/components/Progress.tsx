@@ -2,8 +2,10 @@ import { useState } from 'react';
 import type { KanaChar } from '../data/kana';
 import type { ProgressData } from '../utils/progress';
 import { getAccuracy, isWeakChar, getLevelTitle, getExpProgress } from '../utils/progress';
+import { getMasteryCellClass, getMasteryStage } from '../utils/mastery';
 import { isDue } from '../utils/spacedRepetition';
 import { TrendingUp, Target, Calendar, X, Sparkles } from 'lucide-react';
+import { MasteryLegend } from './MasteryLegend';
 
 interface ProgressProps {
   data: KanaChar[];
@@ -136,27 +138,10 @@ export function Progress({ data, kanaType, progress, onProgressUpdate }: Progres
     });
   }
 
-  // Get cell color based on mastery
+  // Get cell color based on mastery (shared with the kana chart)
   const getCellColor = (kana: KanaChar | null): string => {
     if (!kana) return 'bg-transparent';
-    
-    const charProg = charProgress[kana.char];
-    if (!charProg) return 'bg-gray-200 dark:bg-gray-700';
-
-    const accuracy = getAccuracy(charProg);
-    const total = charProg.correct + charProg.incorrect;
-
-    if (total < 3) {
-      return 'bg-gray-300 dark:bg-gray-600';
-    } else if (accuracy >= 80 && total >= 5) {
-      return 'bg-green-500 dark:bg-green-600';
-    } else if (accuracy >= 60) {
-      return 'bg-yellow-500 dark:bg-yellow-600';
-    } else if (accuracy >= 40) {
-      return 'bg-orange-500 dark:bg-orange-600';
-    } else {
-      return 'bg-red-500 dark:bg-red-600';
-    }
+    return getMasteryCellClass(getMasteryStage(charProgress[kana.char]));
   };
 
   // Handle cell click
@@ -384,27 +369,8 @@ export function Progress({ data, kanaType, progress, onProgressUpdate }: Progres
         </div>
 
         {/* Legend */}
-        <div className="flex flex-wrap gap-3 sm:gap-4 mt-4 text-xs sm:text-sm">
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-gray-300 dark:bg-gray-600"></div>
-            <span className="text-gray-600 dark:text-gray-400">未熟練</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-red-500"></div>
-            <span className="text-gray-600 dark:text-gray-400">&lt; 40%</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-orange-500"></div>
-            <span className="text-gray-600 dark:text-gray-400">40-60%</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-yellow-500"></div>
-            <span className="text-gray-600 dark:text-gray-400">60-80%</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded bg-green-500"></div>
-            <span className="text-gray-600 dark:text-gray-400">≥ 80% 熟練</span>
-          </div>
+        <div className="mt-4">
+          <MasteryLegend />
         </div>
       </div>
 
