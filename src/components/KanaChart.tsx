@@ -1,16 +1,26 @@
 import { useState } from 'react';
 import type { KanaChar } from '../data/kana';
+import type { CharProgress } from '../utils/progress';
 import { speakKana, isSpeechSupported } from '../utils/speech';
+import {
+  getMasteryCellClass,
+  getMasteryCue,
+  getMasteryDetail,
+  getMasteryStage,
+  getMasteryTextClass,
+} from '../utils/mastery';
 import { StrokeOrderAnimation } from './StrokeOrderAnimation';
+import { MasteryLegend } from './MasteryLegend';
 import { hasStrokeData } from '../data/strokeOrder';
 import { Volume2 } from 'lucide-react';
 
 interface KanaChartProps {
   data: KanaChar[];
   title: string;
+  charProgress: Record<string, CharProgress>;
 }
 
-export function KanaChart({ data, title }: KanaChartProps) {
+export function KanaChart({ data, title, charProgress }: KanaChartProps) {
   const [selectedChar, setSelectedChar] = useState<KanaChar | null>(null);
   const [filter, setFilter] = useState<'all' | 'basic' | 'dakuten' | 'handakuten' | 'yoon'>('all');
   const [showStrokeOrder, setShowStrokeOrder] = useState(false);
@@ -36,22 +46,39 @@ export function KanaChart({ data, title }: KanaChartProps) {
       <div className="mb-6">
         <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">{title}</h3>
         <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
-          {chars.map((kana, idx) => (
-            <button
-              key={idx}
-              onClick={() => handleCharClick(kana)}
-              className={`
-                aspect-square flex flex-col items-center justify-center
-                rounded-lg border-2 transition-all
-                ${selectedChar?.char === kana.char
-                  ? 'border-purple-500 bg-purple-100 dark:bg-purple-900'
-                  : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-purple-300 dark:hover:border-purple-600'
-                }
-              `}
-            >
-              <span className="text-2xl font-bold">{kana.char}</span>
-            </button>
-          ))}
+          {chars.map((kana) => {
+            const record = charProgress[kana.char];
+            const stage = getMasteryStage(record);
+            const detail = getMasteryDetail(record);
+            const selected = selectedChar?.char === kana.char;
+
+            return (
+              <button
+                key={kana.char}
+                type="button"
+                onClick={() => handleCharClick(kana)}
+                title={`${kana.char}（${kana.romaji}）：${detail}`}
+                aria-label={`${kana.char}，${kana.romaji}，${detail}`}
+                aria-pressed={selected}
+                className={`
+                  aspect-square flex flex-col items-center justify-center gap-0.5
+                  rounded-lg border-2 transition-all
+                  hover:scale-105 active:scale-95
+                  ${getMasteryCellClass(stage)}
+                  ${getMasteryTextClass(stage)}
+                  ${selected
+                    ? 'border-purple-700 dark:border-purple-200 ring-2 ring-purple-500/80 shadow-md'
+                    : 'border-black/10 dark:border-white/15'
+                  }
+                `}
+              >
+                <span className="text-xl sm:text-2xl font-bold leading-none">{kana.char}</span>
+                <span className="text-[10px] sm:text-xs font-semibold leading-none tabular-nums opacity-90">
+                  {getMasteryCue(record)}
+                </span>
+              </button>
+            );
+          })}
         </div>
       </div>
     );
@@ -112,6 +139,13 @@ export function KanaChart({ data, title }: KanaChartProps) {
         </button>
       </div>
 
+      <div className="rounded-lg bg-white/80 dark:bg-gray-800/80 px-3 py-3 shadow-sm">
+        <MasteryLegend />
+        <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+          顏色與進度頁相同。熟練為正確率 ≥ 80% 且至少練習 5 次；未滿 3 次顯示為未熟練。
+        </p>
+      </div>
+
       {filter === 'all' ? (
         <>
           {renderKanaGrid(basicChars, '清音')}
@@ -131,6 +165,9 @@ export function KanaChart({ data, title }: KanaChartProps) {
               <div>
                 <div className="text-2xl font-semibold text-purple-600 dark:text-purple-400">
                   {selectedChar.romaji}
+                </div>
+                <div className="text-sm text-gray-700 dark:text-gray-300">
+                  {getMasteryDetail(charProgress[selectedChar.char])}
                 </div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">
                   點擊字符以聆聽發音
@@ -160,6 +197,8 @@ export function KanaChart({ data, title }: KanaChartProps) {
       )}
 
       {/* Stroke Order Modal */}
+      {selectedChar && <div className="h-48 sm:h-32" aria-hidden="true" />}
+
       {showStrokeOrder && selectedChar && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-sm w-full shadow-2xl relative">
