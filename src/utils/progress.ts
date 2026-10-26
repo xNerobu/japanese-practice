@@ -32,7 +32,7 @@ export interface ProgressData {
 }
 
 const STORAGE_KEY = 'japanese-learning-progress';
-const CURRENT_VERSION = 4;
+export const CURRENT_VERSION = 4;
 
 export function loadProgress(): ProgressData {
   try {
@@ -132,6 +132,24 @@ function migrateProgressData(oldData: ProgressData): ProgressData {
 
   console.log('進度資料已遷移至版本', CURRENT_VERSION);
   return migratedData;
+}
+
+/**
+ * Fill defaults and migrate older progress files up to the current version.
+ * Newer versions are rejected by the importer before this runs.
+ */
+export function upgradeProgress(data: ProgressData): ProgressData {
+  const upgraded = !data.version || data.version < CURRENT_VERSION
+    ? migrateProgressData(data)
+    : data;
+
+  return {
+    hiragana: upgraded.hiragana,
+    katakana: upgraded.katakana,
+    dailyHistory: upgraded.dailyHistory ?? [],
+    exp: upgraded.exp ?? { totalExp: 0, level: 1 },
+    version: CURRENT_VERSION,
+  };
 }
 
 export function saveProgress(progress: ProgressData): void {
