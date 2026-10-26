@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import type { KanaChar } from '../data/kana';
 import type { ProgressData } from '../utils/progress';
-import { getAccuracy, isWeakChar, getLevelTitle, getExpProgress } from '../utils/progress';
+import { getAccuracy, isWeakChar, getLevelTitle, getExpProgress, CURRENT_VERSION } from '../utils/progress';
+import { ProgressTransfer } from './ProgressTransfer';
 import { getMasteryCellClass, getMasteryStage } from '../utils/mastery';
 import { isDue } from '../utils/spacedRepetition';
 import { TrendingUp, Target, Calendar, X, Sparkles } from 'lucide-react';
@@ -213,7 +214,7 @@ export function Progress({ data, kanaType, progress, onProgressUpdate }: Progres
         katakana: {}, 
         dailyHistory: [], 
         exp: { totalExp: 0, level: 1 },
-        version: 4 
+        version: CURRENT_VERSION,
       });
     }
   };
@@ -223,6 +224,8 @@ export function Progress({ data, kanaType, progress, onProgressUpdate }: Progres
 
   return (
     <div className="space-y-6">
+      <ProgressTransfer progress={progress} onProgressUpdate={onProgressUpdate} />
+
       {/* Summary Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
         <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg p-4 sm:p-6 shadow-lg text-white">
