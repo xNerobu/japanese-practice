@@ -1,10 +1,11 @@
-import { useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { KanaChar } from '../data/kana';
 import { rowNames } from '../data/kana';
 import { updateCharProgress, getWeakChars, addExp } from '../utils/progress';
 import type { ProgressData } from '../utils/progress';
-import { BEGINNER_ROWS, buildAnswerOptions, selectAdaptivePool } from '../utils/adaptiveQuiz';
+import { buildAnswerOptions, selectAdaptivePool } from '../utils/adaptiveQuiz';
 import type { AdaptivePoolResult, QuizDirection } from '../utils/adaptiveQuiz';
+import { resolveUnlockedThrough, unlockedKana, type StageLaunch } from '../utils/learningPath';
 import { speakKana, isSpeechSupported } from '../utils/speech';
 import { Volume2, Check, X } from 'lucide-react';
 
@@ -14,10 +15,11 @@ interface QuizProps {
   progress: ProgressData;
   onProgressUpdate: (progress: ProgressData) => void;
   onExpGain?: (amount: number, leveledUp: boolean, oldLevel?: number, newLevel?: number) => void;
+  stageLaunch?: StageLaunch | null;
 }
 
 type QuizFilter = 'all' | 'weak';
-type SessionKind = 'adaptive' | 'manual';
+type SessionKind = 'adaptive' | 'manual' | 'path';
 
 function pickKana(pool: readonly KanaChar[], avoid: string | null): KanaChar {
   const candidates = avoid ? pool.filter((kana) => kana.char !== avoid) : [...pool];
@@ -25,23 +27,32 @@ function pickKana(pool: readonly KanaChar[], avoid: string | null): KanaChar {
   return source[Math.floor(Math.random() * source.length)];
 }
 
-function adaptiveSessionNote(result: AdaptivePoolResult): string {
-  if (!result.beginnerFallback) return '依程度出題：優先弱項與待複習';
-  const keptPracticed = result.chars.some(
-    (kana) => kana.type !== 'basic' || !(BEGINNER_ROWS as readonly string[]).includes(kana.row),
-  );
-  if (keptPracticed) return '入門練習：あ行、か行、さ行清音，並保留已練過的弱項';
-  return '入門練習：あ行、か行、さ行清音';
+function rowLabel(row: string): string {
+  return row in rowNames ? rowNames[row as keyof typeof rowNames] : row;
 }
 
-export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: QuizProps) {
+function adaptiveSessionNote(result: AdaptivePoolResult): string {
+  if (!result.beginnerFallback) return '依程度出題：優先弱項與待複習（只含已解鎖的假名）';
+  const labels = [...new Set(
+    result.chars.filter((kana) => kana.type === 'basic').map((kana) => rowLabel(kana.row)),
+  )];
+  const outside = result.chars.some((kana) => kana.type !== 'basic');
+  if (labels.length === 0) return '入門練習：目前已解鎖的假名';
+  return outside
+    ? `入門練習：${labels.join('、')}清音，並保留已練過的弱項`
+    : `入門練習：${labels.join('、')}清音`;
+}
+
+export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain, stageLaunch }: QuizProps) {
   const [mode, setMode] = useState<QuizDirection>('kana-to-romaji');
   const [filter, setFilter] = useState<QuizFilter>('all');
   const allRows = [...new Set(data.map(k => k.row))];
   const [selectedRows, setSelectedRows] = useState<string[]>(() => allRows);
   const [selectedTypes, setSelectedTypes] = useState<string[]>(['basic']);
   const [showManual, setShowManual] = useState(false);
-  const [isConfiguring, setIsConfiguring] = useState(true);
+  const [isConfiguring, setIsConfiguring] = useState(
+    () => stageLaunch == null || stageLaunch.script !== kanaType,
+  );
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [sessionKind, setSessionKind] = useState<SessionKind>('adaptive');
   const [sessionNote, setSessionNote] = useState('');
@@ -57,7 +68,9 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
 
   const sessionKindRef = useRef<SessionKind>('adaptive');
   const poolRef = useRef<KanaChar[]>([]);
+  const universeRef = useRef<KanaChar[]>([]);
   const lastCharRef = useRef<string | null>(null);
+  const seenLaunch = useRef<number | null>(null);
 
   const allTypes = [
     { key: 'basic', label: '清音' },
@@ -67,9 +80,10 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
   ];
 
   const resolveQuestionSource = (): { pool: KanaChar[]; universe: KanaChar[] } | null => {
-    if (sessionKindRef.current === 'adaptive') {
+    if (sessionKindRef.current === 'adaptive' || sessionKindRef.current === 'path') {
       if (poolRef.current.length === 0) return null;
-      return { pool: poolRef.current, universe: data };
+      const universe = universeRef.current.length > 0 ? universeRef.current : poolRef.current;
+      return { pool: poolRef.current, universe };
     }
 
     let available = data.filter(
@@ -114,17 +128,54 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
   };
 
   const startAdaptive = () => {
-    const result = selectAdaptivePool(data, progress[kanaType]);
+    const allowed = unlockedKana(kanaType, resolveUnlockedThrough(progress));
+    const result = selectAdaptivePool(allowed, progress[kanaType]);
     if (result.chars.length === 0) {
       setErrorMessage('目前沒有可練習的假名');
       return;
     }
     poolRef.current = result.chars;
+    universeRef.current = allowed;
     sessionKindRef.current = 'adaptive';
     setSessionKind('adaptive');
     setSessionNote(adaptiveSessionNote(result));
     beginSession();
   };
+
+  const startPath = useCallback((launch: StageLaunch) => {
+    const pool = data.filter(
+      (kana) => launch.rows.includes(kana.row) && launch.types.includes(kana.type),
+    );
+    if (pool.length === 0) {
+      setErrorMessage('這個階段沒有可練習的假名');
+      return;
+    }
+    poolRef.current = pool;
+    universeRef.current = pool;
+    sessionKindRef.current = 'path';
+    setSessionKind('path');
+    setSessionNote(`學習路徑：${launch.label}`);
+    setErrorMessage('');
+    setIsConfiguring(false);
+    setScore({ correct: 0, total: 0 });
+    setCurrentQuestionNumber(1);
+    setShowResults(false);
+    setIsFirstQuestion(true);
+    lastCharRef.current = null;
+    const question = pickKana(pool, null);
+    lastCharRef.current = question.char;
+    setCurrentQuestion(question);
+    setSelectedAnswer(null);
+    setIsCorrect(null);
+    setOptions(buildAnswerOptions(question, pool, pool, mode));
+  }, [data, mode]);
+
+  useEffect(() => {
+    if (!stageLaunch || stageLaunch.script !== kanaType) return;
+    if (seenLaunch.current === stageLaunch.nonce) return;
+    seenLaunch.current = stageLaunch.nonce;
+    startPath(stageLaunch);
+  }, [stageLaunch, kanaType, startPath]);
 
   const startManual = () => {
     if (selectedRows.length === 0) {
@@ -193,6 +244,8 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
 
   const retrySameQuiz = () => {
     if (sessionKindRef.current === 'adaptive') startAdaptive();
+    else if (sessionKindRef.current === 'path' && stageLaunch) startPath(stageLaunch);
+    else if (sessionKindRef.current === 'path') beginSession();
     else startManual();
   };
 
@@ -254,7 +307,7 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
             </span>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-            優先練習弱項與待複習的假名，也會加入練習較少的字。若幾乎還沒有練習紀錄，會從あ行、か行、さ行的清音開始。
+            優先練習弱項與待複習的假名，也會加入練習較少的字。只會出學習路徑已解鎖的假名；新手上路時從あ行清音開始。
           </p>
           <div className="mb-4">
             <div className="text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">出題方向</div>
@@ -297,6 +350,9 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
 
         {showManual && (
           <div className="space-y-6">
+            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              自訂範圍可以選擇任何行，包含學習路徑尚未解鎖的假名。
+            </p>
             <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
               <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">練習範圍</h3>
               <div className="space-y-3">
@@ -429,7 +485,7 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
             onClick={retrySameQuiz}
             className="w-full px-8 py-4 bg-purple-500 hover:bg-purple-600 text-white font-bold text-lg rounded-lg transition-colors"
           >
-            {sessionKind === 'adaptive' ? '再依程度練習' : '再用相同範圍測驗'}
+            {sessionKind === 'adaptive' ? '再依程度練習' : sessionKind === 'path' ? '再練習這個階段' : '再用相同範圍測驗'}
           </button>
           <button
             type="button"
@@ -459,7 +515,7 @@ export function Quiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: 
         </div>
       </div>
 
-      {sessionKind === 'adaptive' && sessionNote && (
+      {(sessionKind === 'adaptive' || sessionKind === 'path') && sessionNote && (
         <div className="text-sm text-center text-purple-600 dark:text-purple-300">
           {sessionNote}
         </div>

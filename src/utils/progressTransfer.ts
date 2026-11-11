@@ -1,3 +1,4 @@
+import { reconcileLearningPath } from './learningPath';
 import type { SRSData } from './spacedRepetition';
 import {
   CURRENT_VERSION,
@@ -5,6 +6,7 @@ import {
   type CharProgress,
   type DailyActivity,
   type ExpData,
+  type LearningPathState,
   type ProgressData,
 } from './progress';
 
@@ -24,6 +26,7 @@ export const progressTransferMessages = {
   badHistory: '進度檔中的每日練習紀錄格式不正確。',
   badExp: '進度檔中的經驗值資料格式不正確。',
   badVersion: '進度檔的版本編號不正確。',
+  badPath: '進度檔中的學習路徑資料格式不正確。',
   tooLarge: '檔案過大，請選擇先前匯出的進度檔。',
   readFailed: '無法讀取檔案，請再試一次。',
   downloadFailed: '無法下載進度檔，請再試一次。',
@@ -64,15 +67,16 @@ export function summarizeProgress(progress: ProgressData): ProgressSummary {
   };
 }
 
-/** Pretty JSON of the full progress record, including both kana sets. */
+/** Pretty JSON of the full progress record, including both kana sets and the learning path. */
 export function serializeProgress(progress: ProgressData): string {
-  const payload = upgradeProgress({
+  const payload = reconcileLearningPath(upgradeProgress({
     hiragana: progress.hiragana ?? {},
     katakana: progress.katakana ?? {},
     dailyHistory: progress.dailyHistory ?? [],
     exp: progress.exp ?? { totalExp: 0, level: 1 },
+    learningPath: progress.learningPath,
     version: progress.version ?? CURRENT_VERSION,
-  });
+  }));
   return `${JSON.stringify(payload, null, 2)}\n`;
 }
 
@@ -128,13 +132,19 @@ export function parseProgressText(text: string): ProgressImportResult {
     return { ok: false, message: progressTransferMessages.badExp };
   }
 
-  const data = upgradeProgress({
+  const learningPath = readLearningPath(parsed.learningPath);
+  if (learningPath === null) {
+    return { ok: false, message: progressTransferMessages.badPath };
+  }
+
+  const data = reconcileLearningPath(upgradeProgress({
     hiragana,
     katakana,
     dailyHistory,
     exp,
+    learningPath,
     version: versionResult.version,
-  });
+  }));
 
   return { ok: true, data, summary: summarizeProgress(data) };
 }
@@ -234,6 +244,13 @@ function readDailyHistory(value: unknown): DailyActivity[] | undefined | null {
     history.push(activity);
   }
   return history;
+}
+
+function readLearningPath(value: unknown): LearningPathState | undefined | null {
+  if (value === undefined) return undefined;
+  if (!isPlainObject(value)) return null;
+  if (!isNonNegativeInteger(value.unlockedThrough) || value.unlockedThrough > 10_000) return null;
+  return { unlockedThrough: value.unlockedThrough };
 }
 
 function readExp(value: unknown): ExpData | undefined | null {

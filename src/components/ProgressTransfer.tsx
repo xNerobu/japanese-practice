@@ -176,7 +176,7 @@ export function ProgressTransfer({ progress, onProgressUpdate }: ProgressTransfe
               要以檔案取代目前進度嗎？
             </h4>
             <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-              確定後，這台裝置的平假名、片假名、每日練習紀錄與經驗值會整份換成檔案裡的內容。不會與目前進度合併，答題次數也不會相加，所以同一段練習不會被算兩次。這台裝置上還沒匯出的紀錄會消失。檔案只在這台裝置讀取，不會上傳。
+              確定後，這台裝置的平假名、片假名、每日練習紀錄、經驗值與學習路徑會整份換成檔案裡的內容。不會與目前進度合併，答題次數也不會相加，所以同一段練習不會被算兩次。這台裝置上還沒匯出的紀錄會消失。檔案只在這台裝置讀取，不會上傳。
             </p>
 
             <div className="mt-4 space-y-3 rounded-lg bg-gray-50 p-3 text-sm dark:bg-gray-900">

@@ -1,27 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { KanaChart } from './components/KanaChart';
 import { Quiz } from './components/Quiz';
 import { ListeningQuiz } from './components/ListeningQuiz';
 import { Review } from './components/Review';
 import { HandwritingPractice } from './components/HandwritingPractice';
+import { LearningPath } from './components/LearningPath';
 import { VoicePicker } from './components/VoicePicker';
 import { Progress } from './components/Progress';
 import { LevelBadge, ExpAnimation, LevelUpModal } from './components/ExpSystem';
 import { hiraganaData, katakanaData } from './data/kana';
 import { loadProgress, saveProgress } from './utils/progress';
 import type { ProgressData } from './utils/progress';
+import { reconcileLearningPath, type PathPracticeTarget, type StageLaunch } from './utils/learningPath';
 import { initSpeech } from './utils/speech';
 import { getReviewStats } from './utils/spacedRepetition';
 import { VOICE_CHARACTERS } from './data/voiceConfig';
-import { BookOpen, Brain, BarChart3, Calendar, PenTool, Settings, Headphones } from 'lucide-react';
+import { BookOpen, Brain, BarChart3, Calendar, PenTool, Settings, Headphones, Route } from 'lucide-react';
 
-type View = 'chart' | 'quiz' | 'listening' | 'review' | 'handwriting' | 'progress';
+type View = 'path' | 'chart' | 'quiz' | 'listening' | 'review' | 'handwriting' | 'progress';
 type KanaType = 'hiragana' | 'katakana';
 
 function App() {
-  const [view, setView] = useState<View>('chart');
+  const [view, setView] = useState<View>('path');
   const [kanaType, setKanaType] = useState<KanaType>('hiragana');
-  const [progress, setProgress] = useState<ProgressData>(loadProgress());
+  const [progress, setProgress] = useState<ProgressData>(() => reconcileLearningPath(loadProgress()));
+  const [stageLaunch, setStageLaunch] = useState<StageLaunch | null>(null);
+  const launchNonce = useRef(0);
   const [showVoicePicker, setShowVoicePicker] = useState(false);
   const [expAnimation, setExpAnimation] = useState<number | null>(null);
   const [levelUpData, setLevelUpData] = useState<{ oldLevel: number; newLevel: number } | null>(null);
@@ -30,9 +34,26 @@ function App() {
     initSpeech();
   }, []);
 
+  const reconciledProgress = reconcileLearningPath(progress);
+  if (reconciledProgress !== progress) {
+    setProgress(reconciledProgress);
+  }
+
   useEffect(() => {
-    saveProgress(progress);
-  }, [progress]);
+    saveProgress(reconciledProgress);
+  }, [reconciledProgress]);
+
+  const openView = (next: View) => {
+    setStageLaunch(null);
+    setView(next);
+  };
+
+  const startFromPath = (target: PathPracticeTarget, mode: 'quiz' | 'listening' | 'handwriting') => {
+    launchNonce.current += 1;
+    setKanaType(target.script);
+    setStageLaunch({ ...target, nonce: launchNonce.current });
+    setView(mode);
+  };
 
   // Handle EXP gain
   const handleExpGain = (amount: number, leveledUp: boolean, oldLevel?: number, newLevel?: number) => {
@@ -105,9 +126,20 @@ function App() {
           </button>
         </div>
 
-        <nav className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-6 bg-white dark:bg-gray-800 rounded-lg p-2 shadow-md">
+        <nav className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-2 mb-6 bg-white dark:bg-gray-800 rounded-lg p-2 shadow-md">
           <button
-            onClick={() => setView('chart')}
+            onClick={() => openView('path')}
+            className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
+              view === 'path'
+                ? 'bg-purple-500 text-white'
+                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+            }`}
+          >
+            <Route size={20} />
+            <span className="text-xs sm:text-base">學習路徑</span>
+          </button>
+          <button
+            onClick={() => openView('chart')}
             className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
               view === 'chart'
                 ? 'bg-purple-500 text-white'
@@ -118,7 +150,7 @@ function App() {
             <span className="text-xs sm:text-base">字母表</span>
           </button>
           <button
-            onClick={() => setView('quiz')}
+            onClick={() => openView('quiz')}
             className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
               view === 'quiz'
                 ? 'bg-purple-500 text-white'
@@ -129,7 +161,7 @@ function App() {
             <span className="text-xs sm:text-base">測驗</span>
           </button>
           <button
-            onClick={() => setView('listening')}
+            onClick={() => openView('listening')}
             className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
               view === 'listening'
                 ? 'bg-purple-500 text-white'
@@ -140,7 +172,7 @@ function App() {
             <span className="text-xs sm:text-base">聽音選字</span>
           </button>
           <button
-            onClick={() => setView('review')}
+            onClick={() => openView('review')}
             className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors relative ${
               view === 'review'
                 ? 'bg-purple-500 text-white'
@@ -156,7 +188,7 @@ function App() {
             )}
           </button>
           <button
-            onClick={() => setView('handwriting')}
+            onClick={() => openView('handwriting')}
             className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
               view === 'handwriting'
                 ? 'bg-purple-500 text-white'
@@ -167,7 +199,7 @@ function App() {
             <span className="text-xs sm:text-base">手寫</span>
           </button>
           <button
-            onClick={() => setView('progress')}
+            onClick={() => openView('progress')}
             className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-3 px-2 rounded-lg font-semibold transition-colors ${
               view === 'progress'
                 ? 'bg-purple-500 text-white'
@@ -180,6 +212,12 @@ function App() {
         </nav>
 
         <main>
+          {view === 'path' && (
+            <LearningPath
+              progress={progress}
+              onPractice={startFromPath}
+            />
+          )}
           {view === 'chart' && (
             <KanaChart
               data={currentData}
@@ -195,6 +233,7 @@ function App() {
               progress={progress}
               onProgressUpdate={setProgress}
               onExpGain={handleExpGain}
+              stageLaunch={stageLaunch}
             />
           )}
           {view === 'listening' && (
@@ -204,6 +243,7 @@ function App() {
               progress={progress}
               onProgressUpdate={setProgress}
               onExpGain={handleExpGain}
+              stageLaunch={stageLaunch}
             />
           )}
           {view === 'review' && (
@@ -222,6 +262,7 @@ function App() {
               progress={progress}
               onProgressUpdate={setProgress}
               onExpGain={handleExpGain}
+              stageLaunch={stageLaunch}
             />
           )}
           {view === 'progress' && (
