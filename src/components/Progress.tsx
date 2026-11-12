@@ -214,6 +214,7 @@ export function Progress({ data, kanaType, progress, onProgressUpdate }: Progres
         katakana: {}, 
         dailyHistory: [], 
         exp: { totalExp: 0, level: 1 },
+        learningPath: { unlockedThrough: 0 },
         version: CURRENT_VERSION,
       });
     }

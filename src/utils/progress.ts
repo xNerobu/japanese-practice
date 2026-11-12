@@ -23,16 +23,22 @@ export interface ExpData {
   dailyBonusClaimed?: string; // Date of last daily bonus (YYYY-MM-DD)
 }
 
+/** Furthest learning-path stage that stays unlocked. 0 is 平假名あ行 only. */
+export interface LearningPathState {
+  unlockedThrough: number;
+}
+
 export interface ProgressData {
   hiragana: Record<string, CharProgress>;
   katakana: Record<string, CharProgress>;
   dailyHistory?: DailyActivity[];
   exp?: ExpData;
+  learningPath?: LearningPathState;
   version?: number; // Track data version for migrations
 }
 
 const STORAGE_KEY = 'japanese-learning-progress';
-export const CURRENT_VERSION = 4;
+export const CURRENT_VERSION = 5;
 
 export function loadProgress(): ProgressData {
   try {
@@ -65,6 +71,7 @@ export function loadProgress(): ProgressData {
     katakana: {}, 
     dailyHistory: [], 
     exp: { totalExp: 0, level: 1 },
+    learningPath: { unlockedThrough: 0 },
     version: CURRENT_VERSION 
   };
 }
@@ -78,6 +85,7 @@ function migrateProgressData(oldData: ProgressData): ProgressData {
     katakana: {},
     dailyHistory: oldData.dailyHistory || [],
     exp: oldData.exp || { totalExp: 0, level: 1 },
+    learningPath: oldData.learningPath,
     version: CURRENT_VERSION,
   };
 
@@ -148,6 +156,7 @@ export function upgradeProgress(data: ProgressData): ProgressData {
     katakana: upgraded.katakana,
     dailyHistory: upgraded.dailyHistory ?? [],
     exp: upgraded.exp ?? { totalExp: 0, level: 1 },
+    learningPath: upgraded.learningPath,
     version: CURRENT_VERSION,
   };
 }

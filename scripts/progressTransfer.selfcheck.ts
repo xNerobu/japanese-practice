@@ -107,7 +107,7 @@ assert(
   'char key mismatch is rejected',
 );
 assert(
-  failureMessage('{"version":5,"hiragana":{},"katakana":{}}') === newerVersionMessage(5),
+  failureMessage('{"version":6,"hiragana":{},"katakana":{}}') === newerVersionMessage(6),
   'newer version is rejected',
 );
 assert(
@@ -160,5 +160,62 @@ const extra = parseProgressText(JSON.stringify({
   note: 'ignore me',
 }));
 assert(extra.ok && !('note' in extra.data), 'unknown root fields are dropped');
+assert(extra.ok && extra.data.learningPath?.unlockedThrough === 0, 'v4 file without a path starts at あ行');
+
+const masteredA = {
+  char: 'あ',
+  correct: 8,
+  incorrect: 0,
+  lastPracticed: 10,
+};
+const veteran = parseProgressText(JSON.stringify({
+  hiragana: {
+    あ: masteredA,
+    い: { ...masteredA, char: 'い' },
+    う: { ...masteredA, char: 'う' },
+    え: { ...masteredA, char: 'え' },
+    お: { ...masteredA, char: 'お' },
+  },
+  katakana: {},
+  version: 4,
+}));
+assert(veteran.ok && veteran.data.learningPath?.unlockedThrough === 1, 'strong あ行 records unlock か行 on import');
+
+const ahead = parseProgressText(JSON.stringify({
+  hiragana: {},
+  katakana: {},
+  version: 5,
+  learningPath: { unlockedThrough: 4 },
+}));
+assert(ahead.ok && ahead.data.learningPath?.unlockedThrough === 4, 'stored unlocks are kept when mastery is behind');
+if (ahead.ok) {
+  const again = parseProgressText(serializeProgress(ahead.data));
+  assert(again.ok && again.data.learningPath?.unlockedThrough === 4, 'export keeps a path that is ahead of mastery');
+}
+
+assert(
+  failureMessage('{"hiragana":{},"katakana":{},"version":5,"learningPath":{"unlockedThrough":-1}}')
+    === progressTransferMessages.badPath,
+  'negative path index is rejected',
+);
+assert(
+  failureMessage('{"hiragana":{},"katakana":{},"version":5,"learningPath":[]}')
+    === progressTransferMessages.badPath,
+  'path must be an object',
+);
+
+const raised = parseProgressText(JSON.stringify({
+  hiragana: {
+    あ: masteredA,
+    い: { ...masteredA, char: 'い' },
+    う: { ...masteredA, char: 'う' },
+    え: { ...masteredA, char: 'え' },
+    お: { ...masteredA, char: 'お' },
+  },
+  katakana: {},
+  version: 5,
+  learningPath: { unlockedThrough: 0 },
+}));
+assert(raised.ok && raised.data.learningPath?.unlockedThrough === 1, 'mastery can open a stage the file still marks locked');
 
 console.log('progress transfer checks passed');

@@ -1,8 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import type { KanaChar } from '../data/kana';
 import type { ProgressData } from '../utils/progress';
 import { recordDailyActivity, addExp } from '../utils/progress';
 import { initializeSRS, updateSRS } from '../utils/spacedRepetition';
+import type { StageLaunch } from '../utils/learningPath';
 import { StrokeOrderAnimation } from './StrokeOrderAnimation';
 import { hasStrokeData } from '../data/strokeOrder';
 import { Eraser, Undo, SkipForward, Eye, EyeOff, X } from 'lucide-react';
@@ -13,6 +14,7 @@ interface HandwritingPracticeProps {
   progress: ProgressData;
   onProgressUpdate: (progress: ProgressData) => void;
   onExpGain?: (amount: number, leveledUp: boolean, oldLevel?: number, newLevel?: number) => void;
+  stageLaunch?: StageLaunch | null;
 }
 
 interface Point {
@@ -30,6 +32,7 @@ export function HandwritingPractice({
   progress,
   onProgressUpdate,
   onExpGain,
+  stageLaunch,
 }: HandwritingPracticeProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -38,10 +41,13 @@ export function HandwritingPractice({
   const [showGuide, setShowGuide] = useState(true);
   const [currentChar, setCurrentChar] = useState<KanaChar | null>(null);
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
-  const [isConfiguring, setIsConfiguring] = useState(true);
+  const [isConfiguring, setIsConfiguring] = useState(() => stageLaunch == null);
   const [stats, setStats] = useState({ practiced: 0, correct: 0 });
   const [showStrokeOrder, setShowStrokeOrder] = useState(false);
   const [isFirstPractice, setIsFirstPractice] = useState(true);
+  const [sessionLabel, setSessionLabel] = useState('');
+  const sessionRef = useRef<{ rows: string[]; types: string[] | null }>({ rows: [], types: null });
+  const seenLaunch = useRef<number | null>(null);
 
   const allRows = [...new Set(data.map(k => k.row))];
 
@@ -249,24 +255,38 @@ export function HandwritingPractice({
     generateNextChar();
   };
 
-  const generateNextChar = () => {
-    const availableChars = data.filter(k => selectedRows.includes(k.row));
+  const generateNextChar = useCallback(() => {
+    const { rows, types } = sessionRef.current;
+    const availableChars = data.filter(
+      (kana) => rows.includes(kana.row) && (types === null || types.includes(kana.type)),
+    );
     if (availableChars.length === 0) return;
 
     const nextChar = availableChars[Math.floor(Math.random() * availableChars.length)];
     setCurrentChar(nextChar);
-  };
+  }, [data]);
 
-  const startPractice = () => {
-    if (selectedRows.length === 0) {
+  const startPractice = useCallback((rows?: string[], types?: string[] | null, label?: string) => {
+    const useRows = rows ?? selectedRows;
+    const useTypes = types === undefined ? null : types;
+    if (useRows.length === 0) {
       alert('請至少選擇一個行');
       return;
     }
+    sessionRef.current = { rows: useRows, types: useTypes };
+    setSessionLabel(label ?? '');
     setIsConfiguring(false);
     setStats({ practiced: 0, correct: 0 });
     setIsFirstPractice(true);
     generateNextChar();
-  };
+  }, [generateNextChar, selectedRows]);
+
+  useEffect(() => {
+    if (!stageLaunch || seenLaunch.current === stageLaunch.nonce) return;
+    seenLaunch.current = stageLaunch.nonce;
+    setSelectedRows(stageLaunch.rows);
+    startPractice(stageLaunch.rows, stageLaunch.types, `學習路徑：${stageLaunch.label}`);
+  }, [stageLaunch, startPractice]);
 
   const toggleRow = (row: string) => {
     setSelectedRows(prev =>
@@ -288,7 +308,7 @@ export function HandwritingPractice({
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
           <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">手寫練習設定</h3>
           <p className="text-gray-600 dark:text-gray-400 mb-4">
-            用手指或滑鼠在畫布上書寫假名，然後自我評分。正確的字符會延長複習間隔，需要更多練習的會更頻繁出現。
+            用手指或滑鼠在畫布上書寫假名，然後自我評分。正確的字符會延長複習間隔，需要更多練習的會更頻繁出現。可選擇任何行，包含學習路徑尚未解鎖的假名。
           </p>
         </div>
 
@@ -326,7 +346,7 @@ export function HandwritingPractice({
         </div>
 
         <button
-          onClick={startPractice}
+          onClick={() => startPractice()}
           className="w-full py-4 bg-purple-500 hover:bg-purple-600 text-white font-bold text-lg rounded-lg transition-colors"
         >
           開始手寫練習
@@ -346,7 +366,9 @@ export function HandwritingPractice({
       <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
         <div className="flex justify-between items-center mb-4">
           <div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">練習統計</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">
+              {sessionLabel ? `${sessionLabel} · ` : ''}練習統計
+            </div>
             <div className="text-lg font-semibold text-gray-800 dark:text-gray-200">
               已練習 {stats.practiced} 個 · 正確率 {accuracy}%
             </div>

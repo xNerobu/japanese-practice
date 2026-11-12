@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { hiraganaData, katakanaData, rowNames } from '../data/kana';
 import type { KanaChar } from '../data/kana';
 import { updateCharProgress, getWeakChars, addExp } from '../utils/progress';
 import type { ProgressData } from '../utils/progress';
 import { speakKana } from '../utils/speech';
 import { getSimilarKana } from '../data/similarSounds';
+import type { StageLaunch } from '../utils/learningPath';
 import { Volume2, Check, X } from 'lucide-react';
 
 interface ListeningQuizProps {
@@ -13,10 +14,18 @@ interface ListeningQuizProps {
   progress: ProgressData;
   onProgressUpdate: (progress: ProgressData) => void;
   onExpGain?: (amount: number, leveledUp: boolean, oldLevel?: number, newLevel?: number) => void;
+  stageLaunch?: StageLaunch | null;
 }
 
 type KanaTypeFilter = 'hiragana' | 'katakana' | 'mixed';
 type QuizFilter = 'all' | 'weak';
+
+interface ListenCriteria {
+  rows: string[];
+  types: string[];
+  script: KanaTypeFilter;
+  filter: QuizFilter;
+}
 
 interface MissedKana {
   char: string;
@@ -28,13 +37,29 @@ interface QuestionData extends KanaChar {
   script: 'hiragana' | 'katakana';
 }
 
-export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onExpGain }: ListeningQuizProps) {
+function charsForCriteria(criteria: ListenCriteria): QuestionData[] {
+  if (criteria.script === 'mixed') {
+    const hiraganaChars: QuestionData[] = hiraganaData
+      .filter(k => criteria.rows.includes(k.row) && criteria.types.includes(k.type))
+      .map(k => ({ ...k, script: 'hiragana' as const }));
+    const katakanaChars: QuestionData[] = katakanaData
+      .filter(k => criteria.rows.includes(k.row) && criteria.types.includes(k.type))
+      .map(k => ({ ...k, script: 'katakana' as const }));
+    return [...hiraganaChars, ...katakanaChars];
+  }
+  const dataset = criteria.script === 'hiragana' ? hiraganaData : katakanaData;
+  return dataset
+    .filter(k => criteria.rows.includes(k.row) && criteria.types.includes(k.type))
+    .map(k => ({ ...k, script: criteria.script as 'hiragana' | 'katakana' }));
+}
+
+export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onExpGain, stageLaunch }: ListeningQuizProps) {
   const [kanaTypeFilter, setKanaTypeFilter] = useState<KanaTypeFilter>(kanaType);
   const [filter, setFilter] = useState<QuizFilter>('all');
   const allRows = [...new Set(data.map(k => k.row))];
   const [selectedRows, setSelectedRows] = useState<string[]>(() => allRows);
   const [selectedTypes, setSelectedTypes] = useState<string[]>(['basic']);
-  const [isConfiguring, setIsConfiguring] = useState(true);
+  const [isConfiguring, setIsConfiguring] = useState(() => stageLaunch == null);
   const [currentQuestion, setCurrentQuestion] = useState<QuestionData | null>(null);
   const [options, setOptions] = useState<string[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -48,6 +73,9 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
   const [needsStartTap, setNeedsStartTap] = useState(true);
   const [missedKana, setMissedKana] = useState<MissedKana[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const [sessionLabel, setSessionLabel] = useState('');
+  const criteriaRef = useRef<ListenCriteria | null>(null);
+  const seenLaunch = useRef<number | null>(null);
 
   const allTypes = [
     { key: 'basic', label: '清音' },
@@ -69,77 +97,17 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
     }
   }, [currentQuestion, needsStartTap, selectedAnswer]);
 
-  const startQuiz = () => {
-    if (selectedRows.length === 0) {
-      setErrorMessage('請至少選擇一個行');
-      return;
-    }
-    if (selectedTypes.length === 0) {
-      setErrorMessage('請至少選擇一個類型');
-      return;
-    }
-    
-    // Check if selected rows ∩ types has any characters
-    let availableChars: QuestionData[] = [];
-    if (kanaTypeFilter === 'mixed') {
-      const hiraganaChars: QuestionData[] = hiraganaData
-        .filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type))
-        .map(k => ({ ...k, script: 'hiragana' as const }));
-      const katakanaChars: QuestionData[] = katakanaData
-        .filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type))
-        .map(k => ({ ...k, script: 'katakana' as const }));
-      availableChars = [...hiraganaChars, ...katakanaChars];
-    } else {
-      const dataset = kanaTypeFilter === 'hiragana' ? hiraganaData : katakanaData;
-      availableChars = dataset
-        .filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type))
-        .map(k => ({ ...k, script: kanaTypeFilter as 'hiragana' | 'katakana' }));
-    }
-    
-    if (availableChars.length === 0) {
-      setErrorMessage('所選的行段和類型沒有任何假名，請重新選擇');
-      return;
-    }
-    
-    setErrorMessage('');
-    setIsConfiguring(false);
-    setScore({ correct: 0, total: 0 });
-    setShowResults(false);
-    setIsFirstQuestion(true);
-    setNeedsStartTap(true);
-    setCurrentQuestionNumber(1);
-    setTotalQuestions(questionCount);
-    setMissedKana([]);
-    
-    const question = generateQuestion();
-    if (question) {
-      setCurrentQuestion(question);
-    }
-  };
+  const generateQuestion = useCallback((): QuestionData | null => {
+    const criteria = criteriaRef.current ?? {
+      rows: selectedRows,
+      types: selectedTypes,
+      script: kanaTypeFilter,
+      filter,
+    };
+    let availableChars = charsForCriteria(criteria);
 
-  const generateQuestion = (): QuestionData | null => {
-    // Get the pool based on kanaTypeFilter
-    let availableChars: QuestionData[] = [];
-    
-    if (kanaTypeFilter === 'mixed') {
-      // Mix both hiragana and katakana
-      const hiraganaChars: QuestionData[] = hiraganaData
-        .filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type))
-        .map(k => ({ ...k, script: 'hiragana' as const }));
-      const katakanaChars: QuestionData[] = katakanaData
-        .filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type))
-        .map(k => ({ ...k, script: 'katakana' as const }));
-      availableChars = [...hiraganaChars, ...katakanaChars];
-    } else {
-      const dataset = kanaTypeFilter === 'hiragana' ? hiraganaData : katakanaData;
-      availableChars = dataset
-        .filter(k => selectedRows.includes(k.row) && selectedTypes.includes(k.type))
-        .map(k => ({ ...k, script: kanaTypeFilter as 'hiragana' | 'katakana' }));
-    }
-
-    // Apply weak filter if needed
-    if (filter === 'weak') {
-      const scriptToUse = kanaTypeFilter === 'mixed' ? kanaType : kanaTypeFilter;
+    if (criteria.filter === 'weak') {
+      const scriptToUse = criteria.script === 'mixed' ? kanaType : criteria.script;
       const weakChars = getWeakChars(progress, scriptToUse, availableChars.map(k => k.char));
       if (weakChars.length > 0) {
         availableChars = availableChars.filter(k => weakChars.includes(k.char));
@@ -151,15 +119,10 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
     }
 
     const question = availableChars[Math.floor(Math.random() * availableChars.length)];
-    
-    // Generate distractors from the same script AND from the selected pool (rows + types)
     const poolSameScript = availableChars.filter(k => k.script === question.script && k.char !== question.char);
-    
-    // Get similar kana (prioritize them, but only from the pool)
     const similarKana = getSimilarKana(question.char, question.script === 'hiragana');
-    let wrongOptions: string[] = [];
-    
-    // Try to include similar sounds, but only if they're in the pool
+    const wrongOptions: string[] = [];
+
     for (const similar of similarKana) {
       if (wrongOptions.length >= 3) break;
       const existsInPool = poolSameScript.some(k => k.char === similar);
@@ -167,8 +130,7 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
         wrongOptions.push(similar);
       }
     }
-    
-    // Fill remaining with random from pool
+
     const seenChars = new Set([question.char, ...wrongOptions]);
     let attempts = 0;
     while (wrongOptions.length < 3 && poolSameScript.length > 0 && attempts < 100) {
@@ -179,15 +141,53 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
       }
       attempts++;
     }
-    
-    wrongOptions = wrongOptions.slice(0, 3);
-    const allOptions = [question.char, ...wrongOptions].sort(() => Math.random() - 0.5);
+
+    const allOptions = [question.char, ...wrongOptions.slice(0, 3)].sort(() => Math.random() - 0.5);
     setOptions(allOptions);
     setSelectedAnswer(null);
     setIsCorrect(null);
-    
+
     return question;
-  };
+  }, [filter, kanaType, kanaTypeFilter, progress, selectedRows, selectedTypes]);
+
+  const startQuiz = useCallback((override?: { rows: string[]; types: string[]; script: KanaTypeFilter; label: string; count: number }) => {
+    const criteria: ListenCriteria = {
+      rows: override?.rows ?? selectedRows,
+      types: override?.types ?? selectedTypes,
+      script: override?.script ?? kanaTypeFilter,
+      filter: override ? 'all' : filter,
+    };
+    if (criteria.rows.length === 0) {
+      setErrorMessage('請至少選擇一個行');
+      return;
+    }
+    if (criteria.types.length === 0) {
+      setErrorMessage('請至少選擇一個類型');
+      return;
+    }
+
+    if (charsForCriteria(criteria).length === 0) {
+      setErrorMessage('所選的行段和類型沒有任何假名，請重新選擇');
+      return;
+    }
+
+    criteriaRef.current = criteria;
+    setSessionLabel(override?.label ?? '');
+    setErrorMessage('');
+    setIsConfiguring(false);
+    setScore({ correct: 0, total: 0 });
+    setShowResults(false);
+    setIsFirstQuestion(true);
+    setNeedsStartTap(true);
+    setCurrentQuestionNumber(1);
+    setTotalQuestions(override?.count ?? questionCount);
+    setMissedKana([]);
+
+    const question = generateQuestion();
+    if (question) {
+      setCurrentQuestion(question);
+    }
+  }, [filter, generateQuestion, kanaTypeFilter, questionCount, selectedRows, selectedTypes]);
 
   const handleStartTap = () => {
     setNeedsStartTap(false);
@@ -248,7 +248,24 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
     setCurrentQuestionNumber(1);
     setCurrentQuestion(null);
     setErrorMessage('');
+    setSessionLabel('');
   };
+
+  useEffect(() => {
+    if (!stageLaunch || seenLaunch.current === stageLaunch.nonce) return;
+    seenLaunch.current = stageLaunch.nonce;
+    setSelectedRows(stageLaunch.rows);
+    setSelectedTypes(stageLaunch.types);
+    setKanaTypeFilter(stageLaunch.script);
+    setFilter('all');
+    startQuiz({
+      rows: stageLaunch.rows,
+      types: stageLaunch.types,
+      script: stageLaunch.script,
+      label: `學習路徑：${stageLaunch.label}`,
+      count: 10,
+    });
+  }, [stageLaunch, startQuiz]);
 
   const toggleRow = (row: string) => {
     setSelectedRows(prev =>
@@ -286,6 +303,10 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
             {errorMessage}
           </div>
         )}
+
+        <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+          這裡可以自行選擇任何行，包含學習路徑尚未解鎖的假名。
+        </p>
         
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
           <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">假名類型</h3>
@@ -428,7 +449,7 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
         </div>
 
         <button
-          onClick={startQuiz}
+          onClick={() => startQuiz()}
           className="w-full py-4 bg-purple-500 hover:bg-purple-600 text-white font-bold text-lg rounded-lg transition-colors"
         >
           開始聽音測驗
@@ -509,6 +530,12 @@ export function ListeningQuiz({ data, kanaType, progress, onProgressUpdate, onEx
           得分：{score.correct} / {score.total}
         </div>
       </div>
+
+      {sessionLabel && (
+        <div className="text-sm text-center text-purple-600 dark:text-purple-300">
+          {sessionLabel}
+        </div>
+      )}
 
       <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg space-y-6">
         {needsStartTap ? (
