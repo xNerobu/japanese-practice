@@ -14,12 +14,17 @@ import {
 
 interface ProgressTransferProps {
   progress: ProgressData;
-  onProgressUpdate: (progress: ProgressData) => void;
+  signedIn?: boolean;
+  onProgressReplace: (progress: ProgressData) => void;
 }
 
 type StatusMessage = { type: 'error' | 'success'; text: string };
 
-export function ProgressTransfer({ progress, onProgressUpdate }: ProgressTransferProps) {
+export function ProgressTransfer({
+  progress,
+  signedIn = false,
+  onProgressReplace,
+}: ProgressTransferProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cancelRef = useRef<HTMLButtonElement>(null);
   const titleId = useId();
@@ -98,7 +103,7 @@ export function ProgressTransfer({ progress, onProgressUpdate }: ProgressTransfe
     if (!pending) return;
     const imported = pending;
     setPending(null);
-    onProgressUpdate(imported);
+    onProgressReplace(imported);
     setMessage({ type: 'success', text: progressTransferMessages.imported });
   };
 
@@ -111,10 +116,13 @@ export function ProgressTransfer({ progress, onProgressUpdate }: ProgressTransfe
         備份與還原
       </h3>
       <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-        練習進度只存在這台裝置的瀏覽器裡，不會上傳。匯出的 JSON 檔包含平假名、片假名、每日紀錄與經驗值，可在另一台手機或電腦匯入。
+        {signedIn
+          ? '目前已登入，練習進度會存在這台裝置，並同步到你的帳號。匯出的 JSON 檔是這台裝置目前的進度，包含平假名、片假名、每日紀錄、經驗值與學習路徑。'
+          : '練習進度只存在這台裝置的瀏覽器裡，不會上傳。匯出的 JSON 檔包含平假名、片假名、每日紀錄與經驗值，可在另一台手機或電腦匯入。'}
       </p>
       <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
         匯入時會用檔案整份取代這台裝置目前的進度，不會把兩邊的答題次數加在一起。
+        {signedIn ? '已登入時，匯入後的進度也會寫入雲端，蓋過帳號上目前的雲端紀錄。' : ''}
       </p>
 
       <div className="mt-4 flex flex-col gap-2 sm:flex-row">
@@ -176,7 +184,9 @@ export function ProgressTransfer({ progress, onProgressUpdate }: ProgressTransfe
               要以檔案取代目前進度嗎？
             </h4>
             <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-              確定後，這台裝置的平假名、片假名、每日練習紀錄、經驗值與學習路徑會整份換成檔案裡的內容。不會與目前進度合併，答題次數也不會相加，所以同一段練習不會被算兩次。這台裝置上還沒匯出的紀錄會消失。檔案只在這台裝置讀取，不會上傳。
+              {signedIn
+                ? '確定後，這台裝置的平假名、片假名、每日練習紀錄、經驗值與學習路徑會整份換成檔案裡的內容。不會把檔案裡的答題次數與這台裝置目前的次數相加。已登入時，這份進度也會寫入雲端，蓋過帳號上目前的雲端紀錄。'
+                : '確定後，這台裝置的平假名、片假名、每日練習紀錄、經驗值與學習路徑會整份換成檔案裡的內容。不會與目前進度合併，答題次數也不會相加，所以同一段練習不會被算兩次。這台裝置上還沒匯出的紀錄會消失。檔案只在這台裝置讀取，不會上傳。'}
             </p>
 
             <div className="mt-4 space-y-3 rounded-lg bg-gray-50 p-3 text-sm dark:bg-gray-900">

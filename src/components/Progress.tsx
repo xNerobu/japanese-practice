@@ -12,7 +12,8 @@ interface ProgressProps {
   data: KanaChar[];
   kanaType: 'hiragana' | 'katakana';
   progress: ProgressData;
-  onProgressUpdate: (progress: ProgressData) => void;
+  signedIn?: boolean;
+  onProgressReplace: (progress: ProgressData) => void;
 }
 
 type CharType = 'basic' | 'dakuten' | 'handakuten' | 'yoon';
@@ -29,7 +30,13 @@ interface CellDetailData {
   repetitions?: number;
 }
 
-export function Progress({ data, kanaType, progress, onProgressUpdate }: ProgressProps) {
+export function Progress({
+  data,
+  kanaType,
+  progress,
+  signedIn = false,
+  onProgressReplace,
+}: ProgressProps) {
   const [selectedCharType, setSelectedCharType] = useState<CharType>('basic');
   const [selectedCell, setSelectedCell] = useState<CellDetailData | null>(null);
 
@@ -208,11 +215,14 @@ export function Progress({ data, kanaType, progress, onProgressUpdate }: Progres
 
   // Clear all progress
   const handleClearProgress = () => {
-    if (confirm('確定要清除所有進度記錄嗎？')) {
-      onProgressUpdate({ 
-        hiragana: {}, 
-        katakana: {}, 
-        dailyHistory: [], 
+    const message = signedIn
+      ? '確定要清除所有進度記錄嗎？雲端同步的進度也會一併清除。'
+      : '確定要清除所有進度記錄嗎？';
+    if (confirm(message)) {
+      onProgressReplace({
+        hiragana: {},
+        katakana: {},
+        dailyHistory: [],
         exp: { totalExp: 0, level: 1 },
         learningPath: { unlockedThrough: 0 },
         version: CURRENT_VERSION,
@@ -225,7 +235,11 @@ export function Progress({ data, kanaType, progress, onProgressUpdate }: Progres
 
   return (
     <div className="space-y-6">
-      <ProgressTransfer progress={progress} onProgressUpdate={onProgressUpdate} />
+      <ProgressTransfer
+        progress={progress}
+        signedIn={signedIn}
+        onProgressReplace={onProgressReplace}
+      />
 
       {/* Summary Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
@@ -565,6 +579,7 @@ export function Progress({ data, kanaType, progress, onProgressUpdate }: Progres
       {/* Clear Progress Button */}
       {totalPracticed > 0 && (
         <button
+          type="button"
           onClick={handleClearProgress}
           className="w-full py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg transition-colors"
         >
