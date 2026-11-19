@@ -81,7 +81,18 @@ After deployment, the app will be available at:
 
 ## Environment Variables
 
-**None required** - This is a pure frontend application with no backend dependencies or API keys needed.
+The site runs with no environment variables. Progress then stays in `localStorage`, and Google sign-in is hidden.
+
+Cloud sync is optional. To enable it, set these Vite variables in the Vercel project and redeploy (Vite reads them at build time):
+
+- `VITE_FIREBASE_API_KEY`
+- `VITE_FIREBASE_AUTH_DOMAIN`
+- `VITE_FIREBASE_PROJECT_ID`
+- `VITE_FIREBASE_STORAGE_BUCKET`
+- `VITE_FIREBASE_MESSAGING_SENDER_ID`
+- `VITE_FIREBASE_APP_ID`
+
+The Firebase project stays on the free Spark plan. Authorized domains must include `localhost` and `japanese-practice-henna.vercel.app`, and `firestore.rules` must be deployed. See the Traditional Chinese setup steps in the README.
 
 ## Troubleshooting
 
@@ -97,7 +108,8 @@ If deployment fails, check:
 No additional files were added to the repository:
 - ❌ No `vercel.json` (not needed)
 - ❌ No custom redirects (single-page app)
-- ❌ No environment variables (static site)
+- ❌ No environment variables required for the local-only site
+- Optional Firebase variables for Google sign-in and progress sync (see above)
 - ❌ No serverless functions (frontend only)
 
 The repository is deployment-ready as-is!

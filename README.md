@@ -37,7 +37,9 @@
 - 手機觸控優化
 
 ### 📊 進度追蹤
-- 使用 localStorage 儲存學習進度
+- 使用 localStorage 儲存學習進度（鍵名 `japanese-learning-progress`）
+- 可選擇用 Google 帳號登入，把同一份進度同步到手機與電腦（需站長設定 Firebase，見下方說明）
+- 沒有設定 Firebase 時，進度只留在這台裝置，匯出與匯入的用法不變
 - 追蹤每個字符的正確率和複習排程
 - 視覺化顯示各字符的表現
 - 自動標記弱項字符供重點練習
@@ -109,6 +111,39 @@ npm run preview
 ```bash
 node scripts/fetch-kanjivg-kana.cjs
 ```
+
+## Google 登入與雲端同步
+
+這是選用功能。沒有填入下方環境變數時，網站只把進度存在瀏覽器的 localStorage，行為與之前相同。
+
+同步使用 Firebase Authentication 的 Google 登入，以及 Cloud Firestore。兩者都可留在 **Spark 免費方案**，不需要啟用付費的 Blaze 方案。網頁設定裡的 API key 會出現在建置後的程式中，這是 Firebase 網頁應用程式的正常做法；誰能讀寫進度，是由登入狀態與 `firestore.rules` 決定。進度文件放在 `users/{uid}/progress/state`，路徑上的 uid 就足以對應帳號，文件裡不會存放 email。
+
+### 站長設定
+
+1. 到 [Firebase Console](https://console.firebase.google.com/) 建立專案，並確認方案為 Spark。
+2. 新增網頁應用程式，複製它的設定值。
+3. 在 Authentication → Sign-in method 啟用 **Google**。
+4. 在 Authentication → Settings → Authorized domains 加入：
+   - `localhost`（本機開發；Firebase 通常已預設加入）
+   - `japanese-practice-henna.vercel.app`
+   - 若預覽網址也要能登入，再加入該 Vercel 預覽網域
+5. 建立 Cloud Firestore。建立時選正式模式，不要用會暫時開放所有人讀寫的測試模式。
+6. 部署本專案的 `firestore.rules`。可以在 Firestore → Rules 貼上檔案內容後發布，或在已登入 Firebase CLI 的情況下執行：
+
+```bash
+npx firebase-tools deploy --only firestore:rules
+```
+
+7. 在本機把 `.env.example` 複製成 `.env.local` 並填入值。在 Vercel 專案的 Environment Variables 設定同樣的名稱（Production 要設；Preview 若要登入也要設）：
+   - `VITE_FIREBASE_API_KEY`
+   - `VITE_FIREBASE_AUTH_DOMAIN`
+   - `VITE_FIREBASE_PROJECT_ID`
+   - `VITE_FIREBASE_STORAGE_BUCKET`
+   - `VITE_FIREBASE_MESSAGING_SENDER_ID`
+   - `VITE_FIREBASE_APP_ID`
+8. 重新部署 Vercel。Vite 會在建置時寫入這些變數，只改了 Vercel 設定而沒有重新部署時，正式站不會開始同步。
+
+登入後，只有一邊有進度時會採用那一邊並寫回本機與雲端。兩邊都有時會合併：假名保留較高的練習次數與較晚的時間，已解鎖的學習路徑不會上鎖，經驗值與等級不會倒退。細節見 [更新日誌](./CHANGELOG.md)。
 
 ## 使用說明
 

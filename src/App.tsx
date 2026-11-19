@@ -8,10 +8,12 @@ import { LearningPath } from './components/LearningPath';
 import { VoicePicker } from './components/VoicePicker';
 import { Progress } from './components/Progress';
 import { LevelBadge, ExpAnimation, LevelUpModal } from './components/ExpSystem';
+import { AccountSync } from './components/AccountSync';
 import { hiraganaData, katakanaData } from './data/kana';
 import { loadProgress, saveProgress } from './utils/progress';
 import type { ProgressData } from './utils/progress';
 import { reconcileLearningPath, type PathPracticeTarget, type StageLaunch } from './utils/learningPath';
+import { useCloudSync } from './hooks/useCloudSync';
 import { initSpeech } from './utils/speech';
 import { getReviewStats } from './utils/spacedRepetition';
 import { VOICE_CHARACTERS } from './data/voiceConfig';
@@ -38,6 +40,8 @@ function App() {
   if (reconciledProgress !== progress) {
     setProgress(reconciledProgress);
   }
+
+  const cloud = useCloudSync(reconciledProgress, setProgress);
 
   useEffect(() => {
     saveProgress(reconciledProgress);
@@ -96,7 +100,19 @@ function App() {
           <p className="text-gray-600 dark:text-gray-400 mb-4">
             學習平假名和片假名的互動工具
           </p>
-          
+
+          <AccountSync
+            configured={cloud.configured}
+            authReady={cloud.authReady}
+            signedIn={cloud.account !== null}
+            email={cloud.account?.email ?? null}
+            displayName={cloud.account?.displayName ?? null}
+            busy={cloud.busy}
+            notice={cloud.notice}
+            onSignIn={cloud.signIn}
+            onSignOut={cloud.signOut}
+          />
+
           {/* Level Badge and EXP Bar */}
           <div className="max-w-md mx-auto">
             <LevelBadge exp={exp} compact />
@@ -270,7 +286,8 @@ function App() {
               data={currentData}
               kanaType={kanaType}
               progress={progress}
-              onProgressUpdate={setProgress}
+              signedIn={cloud.account !== null}
+              onProgressReplace={cloud.replaceProgress}
             />
           )}
         </main>
